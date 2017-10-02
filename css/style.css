@@ -32,25 +32,15 @@ body {
 }
 
 .registerContainer {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     padding: 0.5%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.register {
-    width: 50%;
-    justify-content: space-around;
-    align-items: space-around;
-}
-
-.register > .brand {
-    align-items: space-around;
-    justify-content: space-around;
-}
 
 .logo {
     display: flex;
@@ -62,4 +52,10 @@ body {
 .squawker {
     font-family: 'Indie Flower', cursive;
     font-size: 25px;
+}
+
+.register {
+    width: 50%;
+    justify-content: space-around;
+    align-items: space-around;
 }
