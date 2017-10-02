@@ -1,9 +1,14 @@
+
+    
+
+
 var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlRouter) {
 }]);
 
 myApp.config(function ($stateProvider, $urlRouterProvider, $transition$) {
     
     $urlRouterProvider.otherwise('/signIn');
+
 
     var signInState = {
         name: 'signIn',

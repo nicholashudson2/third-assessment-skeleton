@@ -1,6 +1,6 @@
 angular.module('twitterApp').component('headerComponent', {
     templateUrl: 'js/header/headerTemplate.html',
-    controller: 'headerController'
+   // controller: 'headerController'
 
     //TODO: Binding
 })
