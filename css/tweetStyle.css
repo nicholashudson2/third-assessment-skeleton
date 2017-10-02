@@ -1,0 +1,19 @@
+
+.card-body {
+    padding: 5%
+}
+/* .btn-primary {
+    margin: 100% 2%;
+} */
+
+.tweet-footer {
+    display: flex;
+    justify-content: space-between
+    /* flex-direction: row; */
+}
+
+.likes {
+}
+
+.bttns {
+}
