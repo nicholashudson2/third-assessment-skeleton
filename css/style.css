@@ -8,6 +8,8 @@ body {
 
 .container {
     width: 100vw;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar {
