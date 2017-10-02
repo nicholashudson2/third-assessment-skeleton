@@ -21,3 +21,7 @@ body {
 .nav-item {
     font-size: 20px;
 }
+
+.post {
+    height: 100px;
+}
