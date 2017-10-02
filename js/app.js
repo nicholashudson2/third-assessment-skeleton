@@ -1,10 +1,14 @@
 angular.module('twitterApp', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', function(stateProvider, urlRouter) {
-    // const defaultState = {
-    //   name: 'welcome',
-    //   url: '/welcome',
-    //   component: 'Component'
-    // }
+    
+    const defaultState = {
+      name: 'welcome',
+      url: '/welcome',
+      component: 'tweetComponent'
+    }
 
-    // urlRouter.otherwise('/welcome');
+    stateProvider.state(defaultState);
+
+
+    urlRouter.otherwise('/welcome');
 
 }]);
