@@ -20,7 +20,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     var feedState = {
         name: 'feed',
         url: '/feed',
-        templateUrl: '../feed/feedTemplate.html'
+        component: 'feedComponent',
+        resolve: {
+            resolvedTweetFeed: ['feedService', function(feedService){
+                return feedService.getFeed();
+            }]
+        }
     }
 
     $stateProvider.state(signInState);
