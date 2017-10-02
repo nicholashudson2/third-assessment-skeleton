@@ -3,8 +3,9 @@
 
 <head>
     <title>Twitter</title>
-    
-    
+
+    <link rel="stylesheet" href="/css/style.css"></link>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
     
@@ -14,9 +15,6 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
-   
-    
-    
     <link rel="stylesheet" href="./css/tweetStyle.css"></link>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -27,18 +25,20 @@
     <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
 
-
     <script src="./js/app.js"></script>
     
     <script src="./js/header/headerService.js"></script>
     <script src="./js/header/headerController.js"></script>
     <script src="./js/header/headerComponent.js"></script>
+
     <script src="./js/feed/feedService.js"></script>
     <script src="./js/feed/feedController.js"></script>
     <script src="./js/feed/feedComponent.js"></script>
+
     <script src="./js/register/registerService.js"></script>
     <script src="./js/register/registerController.js"></script>
     <script src="./js/register/registerComponent.js"></script>
+
     <script src="./js/signIn/signInService.js"></script>
     <script src="./js/signIn/signInController.js"></script>
     <script src="./js/signIn/signInComponent.js"></script>
@@ -54,8 +54,8 @@
 
 <body ng-app="twitterApp" class="container">
     <!-- TODO: HEADER -->
-    <header-component class="navbar"></header-component>
-    <!-- <register-component class="registerContainer"></register-component> -->
+    <!-- <header-component class="navbar"></header-component> -->
+    <register-component class="registerContainer"></register-component>
     <!-- <ui-view class="fullScreen"></ui-view> -->
     <!-- TODO: FOOTER -->
 </body>

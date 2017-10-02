@@ -1,8 +1,8 @@
 angular.module('twitterApp').service('feedService', ['$http', function($http){
 
 
-    this.getFeed = (userName) => {
-        return $http.get('users/@' + userName + '/feed')
+    this.getFeed = (username) => {
+        return $http.get('users/@' + username + '/feed')
     }
 
 
