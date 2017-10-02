@@ -1,3 +1,63 @@
+body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
 
+.container {
+    width: 100vw;
+}
 
+.navbar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
 
+.navbar-nav {
+    align-items: center;
+    padding-left: 25px;
+}
+
+.nav-item {
+    font-size: 20px;
+}
+
+.post {
+    height: 100px;
+}
+
+.registerContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0.5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register {
+    width: 50%;
+    justify-content: space-around;
+    align-items: space-around;
+}
+
+.register > .brand {
+    align-items: space-around;
+    justify-content: space-around;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.squawker {
+    font-family: 'Indie Flower', cursive;
+    font-size: 25px;
+}
