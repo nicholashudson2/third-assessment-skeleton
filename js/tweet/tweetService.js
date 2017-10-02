@@ -5,7 +5,7 @@ angular.module('twitterApp').service('tweetService', ['$http', function (http) {
     }
 
     this.createNewTweet = (newTweet) => {
-        return http.post('http://localhost:8888/api/tweets', newTweet)
+        return http.post('http://localhost:8090/api/tweets', newTweet)
     }
 
 }])
