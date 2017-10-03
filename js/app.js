@@ -8,22 +8,22 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent'
     }
 
-        var authenticationState = {
-            name: 'authentication',
-            url: '/authentication',
-            redirectTo: (transition)=>{
-                let svc = transition.injector().get('signInService');
-                return svc.authenticateUser().then((result) => {
-                    return result;
-                });
-            }
+    var authenticationState = {
+        name: 'authentication',
+        url: '/authentication',
+        redirectTo: (transition) => {
+            let svc = transition.injector().get('signInService');
+            return svc.authenticateUser().then((result) => {
+                return result;
+            });
         }
-    
-        var registerState = {
-            name: 'register',
-            url: '/register',
-            component: 'registerComponent'
-        }
+    }
+
+    var registerState = {
+        name: 'register',
+        url: '/register',
+        component: 'registerComponent'
+    }
 
     var createNewUserState = {
         name: 'userCreation',

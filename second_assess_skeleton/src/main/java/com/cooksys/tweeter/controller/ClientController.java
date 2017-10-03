@@ -65,7 +65,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/@{userName}")
-	public ClientDto findByUserName(@RequestParam String userName, HttpServletResponse response){ 
+	public ClientDto findByUserName(@PathVariable String userName, HttpServletResponse response){ 
 		
 //		System.out.println("\n\n\n\n\nclient.isDeleted = " + clientService.userNameExists(userName) + "\n\n\n\n\n");
 		if (!clientService.userNameExists(userName) || clientService.clientIsDeleted(userName)){
@@ -100,16 +100,16 @@ public class ClientController {
 	}
 	
 	@PostMapping("/@{userName}/follow")
-	public void followClient(@RequestParam String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
+	public void followClient(@PathVariable String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
 		if (!validClient(followerCred) || !validClient(userName)){
-			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			response.setStatus(208);
 			return;
 		}
 		clientService.follow(followerCred.getUserLogin(), userName);
 	}
 	
 	@PostMapping("@{username}/unfollow")
-	public void unFollowClient(@RequestParam String username, @RequestBody Credentials followerCred, HttpServletResponse response){
+	public void unFollowClient(@PathVariable String username, @RequestBody Credentials followerCred, HttpServletResponse response){
 		if (!validClient(followerCred) || !validClient(username)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return;
@@ -136,7 +136,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/@{username}/mentions")
-	public List<TweetDto> getMentions(@RequestParam String username, HttpServletResponse response){
+	public List<TweetDto> getMentions(@PathVariable String username, HttpServletResponse response){
 		if (!clientService.userNameExists(username)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return null;
@@ -145,7 +145,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/@{userName}/followers")
-	public Set<ClientDto> getFollowers(@RequestParam String userName, HttpServletResponse response){
+	public Set<ClientDto> getFollowers(@PathVariable String userName, HttpServletResponse response){
 		if (!clientService.userNameExists(userName)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return null;
@@ -154,7 +154,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/@{userName}/following")
-	public Set<ClientDto> getFollowing(@RequestParam String userName, HttpServletResponse response){
+	public Set<ClientDto> getFollowing(@PathVariable String userName, HttpServletResponse response){
 		if (!clientService.userNameExists(userName)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return null;
