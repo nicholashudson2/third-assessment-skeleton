@@ -1,6 +1,5 @@
 angular.module('twitterApp').component('signInComponent', {
     templateUrl: './js/signIn/signInTemplate.html',
-    controller: 'signInController',
-   
+    controller: 'signInController'
     //TODO: Binding
 })

@@ -14,21 +14,15 @@ public class TweetDto {
 	
 	private String content;
 	
-/*	public ArrayList<Tweet> getReplies() {
-		return replies;
+	private String userName;
+
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setReplies(ArrayList<Tweet> replies) {
-		this.replies = replies;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
-
-	public ArrayList<Tweet> getReposts() {
-		return reposts;
-	}
-
-	public void setReposts(ArrayList<Tweet> reposts) {
-		this.reposts = reposts;
-	}*/
 
 	public Integer getId() {
 		return id;

@@ -40,7 +40,8 @@ public class ClientController {
 		return clientService.findClients();
 	}
 	
-	@PostMapping("/signIn")
+
+	@PostMapping("signIn")
 	public boolean clientAuthentication(@RequestBody Credentials credentials){   //Artem added
 		System.out.println(clientService.clientAuthentication(credentials));
 		return clientService.clientAuthentication(credentials);

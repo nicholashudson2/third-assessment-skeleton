@@ -1,9 +1,8 @@
-angular.module('twitterApp').controller('contextController', ['$http', function($http){
+angular.module('twitterApp').controller('contextController', ['$http', 'tweetService', function($http, tweetService){
     
     this.context = resolvedContext.data
 
-    this.getContext= (id) => {
-        return $http.get('tweets/' + id + '/context')
-    }
+    this.tweetService = tweetService
+
 
 }])

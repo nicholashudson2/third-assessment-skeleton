@@ -2,7 +2,9 @@ angular.module('twitterApp').component('feedComponent', {
     templateUrl: './js/feed/feedTemplate.html',
     controller: 'feedController',
     bindings: {
-        resolvedTweetFeed: '='
+        resolvedTweetFeed: '=',
+        resolvedFollowers: '=',
+        resolvedFollowing: '='
     }
 
 

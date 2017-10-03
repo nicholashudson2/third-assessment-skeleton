@@ -1,12 +1,22 @@
-var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider, $transition$) {
-    
-        $urlRouterProvider.otherwise('/signIn');
-    
-        var signInState = {
-            name: 'signIn',
-            url: '/signIn',
-            component: 'signInComponent'
-        }
+var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider, $transition$) {
+
+    $urlRouterProvider.otherwise('/signIn');
+
+    var signInState = {
+        name: 'signIn',
+        url: '/signIn',
+        component: 'signInComponent'
+    }
+
+
+
+    var registerState = {
+        name: 'register',
+        url: '/register',
+        component: 'registerComponent',
+        resolve: {
+            resolvedUserCreation: ['registerService', function (registerService) {
+
 
         var authenticationState = {
             name: 'authentication',
@@ -50,37 +60,46 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                    });*/
                 }]
             }
+
+            }]
         }
-    
-        var contextState = {
-            name: 'context',
-            url: 'tweets/{id}/context',
-            component: 'contextComponent',
-            resolve: {
-                resolvedContext: ['contextService', function(contextService){
-                    return contextService.getContext($transition$.params().id)
-                }]
-            }
+    }
+
+
+    var contextState = {
+        name: 'context',
+        url: 'tweets/{id}/context',
+        component: 'contextComponent',
+        resolve: {
+            resolvedContext: ['contextService', function (contextService) {
+                return contextService.getContext($transition$.params().id)
+            }]
+
         }
+    }
+
+    var searchState = {
+        name: 'search',
+        url: 'tweets/{searchString}/search',
+        component: 'searchComponent',
+        resolve: {
+            resolvedSearch: ['searchService', function(searchService){
+                return searchService.search($transition$.params().searchString)
+            }]
+        }
+
     
-        $stateProvider.state(signInState);
-        $stateProvider.state(registerState);
-        $stateProvider.state(feedState);
-        $stateProvider.state(contextState);
-        $stateProvider.state(authenticationState);
         $stateProvider.state(createNewUserState);
 
+
+    $stateProvider.state(signInState);
+    $stateProvider.state(registerState);
+    $stateProvider.state(authenticationState);
+    $stateProvider.state(feedState);
+    $stateProvider.state(contextState);
+    $stateProvider.state(searchState);
+
+
         
-        var whateverState = {
-            name: 'temp',
-            url: '/wevr',
-            template: '<div>Hey<button type="button" ng-click="action()">press</button></div>',
-            controller: function($scope){
-                $scope.action = () => {
-                    alert('hi')
-                   console.log('hey');
-                }
-            }
-        }
-        $stateProvider.state(whateverState);
+       
 }]);

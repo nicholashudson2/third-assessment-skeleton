@@ -6,6 +6,12 @@ body {
     flex-direction: row;
 }
 
+.header {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .container {
     width: 100vw;
     justify-content: center;
@@ -31,7 +37,7 @@ body {
     height: 100px;
 }
 
-.registerContainer {
+.register-container, .signin-container {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -39,6 +45,52 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+.profile-container {
+    width: 100vw;
+    height: 100vh;
+    flex: 2 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+}
+
+.center-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%
+}
+
+.profile {
+    width: 50%;
+    justify-content: space-between;
+    align-items: space-around;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.right-bar {
+    flex: 1 0 0;
+    width: 50%;
+}
+
+.profile-form {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    align-self: center;
+}
+
+.tweetForm {
+    padding-top: 25px;
 }
 
 
@@ -54,8 +106,26 @@ body {
     font-size: 25px;
 }
 
+.form-signin {
+    width: 50%;
+    justify-content: space-around;
+    align-items: space-around;
+}
+
 .register {
     width: 50%;
     justify-content: space-around;
     align-items: space-around;
+}
+
+.btn {
+    margin-bottom: 5px;
+}
+
+.form-control {
+    margin-bottom: 5px;
+}
+
+a:link {
+    text-decoration: none;
 }

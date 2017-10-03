@@ -83,6 +83,7 @@ public class TweetService {
 
 		// Set author
 		tweet.setAuthor(author);
+		tweet.setUserName(author.getUserName());
 //		author.getTweets().add(tweet);
 		return tweetMapper.toDto(tweetRepository.save(tweet));
 	}
@@ -164,6 +165,7 @@ public class TweetService {
 
 		// Set author
 		tweet.setAuthor(author);
+		tweet.setUserName(author.getUserName());
 //		author.getTweets().add(tweet);
 		return tweetMapper.toDto(tweetRepository.save(tweet));
 	}
@@ -222,6 +224,7 @@ public class TweetService {
 
 		// Set author
 		tweet.setAuthor(author);
+		tweet.setUserName(author.getUserName());
 //		author.getTweets().add(tweet);
 		return tweetMapper.toDto(tweetRepository.save(tweet));
 	}

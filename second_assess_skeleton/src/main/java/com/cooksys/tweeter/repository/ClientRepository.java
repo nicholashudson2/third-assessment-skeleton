@@ -26,7 +26,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	List<Client> findByMentionsAndDeleted(Tweet tweet, boolean deleted);
 
 //	Client findInFollowers(Client followerClient);
-	
-	Client findByCredentialsAndDeleted(Credentials credentials, boolean deleted);  //Artem added
 
+	Client findByCredentialsAndDeleted(Credentials credentials, Boolean deleted);  //Artem added
 }
