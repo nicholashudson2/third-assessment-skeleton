@@ -9,6 +9,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
 
+
         var authenticationState = {
             name: 'authentication',
             url: '/authentication',
@@ -26,32 +27,29 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             component: 'registerComponent'
         }
 
-        var createNewUserState = {
-            name: 'userCreation',
-            url: '/userCreation',
-            redirectTo: (transition)=> {
-                let svc = transition.injector().get('registerService');
-                
-                return svc.registerNewUser().then((result) => {
-                    return 'feed';
-                });
-                
-            }
+    var createNewUserState = {
+        name: 'userCreation',
+        url: '/userCreation',
+        redirectTo: (transition) => {
+            let svc = transition.injector().get('registerService');
+
+            return svc.registerNewUser().then((result) => {
+                return 'feed';
+            });
         }
-    
-        var feedState = {
-            name: 'feed',
-            url: '/feed',//'users/@{username}/feed',
-            component: 'feedComponent',
-            resolve: {
-                resolvedTweetFeed: ['feedService', function(feedService){
-                    console.log(feedService.getFeed())
-                    return feedService.getFeed(/*$transition$.params().username*/)/*.then((res)=> {
+
+
+    var feedState = {
+        name: 'feed',
+        url: '/feed',//'users/@{username}/feed',
+        component: 'feedComponent',
+        resolve: {
+            resolvedTweetFeed: ['feedService', function (feedService) {
+
+                return feedService.getFeed(/*$transition$.params().username*/)/*.then((res)=> {
                          return res;
                    });*/
-                }]
-            }
-
+            }]
         }
    
 
@@ -73,23 +71,17 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: 'tweets/{searchString}/search',
         component: 'searchComponent',
         resolve: {
-            resolvedSearch: ['searchService', function(searchService){
+            resolvedSearch: ['searchService', function (searchService) {
                 return searchService.search($transition$.params().searchString)
             }]
         }
     }
-    
-        $stateProvider.state(createNewUserState);
 
-
+    $stateProvider.state(createNewUserState);
     $stateProvider.state(signInState);
     $stateProvider.state(registerState);
     $stateProvider.state(authenticationState);
     $stateProvider.state(feedState);
     $stateProvider.state(contextState);
     $stateProvider.state(searchState);
-
-
-        
-       
 }]);

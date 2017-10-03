@@ -1,11 +1,11 @@
 angular.module('twitterApp').service('tweetService', ['$http', function (http) {
 
     this.getAllTweets = () => {
-        return http.get('http://localhost:8090/api/tweets')
+        return http.get('http://localhost:8090/tweets')
     }
 
     this.createNewTweet = (newTweet) => {
-        return http.post('http://localhost:8090/api/tweets', newTweet)
+        return http.post('http://localhost:8090/tweets', newTweet)
     }
 
     this.NumberOfLikes = (id) => {
@@ -21,6 +21,7 @@ angular.module('twitterApp').service('tweetService', ['$http', function (http) {
         http.post('http://localhost:8090/tweets/{id}/like', credentials)
     }
 
+
     // this.followers = resolvedFollowers.data
     // this.getFollowers = (userName) => {
     //     return $http.get('http://localhost:8090/api/users/@{' + userName + '}/followers')
@@ -30,5 +31,6 @@ angular.module('twitterApp').service('tweetService', ['$http', function (http) {
     // this.getFollowing = (userName) => {
     //     return $http.get('http://localhost:8090/api/users/@{' + userName + '}/following')
     // }
+
 
 }])

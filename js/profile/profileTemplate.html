@@ -1,66 +1,55 @@
-<div class="profile-container container">
-    <div class="header">
-        <header-component class="navbar"></header-component>
-    </div>
-    <div class="center-section">
-        <div class="profile">
-            <form class="profile-form" method="post" action="#">
-                <div class="form-group">
-                    <label for="firstName" class="sr-only">First Name</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name: {{$ctrl.profile.firstName}}"
-                            />
-                        </div>
-                    </div>
+<div class="profile">
+    <form class="profile-form" method="post" action="#">
+        <div class="form-group">
+            <label for="firstName" class="sr-only">First Name</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name: {{$ctrl.profile.firstName}}"
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="lastName" class="sr-only">Last Name</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.profile.lastName}}"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="sr-only">Email</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Email: {{$ctrl.profile.email}}" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phone" class="sr-only">Phone</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: {{$ctrl.profile.phone}}" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="username" class="sr-only">Username</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Username: {{$ctrl.profile.username}}"
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group ">
-                    <a href="http://deepak646.blogspot.in" target="_blank" type="button" id="updateButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
-                </div>
-            </form>
+            </div>
         </div>
-        <div class="rightBar">
-            <followers-list-component></followers-list-component>
-            <following-list-component></following-list-component>
+        <div class="form-group">
+            <label for="lastName" class="sr-only">Last Name</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.profile.lastName}}"
+                    />
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label for="email" class="sr-only">Email</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email: {{$ctrl.profile.email}}" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="sr-only">Phone</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: {{$ctrl.profile.phone}}" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username" class="sr-only">Username</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username: {{$ctrl.profile.username}}"
+                    />
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <a href="http://deepak646.blogspot.in" target="_blank" type="button" id="updateButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
+        </div>
+    </form>
 </div>
