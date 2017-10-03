@@ -21,15 +21,16 @@ angular.module('twitterApp').service('tweetService', ['$http', function (http) {
         http.post('http://localhost:8090/tweets/{id}/like', credentials)
     }
 
-    this.followers = resolvedFollowers.data
-    
-    this.getFollowers = (userName) => {
-        return $http.get('http://localhost:8090/users/@{' + userName + '}/followers')
-    }
 
-    this.following = resolvedFollowing.data
-    this.getFollowing = (userName) => {
-        return $http.get('http://localhost:8090/users/@{' + userName + '}/following')
-    }
+    // this.followers = resolvedFollowers.data
+    // this.getFollowers = (userName) => {
+    //     return $http.get('http://localhost:8090/api/users/@{' + userName + '}/followers')
+    // }
+
+    // this.following = resolvedFollowing.data
+    // this.getFollowing = (userName) => {
+    //     return $http.get('http://localhost:8090/api/users/@{' + userName + '}/following')
+    // }
+
 
 }])

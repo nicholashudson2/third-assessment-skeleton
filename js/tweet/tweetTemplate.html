@@ -1,13 +1,19 @@
 
 <div class="card bg-light mb-3" style="width: 20rem">
-    <div class="card-header">Posted By: (joined on: 10/2/17)</div>
+    <div class="card-header">Posted on: {{$ctrl.tweet.posted}}/{{$ctrl.tweet.posted.day}}/{{$ctrl.tweet.posted.year}}</div>
     <div class="card-body">
-        <h4 class="card-title">Title</h4>
+        <h4 class="card-title">{{$ctrl.tweet.userName}}</h4>
         <p class="card-text">{{$ctrl.tweet.content}}</p>
     </div>
     <div class="card-header">
         <div class="tweet-footer">
-
+            <div class="like">
+                <a class="btn btn-primary" href="#" ng-click="$ctrl.tweetService.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp{{$ctrl.tweetService.NumberOfLikes($ctrl.tweet.id)}}</a>
+            </div>
+            <div class="bttns">
+                <a href="#" class="btn btn-primary" role="button">Reply</a>
+                <a href="#" class="btn btn-primary" role="button">Repost</a>
             </div>
         </div>
     </div>
+</div>
