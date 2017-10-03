@@ -6,17 +6,42 @@ body {
     flex-direction: row;
 }
 
+main-page-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.ng-scope {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.ng-isolate-scope {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .header {
     width: 100%;
     padding: 0;
     margin: 0;
 }
 
-.container {
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-}
 
 .navbar {
     width: 100%;
@@ -47,7 +72,9 @@ body {
     align-items: center;
 }
 
-.profile-container {
+
+
+.main-page-container {
     width: 100vw;
     height: 100vh;
     flex: 2 0 0;
@@ -57,18 +84,36 @@ body {
     align-items: left;
 }
 
-.center-section {
+.center-row-container {
     display: flex;
     flex-direction: row;
+    width: 100vw;
+    height: 100%;
     justify-content: space-between;
-    width: 100%;
-    height: 100%
+    align-items: center;
 }
 
-.profile {
+.left-column-container {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 25%;
+}
+
+.center-column-container {
+    padding-top: 25px;
+    display: flex;
     width: 50%;
-    justify-content: space-between;
-    align-items: space-around;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-column-container {
+    padding-top: 25px;
+    height: 100%;
+    width: 25%;
 }
 
 .scrollable-menu {
@@ -91,10 +136,12 @@ body {
 
 .tweetForm {
     padding-top: 25px;
+    padding-left: 15px;
 }
 
 
 .logo {
+    padding-left: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;

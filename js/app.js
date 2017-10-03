@@ -37,6 +37,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 return 'feed';
             });
         }
+    }
 
 
     var feedState = {
@@ -51,6 +52,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                    });*/
             }]
         }
+    }
    
 
 
