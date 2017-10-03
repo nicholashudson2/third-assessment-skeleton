@@ -1,23 +1,7 @@
-<div ng-repeat="for tweet in tweetFeed">
-    <div class="card bg-light mb-3" style="max-width: 20rem;">
-        <div class="card-header">Posted By: {{tweet.userName}} (joined on: {{tweet.joined.month}}/{{tweet.joined.day}}/{{tweet.joined.year}})</div>
-        <div class="card-body">
-            <!-- <h4 class="card-title">Repost</h4> -->
-            <p class="card-text">{{tweet.content}}</p>
-        </div>
-        <div class="card-header">
-            <div class="tweet-footer">
 
-                <div class="like">
-                    <a class="btn btn-primary" href="#" ng-click="$ctrl.tweetService.like(tweet.id)"><span class="fa fa-heart">{{$ctrl.tweetService.NumberOfLikes(tweet.id)}}</span> &nbsp&nbsp4</a>
-                </div>
+<div class="feed">
 
-                <div class="bttns">
-                    <a href="#" class="btn btn-primary" role="button">Reply</a>
-                    <a href="#" class="btn btn-primary" role="button">Repost</a>
-                </div>
-
-            </div>
-        </div>
+   <div ng-repeat="tweet in $ctrl.tweetFeed">
+        <tweet-component tweet='tweet'></tweet-component>
     </div>
 </div>

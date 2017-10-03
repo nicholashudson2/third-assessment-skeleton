@@ -8,17 +8,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent'
     }
 
-    var authenticationState = {
-        name: 'authentication',
-        url: '/authentication',
-        redirectTo: ['signInService', function (signInService) {
-            console.log('hit one')
-            signInService.authenticateUser().then((result) => {
-                // return result.data ? 'feed' : 'signIn';
-                return result ? 'feed' : 'signIn';
-            });
-        }]
-    }
+
 
     var registerState = {
         name: 'register',
@@ -27,26 +17,54 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         resolve: {
             resolvedUserCreation: ['registerService', function (registerService) {
 
+
+        var authenticationState = {
+            name: 'authentication',
+            url: '/authentication',
+            redirectTo: (transition)=>{
+                let svc = transition.injector().get('signInService');
+                return svc.authenticateUser().then((result) => {
+                    return result;
+                });
+            }
+        }
+    
+        var registerState = {
+            name: 'register',
+            url: '/register',
+            component: 'registerComponent'
+        }
+
+        var createNewUserState = {
+            name: 'userCreation',
+            url: '/userCreation',
+            redirectTo: (transition)=> {
+                let svc = transition.injector().get('registerService');
+                
+                return svc.registerNewUser().then((result) => {
+                    return 'feed';
+                });
+                
+            }
+        }
+    
+        var feedState = {
+            name: 'feed',
+            url: '/feed',//'users/@{username}/feed',
+            component: 'feedComponent',
+            resolve: {
+                resolvedTweetFeed: ['feedService', function(feedService){
+                    
+                    return feedService.getFeed(/*$transition$.params().username*/)/*.then((res)=> {
+                         return res;
+                   });*/
+                }]
+            }
+
             }]
         }
     }
 
-    var feedState = {
-        name: 'feed',
-        url: 'users/@{username}/feed',
-        component: 'feedComponent',
-        resolve: {
-            resolvedTweetFeed: ['feedService', function (feedService) {
-                return feedService.getFeed($transition$.params().username);
-            }],
-            resolvedFollowers: ['tweetService', function (tweetService) {
-                return tweetService.getFollowers($transition$.params().username)
-            }],
-            resolvedFollowing: ['tweetService', function (tweetService) {
-                return tweetService.getFollowing($transition$.params().username)
-            }]
-        }
-    }
 
     var contextState = {
         name: 'context',
@@ -56,6 +74,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             resolvedContext: ['contextService', function (contextService) {
                 return contextService.getContext($transition$.params().id)
             }]
+
         }
     }
 
@@ -68,7 +87,10 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 return searchService.search($transition$.params().searchString)
             }]
         }
-    }
+
+    
+        $stateProvider.state(createNewUserState);
+
 
     $stateProvider.state(signInState);
     $stateProvider.state(registerState);
@@ -77,4 +99,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(contextState);
     $stateProvider.state(searchState);
 
+
+        
+       
 }]);
