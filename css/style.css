@@ -31,7 +31,7 @@ body {
     height: 100px;
 }
 
-.registerContainer {
+.registerContainer, .signinContainer {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -54,8 +54,26 @@ body {
     font-size: 25px;
 }
 
+.form-signin {
+    width: 50%;
+    justify-content: space-around;
+    align-items: space-around;
+}
+
 .register {
     width: 50%;
     justify-content: space-around;
     align-items: space-around;
+}
+
+.btn {
+    margin-bottom: 5px;
+}
+
+.form-control {
+    margin-bottom: 5px;
+}
+
+a:link {
+    text-decoration: none;
 }

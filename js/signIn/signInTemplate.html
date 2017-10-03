@@ -1,26 +1,48 @@
-<form class="form-signin">
-    <div class="logo">
-        <a class="navbar-brand" href="#">
+<div class="signinContainer">
+    <form class="form-signin">
+        <div class="logo">
+            <a class="navbar-brand" href="#">
             <img src="img/squawkerLogo.png" width="60" height="60" alt="">
         </a>
-        <div class="squawker">
-            Squawker
+            <div class="squawker">
+                Squawker
+            </div>
         </div>
-    </div>
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="inputEmail" class="sr-only">Username</label>
-    <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus ng-model="$ctrl.signInService.user.userLogin">
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="$ctrl.signInService.user.password">
-    <div class="checkbox">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <a ui-sref="authentication">
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </a>
-    <a ui-sref="register">
-        <button class="btn btn-lg btn-secondary btn-block" type="submit">Register</button>
-    </a>
-</form>
+        <h2 class="form-signin-heading">Please sign in</h2>
+
+        <div class="form-group">
+            <label for="username" class="sr-only">Username</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <label for="inputEmail" class="sr-only">Username</label>
+                    <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus ng-model="$ctrl.signInService.user.userLogin">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="sr-only">Password</label>
+            <div class="cols-sm-10">
+                <div class="input-group">
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <span class="input-group-addon"><i class="fa fa-lock fa-fw" aria-hidden="true"></i></span>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required ng-model="$ctrl.signInService.user.password">
+                </div>
+            </div>
+        </div>
+
+        <div class="checkbox">
+            <label> Remember me</label>
+            <input type="checkbox" value="remember-me">
+        </div>
+        <div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <a ui-sref="authentication"></a>
+        </div>
+        <div>
+            <button class="btn btn-lg btn-secondary btn-block" type="submit">Register</button>
+            <a ui-sref="register"></a>
+        </div>
+    </form>
+</div>
