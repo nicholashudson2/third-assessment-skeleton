@@ -27,6 +27,8 @@ public class Tweet {
 	
 	private String content;
 	
+	private String userName;
+	
 	private boolean deleted;
 	
 	@ManyToMany
@@ -62,6 +64,14 @@ public class Tweet {
 		this.likedBy = new HashSet<Client>();
 		this.replies = new ArrayList<Tweet>();
 		this.reposts = new ArrayList<Tweet>();
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public List<Tweet> getReplies() {
