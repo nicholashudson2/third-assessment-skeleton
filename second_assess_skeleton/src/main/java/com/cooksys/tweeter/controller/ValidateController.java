@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.tweeter.embedded.Credentials;
@@ -114,7 +114,7 @@ public class ValidateController {
 	}
 	
 	@GetMapping("/tag/exists/{label}")
-	public boolean tagExists(@RequestParam String label, HttpServletResponse response){
+	public boolean tagExists(@PathVariable String label, HttpServletResponse response){
 		if (hashtagService.tagExists(label)){
 			response.setStatus(HttpServletResponse.SC_FOUND);
 			return true;
@@ -124,7 +124,7 @@ public class ValidateController {
 	}
 	
 	@GetMapping("/username/exists/@{userName}")
-	public boolean userNameExists(@RequestParam String userName, HttpServletResponse response){
+	public boolean userNameExists(@PathVariable String userName, HttpServletResponse response){
 		System.out.println("\n\n\n\n userName found by userName= " + userName + "\n\n\n\n\n");
 
 		if (clientService.userNameExists(userName)){
@@ -136,7 +136,7 @@ public class ValidateController {
 	}
 	
 	@GetMapping("/username/available/@{userName}")
-	public boolean userNameAvailable(@RequestParam String userName, HttpServletResponse response){
+	public boolean userNameAvailable(@PathVariable String userName, HttpServletResponse response){
 		if (!clientService.userNameExists(userName)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return true;
