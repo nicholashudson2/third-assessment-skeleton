@@ -9,15 +9,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
 
-
-    var registerState = {
-        name: 'register',
-        url: '/register',
-        component: 'registerComponent',
-        resolve: {
-            resolvedUserCreation: ['registerService', function (registerService) {
-
-
         var authenticationState = {
             name: 'authentication',
             url: '/authentication',
@@ -54,16 +45,15 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             component: 'feedComponent',
             resolve: {
                 resolvedTweetFeed: ['feedService', function(feedService){
-                    
+                    console.log(feedService.getFeed())
                     return feedService.getFeed(/*$transition$.params().username*/)/*.then((res)=> {
                          return res;
                    });*/
                 }]
             }
 
-            }]
         }
-    }
+   
 
 
     var contextState = {
@@ -87,7 +77,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 return searchService.search($transition$.params().searchString)
             }]
         }
-
+    }
     
         $stateProvider.state(createNewUserState);
 
