@@ -1,25 +1,25 @@
 angular.module('twitterApp').service('tweetService', ['$http', function (http) {
 
-    this.getAllTweets = () => {
-        return http.get('http://localhost:8090/tweets')
-    }
+    // this.getAllTweets = () => {
+    //     return http.get('http://localhost:8090/tweets')
+    // }
 
-    this.createNewTweet = (newTweet) => {
-        return http.post('http://localhost:8090/tweets', newTweet)
-    }
+    // this.createNewTweet = (newTweet) => {
+    //     return http.post('http://localhost:8090/tweets', newTweet)
+    // }
 
-    this.NumberOfLikes = (id) => {
-        let clientDtos = http.get('http://localhost:8090/tweets/{id}/likes')
-        return clientDtos.length
-    }
+    // this.NumberOfLikes = (id) => {
+    //     let clientDtos = http.get('http://localhost:8090/tweets/{id}/likes')
+    //     return clientDtos.length
+    // }
 
-    this.like = (id) => {
-        let credentials = {
-            password: sessionStorage.getItem('password'),
-            userLogin: sessionStorage.getItem('userLogin')
-        }
-        http.post('http://localhost:8090/tweets/{id}/like', credentials)
-    }
+    // this.like = (id) => {
+    //     let credentials = {
+    //         password: sessionStorage.getItem('password'),
+    //         userLogin: sessionStorage.getItem('userLogin')
+    //     }
+    //     http.post('http://localhost:8090/tweets/{id}/like', credentials)
+    // }
 
 
     // this.followers = resolvedFollowers.data

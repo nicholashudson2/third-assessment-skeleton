@@ -1,6 +1,6 @@
 angular.module('twitterApp').controller('tweetController', [function () {
 
-    //this.tweets = this.resolvedTweets.data;
+  
 
     // this.createNewTweet = () => {
     //     tweetService.createNewTweet(this.newTweet).then((done) => {

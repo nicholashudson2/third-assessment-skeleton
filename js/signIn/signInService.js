@@ -9,7 +9,7 @@ angular.module('twitterApp').service('signInService', ['$http', function($http){
                sessionStorage.setItem('userLogin', this.credentials.userLogin);
                sessionStorage.setItem('password', this.credentials.password);
            }
-           return result.data?'feed':'signIn';
+           return result.data?'myTweets':'signIn';
         });
 
     }
