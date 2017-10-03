@@ -7,11 +7,26 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             url: '/signIn',
             component: 'signInComponent'
         }
+
+        var authenticationState = {
+            name: 'authentication',
+            url: '/authentication',
+            redirectTo: ['signInService', function(signInService){
+                signInService.authenticateUser().then((result) => {
+                    return result.data?'feed':'signIn';
+                });
+            }]
+        }
     
         var registerState = {
             name: 'register',
             url: '/register',
-            component: 'registerComponent'
+            component: 'registerComponent',
+            resolve: {
+                resolvedUserCreation: ['registerService', function(registerService){
+                    
+                }]
+            }
         }
     
         var feedState = {

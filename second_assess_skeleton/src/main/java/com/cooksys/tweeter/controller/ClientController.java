@@ -37,6 +37,11 @@ public class ClientController {
 		return clientService.findClients();
 	}
 	
+	@PostMapping("sighnIn")
+	public boolean clientAuthentication(@RequestBody Credentials credentials){   //Artem added
+		return clientService.clientAuthentication(credentials);
+	}
+	
 	@PostMapping
 	public ClientDto createClient(@RequestBody ClientData clientData, HttpServletResponse response){
 		if (!validClientData(clientData)){

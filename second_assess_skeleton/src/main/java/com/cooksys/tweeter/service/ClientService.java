@@ -184,5 +184,10 @@ public class ClientService {
 		List<Tweet> tweets = tweetRepository.findByMentionedByAndDeleted(client, NOT_DELETED);
 		return tweetMapper.toDtos(tweets);
 	}
+
+	public boolean clientAuthentication(Credentials credentials) {  //Artem added
+		
+		return clientRepository.findByCredentialsAndDeleted(credentials)!=null;
+	}
 	
 }
