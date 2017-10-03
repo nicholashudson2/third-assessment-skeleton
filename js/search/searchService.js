@@ -8,11 +8,11 @@ angular.module('twitterApp').service('searchService', ['http', 'tweetService', f
         let resultData
         if (searchString.charAt(0).equals('#')){
             searchString = searchString.slice(1)
-            resultData = $http.get('localhost:8090/tags/' + searchString)
+            resultData = $http.get('http://localhost:8090/api/tags/' + searchString)
         }
         if (searchString.charAt(0).equals('@')){
             searchString = searchString.slice(1)
-            resultData = $http.get('localhost:8090/users/@' + searchString + '/mentions')
+            resultData = $http.get('http://localhost:8090/api/users/@' + searchString + '/mentions')
         }
         return resultData
     }
