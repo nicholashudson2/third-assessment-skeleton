@@ -102,7 +102,7 @@ public class ClientController {
 	@PostMapping("/@{userName}/follow")
 	public void followClient(@PathVariable String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
 		if (!validClient(followerCred) || !validClient(userName)){
-			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			response.setStatus(208);
 			return;
 		}
 		clientService.follow(followerCred.getUserLogin(), userName);
