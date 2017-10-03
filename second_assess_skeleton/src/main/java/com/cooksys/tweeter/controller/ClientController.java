@@ -37,7 +37,7 @@ public class ClientController {
 		return clientService.findClients();
 	}
 	
-	@PostMapping("sighnIn")
+	@PostMapping("signIn")
 	public boolean clientAuthentication(@RequestBody Credentials credentials){   //Artem added
 		return clientService.clientAuthentication(credentials);
 	}

@@ -187,7 +187,7 @@ public class ClientService {
 
 	public boolean clientAuthentication(Credentials credentials) {  //Artem added
 		
-		return clientRepository.findByCredentialsAndDeleted(credentials)!=null;
+		return clientRepository.findByCredentialsAndDeleted(credentials, false)!=null;
 	}
 	
 }

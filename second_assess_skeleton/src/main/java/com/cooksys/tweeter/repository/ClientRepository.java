@@ -27,6 +27,6 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
 //	Client findInFollowers(Client followerClient);
 	
-	Client findByCredentialsAndDeleted(Credentials credentials);  //Artem added
+	Client findByCredentialsAndDeleted(Credentials credentials, Boolean deleted);  //Artem added
 
 }
