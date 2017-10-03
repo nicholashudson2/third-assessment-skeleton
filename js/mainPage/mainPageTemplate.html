@@ -1,0 +1,27 @@
+<div class="main-page-container container">
+    <div class="header">
+        <header-component class="navbar"></header-component>
+    </div>
+    <div class="center-row-container">
+        <div class="left-column-container">
+            <!-- <nav class="navbar navbar-toggleable-lg navbar-light navbar-brand navbar-fixed-top"> -->
+                <ul class="navbar navbar-light flex-column" role="tablist">
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">All Users</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">My Tweets</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">My Feed</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">My Mentions</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">All Tweets</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">All Hashtags</a></li>
+                </ul>
+            <!-- </nav> -->
+        </div>
+        <div class="center-column-container">
+            <profile-component class="main-component"></profile-component>
+            <!-- <ui-view class="center-column-container"></ui-view> -->
+        </div>
+        <div class="right-column-container">
+            <followers-list-component></followers-list-component>
+            <following-list-component></following-list-component>
+        </div>
+    </div>
+</div>

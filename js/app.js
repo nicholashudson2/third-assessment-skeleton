@@ -50,7 +50,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
-
     var contextState = {
         name: 'context',
         url: 'tweets/{id}/context',
