@@ -1,6 +1,6 @@
 angular.module('twitterApp').component('footerComponent', {
     templateUrl: 'js/footer/footerTemplate.html',
-    controller: 'footerController',
+    controller: 'footerController'
 
     //TODO: Binding
 })
