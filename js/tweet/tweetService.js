@@ -22,6 +22,7 @@ angular.module('twitterApp').service('tweetService', ['$http', function (http) {
     }
 
     this.followers = resolvedFollowers.data
+    
     this.getFollowers = (userName) => {
         return $http.get('http://localhost:8090/users/@{' + userName + '}/followers')
     }
