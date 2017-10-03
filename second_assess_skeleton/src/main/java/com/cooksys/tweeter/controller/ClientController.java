@@ -127,7 +127,7 @@ public class ClientController {
 	}
 	
 	@GetMapping("/@{username}/tweets")
-	public List<TweetDto> getTweets(@RequestParam String username, HttpServletResponse response){
+	public List<TweetDto> getTweets(@PathVariable String username, HttpServletResponse response){
 		if (!clientService.userNameExists(username)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return null;
