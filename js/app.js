@@ -11,31 +11,43 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         var authenticationState = {
             name: 'authentication',
             url: '/authentication',
-            redirectTo: ['signInService', function(signInService){
-                signInService.authenticateUser().then((result) => {
-                    return result.data?'feed':'signIn';
+            redirectTo: (transition)=>{
+                let svc = transition.injector().get('signInService');
+                return svc.authenticateUser().then((result) => {
+                    return result;
                 });
-            }]
+            }
         }
     
         var registerState = {
             name: 'register',
             url: '/register',
-            component: 'registerComponent',
-            resolve: {
-                resolvedUserCreation: ['registerService', function(registerService){
-                    
-                }]
+            component: 'registerComponent'
+        }
+
+        var createNewUserState = {
+            name: 'userCreation',
+            url: '/userCreation',
+            redirectTo: (transition)=> {
+                let svc = transition.injector().get('registerService');
+                
+                return svc.registerNewUser().then((result) => {
+                    return 'feed';
+                });
+                
             }
         }
     
         var feedState = {
             name: 'feed',
-            url: 'users/@{username}/feed',
+            url: '/feed',//'users/@{username}/feed',
             component: 'feedComponent',
             resolve: {
                 resolvedTweetFeed: ['feedService', function(feedService){
-                    return feedService.getFeed($transition$.params().username);
+                    
+                    return feedService.getFeed(/*$transition$.params().username*/)/*.then((res)=> {
+                         return res;
+                   });*/
                 }]
             }
         }
@@ -55,5 +67,20 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         $stateProvider.state(registerState);
         $stateProvider.state(feedState);
         $stateProvider.state(contextState);
+        $stateProvider.state(authenticationState);
+        $stateProvider.state(createNewUserState);
 
+        
+        var whateverState = {
+            name: 'temp',
+            url: '/wevr',
+            template: '<div>Hey<button type="button" ng-click="action()">press</button></div>',
+            controller: function($scope){
+                $scope.action = () => {
+                    alert('hi')
+                   console.log('hey');
+                }
+            }
+        }
+        $stateProvider.state(whateverState);
 }]);
