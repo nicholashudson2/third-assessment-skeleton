@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.tweeter.dto.HashtagDto;
@@ -40,7 +40,7 @@ public class HashtagController {
 	}
 	
 	@GetMapping("/{label}")
-	public List<TweetDto> findTweetsByHashtags(@RequestParam String label, HttpServletResponse response){
+	public List<TweetDto> findTweetsByHashtags(@PathVariable String label, HttpServletResponse response){
 		if (!validHashtag(label)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
