@@ -2,6 +2,7 @@ package com.cooksys.tweeter.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import com.cooksys.tweeter.service.TweetService;
 
 @RestController
 @RequestMapping("validate")
+@CrossOrigin
 public class ValidateController {
 	
 	private HashtagService hashtagService;

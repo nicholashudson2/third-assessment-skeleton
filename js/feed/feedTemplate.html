@@ -1,6 +1,7 @@
+
 <div class="feed">
-    <div ng-repeat="tweet in $ctrl.tweetFeed">
-        Username: {{tweet.username}}
-        Content: {{tweet.content}}
+
+   <div ng-repeat="tweet in $ctrl.tweetFeed">
+        <tweet-component tweet='tweet'></tweet-component>
     </div>
 </div>
