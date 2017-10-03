@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.cooksys.tweeter.embedded.Credentials;
 import com.cooksys.tweeter.entity.Client;
 import com.cooksys.tweeter.entity.Tweet;
 
@@ -25,5 +26,7 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 	List<Client> findByMentionsAndDeleted(Tweet tweet, boolean deleted);
 
 //	Client findInFollowers(Client followerClient);
+	
+	Client findByCredentialsAndDeleted(Credentials credentials);  //Artem added
 
 }
