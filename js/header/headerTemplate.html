@@ -1,6 +1,6 @@
 <nav class="navbar navbar-toggleable-lg navbar-light navbar-static-top fullscreen">
     <div class="logo">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand squawker" href="#">
             <img src="img/squawkerLogo.png" width="60" height="60" alt="">
         <div class="squawker">
             Squawker
@@ -16,13 +16,9 @@
         </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" ui-sref-active="active" type="submit">Search</button>
+        <!-- Modified by Chris. -->
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" ng-model="$ctrl.searchService.searchString">
+        <!-- Modified by Chris. -->
+        <button class="btn btn-primary" ui-sref="search" ui-sref-active="active" type="submit">Search</button>
     </form>
 </nav>
-<div>
-    <form class="tweetForm">
-        <textarea class="form-control col-md-6 post" rows=3 placeholder="Create Post"></textarea>
-        <button class="btn btn-primary" ui-sref-active="active" type="submit">Post</button>
-    </form>
-</div>

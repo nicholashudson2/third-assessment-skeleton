@@ -1,19 +1,17 @@
-angular.module('twitterApp').service('searchService', ['http', 'tweetService', function($http, tweetService){
+angular.module('twitterApp').service('searchService', ['tweetService', function(tweetService){
     
     this.tweetService = tweetService
 
-    this.searchResult = this.resolvedSearch.data
 
-    this.search = (searchString) => {
-        let resultData
-        if (searchString.charAt(0).equals('#')){
-            searchString = searchString.slice(1)
-            resultData = $http.get('http://localhost:8090/tags/' + searchString)
+    this.getSearchType = () => {
+        if (this.searchString.charAt(0) == '#'){
+            return 'hashtagSearch'
         }
-        if (searchString.charAt(0).equals('@')){
-            searchString = searchString.slice(1)
-            resultData = $http.get('http://localhost:8090/users/@' + searchString + '/mentions')
+        if (this.searchString.charAt(0) == '@'){
+            return 'usernameSearch'
+
         }
-        return resultData
+        return 'signIn'
     }
+
 }])
