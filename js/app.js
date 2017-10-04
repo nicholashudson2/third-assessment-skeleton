@@ -165,4 +165,5 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(searchState);
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(usernameSearchState);
+    
 }]);
