@@ -1,13 +1,13 @@
-angular.module('twitterApp').controller('tweetController', [function () {
-
+angular.module('twitterApp').controller('tweetController', ['tweetService', function (tweetService) {
+//Artem
   
+    this.tweetService = tweetService;
 
-    // this.createNewTweet = () => {
-    //     tweetService.createNewTweet(this.newTweet).then((done) => {
-    //         return tweetService.getAllTweets()
-    //     }).then((finishedProduct) => {
-    //         this.tweets = finishedProduct.data
-    //     })
-    // }
+    this.like = (id) => {
+        tweetService.like(id);
+    }
+
+    //tweetService.NumberOfLikes(this.tweet.id)   // Get number of likes on this tweet load, digest loop freeze on function call from template
+
 
 }])
