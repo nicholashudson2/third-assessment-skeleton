@@ -83,7 +83,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     //Created and Modified By Artem
 
     var feedState = {
-        name: 'feed',
+        name: 'main.feed',
         url: '/feed',//'users/@{username}/feed',
         component: 'tweetListComponent',
         resolve: {
@@ -94,7 +94,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
     var contextState = {
-        name: 'context',
+        name: 'main.context',
         url: 'tweets/{id}/context',
         component: 'contextComponent',
         resolve: {
@@ -107,7 +107,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     var searchState = {
-        name: 'search',
+        name: 'main.search',
         url: '/search',
         component: 'searchComponent',
         redirectTo: (transition) => {
@@ -119,7 +119,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     var hashtagSearchState = {
-        name: 'hashtagSearch',
+        name: 'main.hashtagSearch',
         url: '/hashtagSearch',
         component: 'tweetListComponent',
         resolve:{
@@ -131,7 +131,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     //Artem
     var allTweetsState = {
-        name: 'allTweets',
+        name: 'main.allTweets',
         url: '/allTweets',
         component: 'tweetListComponent',
         resolve: {
@@ -143,7 +143,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     //Artem
     var myTweetsState = {
-        name: 'myTweets',
+        name: 'main.myTweets',
         url: '/myTweets',
         component: 'tweetListComponent',
         resolve: {
@@ -191,7 +191,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     var usernameSearchState = {
-        name: 'usernameSearch',
+        name: 'main.usernameSearch',
         url: '/usernameSearch',
         component: 'tweetListComponent',
         resolve:{
