@@ -1,5 +1,5 @@
 angular.module('twitterApp').controller('publicProfileController', function(){
 
-    this.user = resolvedUser
+    this.user = resolvedUser.data
     
 })

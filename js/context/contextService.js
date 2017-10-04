@@ -1,8 +1,11 @@
 angular.module('twitterApp').service('contextService', ['$http', function($http){
 
+    this.setTargetId = (id) => {
+        this.targetId = id
+    }
 
-    this.getContext = (id) => {
-        return $http.get('http://localhost:8090/api/tweets/' + id + '/context')
+    this.getContext = () => {
+        return $http.get('http://localhost:8090/tweets/' + this.targetId + '/context')
     }
 
 
