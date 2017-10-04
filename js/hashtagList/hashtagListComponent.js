@@ -1,5 +1,5 @@
 angular.module('twitterApp').component('hashtagListComponent', {
-    templateUrl: 'js/hashtag/hashtagListTemplate.html',
+    templateUrl: 'js/hashtagList/hashtagListTemplate.html',
     controller: 'hashtagListController',
     bindings: {
         hashtagList: '='

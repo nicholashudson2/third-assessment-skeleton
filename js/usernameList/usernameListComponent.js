@@ -1,5 +1,5 @@
 angular.module('twitterApp').component('usernameListComponent', {
-    templateUrl: 'js/username/usernameListTemplate.html',
+    templateUrl: 'js/usernameList/usernameListTemplate.html',
     controller: 'usernameListController',
     bindings: {
         usernameList: '='
