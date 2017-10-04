@@ -1,6 +1,7 @@
 angular.module('twitterApp').service('hashtagSearchService', ['$http', function($http){
 
     this.search = (searchString) => {
+        
         if (searchString.charAt(0) == '#'){
             searchString = searchString.slice(1)
         }

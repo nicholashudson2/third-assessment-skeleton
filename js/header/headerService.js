@@ -4,4 +4,6 @@ angular.module('twitterApp').service('headerService', function(){
         sessionStorage.clear();
         return 'signin'
     }
+
+    
 })
