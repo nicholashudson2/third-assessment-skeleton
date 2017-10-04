@@ -1,7 +1,7 @@
 angular.module('twitterApp').service('usernameListService', ['$http', function($http){
 
-    this.getUsers = () => {
-        return $http.get('http://localhost:8090/users');
+    this.getAllUsers = () => {
+        return $http.get('http://localhost:8090/users')
     }
 
     this.getFollowers = () => {
