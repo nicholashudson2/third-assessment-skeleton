@@ -47,6 +47,13 @@ main-page-container {
     align-items: center;
     justify-content: center;
     padding-left: 25px;
+    flex-flow: nowrap;
+}
+
+.navbar-nav > .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+    flex-flow: nowrap;
 }
 
 .header {
@@ -83,11 +90,19 @@ main-page-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
+
+
 
 .header-nav > .nav-item {
     flex: 1 0 auto;
+    /* align-items: center;
+    justify-content: center;
+    text-align: center; */
 }
 
 .sign-in-header, .register-header {
@@ -271,18 +286,6 @@ a:link {
     text-decoration: none;
 }
 
-/* expanding input CSS only */
-#post-input {
-    width:140px;
-    height: 2.75em;
-    -webkit-transition: width 0.3s ease-in-out;
-}
-
-#post-input:focus {
-    width:300%;
-    -webkit-transition: width 0.5s ease-in-out;
-}
-
 .form-inline {
     flex-flow: nowrap;
 }
@@ -293,4 +296,9 @@ a:link {
 
 .squawk-input {
     max-width: 100%;
+}
+
+#search-input {
+    display: inline;
+    width: 200px;
 }

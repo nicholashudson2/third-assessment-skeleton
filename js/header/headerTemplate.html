@@ -1,32 +1,32 @@
 <nav class="navbar navbar-toggleable-lg navbar-light navbar-static-top fullscreen header-column">
-    <div class="logo">
-        <a class="navbar-brand squawker" href="#">
-            <img src="img/squawkerLogo.png" width="60" height="60" alt="">
-        <div class="squawker">
-            Squawker
-        </div>
-        </a>
-    </div>
-        <ul class="navbar-nav navbar-brand mr-auto header-nav">
-            <li class="nav-item">
-                <a class="nav-link" ui-sref-active="active" ui-sref="#">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" ui-sref-active="active" ui-sref="signIn">Logout</a>
-            </li>
-            <li class="nav-item">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="row-md-6">
-                            <form class="navbar-form navbar-left">
-                                <!-- Modified by Chris. -->
-                                <input type="text" class="form-control input-lg" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString">
-                                <!-- Modified by Chris. -->
-                                <button class="btn btn-outline-primary" ui-sref="search" ui-sref-active="active" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </div>
+    <ul class="navbar-nav navbar-brand mr-auto header-nav">
+        <div class="logo">
+            <a class="navbar-brand squawker" href="#">
+                <img src="img/squawkerLogo.png" width="60" height="60" alt="">
+                <div class="squawker">
+                    Squawker
                 </div>
-            </li>
-        </ul>
+            </a>
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" ui-sref-active="active" ui-sref="#">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" ui-sref-active="active" ui-sref="#">Logout</a>
+        </li>
+        <li class="nav-item">
+            <!-- <div class="container-fluid"> -->
+            <!-- <div class="row">
+                        <div class="row-md-6"> -->
+            <form class="navbar-form navbar-left">
+                <!-- Modified by Chris. -->
+                <input type="text" class="form-control input-lg" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString">
+                <!-- Modified by Chris. -->
+                <button class="btn btn-outline-primary" ui-sref="search" ui-sref-active="active" type="submit">Search</button>
+            </form>
+            <!-- </div>
+                    </div> -->
+            <!-- </div> -->
+        </li>
+    </ul>
 </nav>
