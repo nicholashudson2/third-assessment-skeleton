@@ -1,5 +1,5 @@
 angular.module('twitterApp').component('tweetComponent', {
-    templateUrl: "/js/tweet/tweetTemplate.html",
+    templateUrl: "./js/tweet/tweetTemplate.html",
 
     controller: 'tweetController',
     bindings: {
