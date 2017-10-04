@@ -1,6 +1,9 @@
-<div class="tweet-form">
-    <form class="tweet-form">
-        <textarea class="form-control post" rows=2 placeholder="Create Post" ng-model="$ctrl.newTweetService.newTweet.content"></textarea>
-        <button class="btn btn-div" ui-sref-active="active" type="submit" ui-sref="postNewTweet">Post</button>
-    </form>
+
+<div class="container-fluid inline-button">
+    <div class="tweet-input">
+        <form class="form-group squawk-input">
+            <textarea class="form-control" id="tweet-input" rows="2" placeholder="Create Squawk" required ng-model="$ctrl.newTweetService.newTweet.content"></textarea>
+            <button class="btn btn-block btn-outline-primary" id="postButton" ui-sref-active="active" type="submit" ui-sref="postNewTweet"><div class="squawk-small">Squawk!</div></button>
+        </form>
+    </div>
 </div>

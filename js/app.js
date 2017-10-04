@@ -62,19 +62,19 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                
+
                 return tweetListService.getFeed(/*$transition$.params().username*/);
             }]
         }
     }
 
     var contextState = {
-        name: 'context',
-        url: 'tweets/{id}/context',
+        name: 'main.context',
+        url: '/context',
         component: 'contextComponent',
         resolve: {
             resolvedContext: ['contextService', function (contextService) {
-                return contextService.getContext($transition$.params().id)
+                return contextService.getContext()
             }]
         }
     }
@@ -85,21 +85,21 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/search',
         redirectTo: (transition) => {
             let svc = transition.injector().get('searchService');
-            
+
             // return svc.getSearchType()
             let temp = svc.getSearchType()
             // console.log(temp)
             return temp
         }
     }
-    
+
     // Added by Chris. Needs to be converted to a nested state
     var hashtagSearchState = {
         name: 'main.hashtagSearch',
         url: '/hashtagSearch',
         component: 'tweetListComponent',
-        resolve:{
-            resolvedTweetsList: ['hashtagSearchService', 'searchService', function(hashtagSearchService, searchService){
+        resolve: {
+            resolvedTweetsList: ['hashtagSearchService', 'searchService', function (hashtagSearchService, searchService) {
                 return hashtagSearchService.search(searchService.searchString)
             }]
         }
@@ -111,7 +111,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/allTweets',
         component: 'tweetListComponent',
         resolve: {
-            resolvedTweetsList: ['tweetListService', function(tweetListService){
+            resolvedTweetsList: ['tweetListService', function (tweetListService) {
                 return tweetListService.getAllTweets();
             }]
         }
@@ -123,13 +123,14 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/myTweets',
         component: 'tweetListComponent',
         resolve: {
-            resolvedTweetsList: ['tweetListService', function(tweetListService){
+            resolvedTweetsList: ['tweetListService', function (tweetListService) {
                 return tweetListService.getMyTweets();
             }]
         }
     }
     //Artem
     var postNewTweetState = {
+
         name: 'postNewTweet',
         url: '/postNewTweet',
         redirectTo:  (transition) => {
@@ -137,6 +138,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 return svc.postNewTweet().then((result) => {
                     return 'main.allTweets';
                 });
+
         }
     }
 
@@ -145,28 +147,42 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(postNewTweetState);
     $stateProvider.state(myTweetsState);
     $stateProvider.state(allTweetsState);
-    
+
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     var usernameSearchState = {
         name: 'usernameSearch',
         url: '/usernameSearch',
         component: 'tweetListComponent',
-        resolve:{
-            resolvedTweetsList: ['usernameSearchService', 'searchService', function(usernameSearchService, searchService){
+        resolve: {
+            resolvedTweetsList: ['usernameSearchService', 'searchService', function (usernameSearchService, searchService) {
                 return usernameSearchService.search(searchService.searchString)
             }]
         }
     }
-    
+
+    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    var publicProfileState = {
+        name: 'publicProfile',
+        url: '/publicProfile',
+        component: 'publicProfileComponent',
+        resolve: {
+            resolvedUser: ['usernameSearchService', 'searchService', function (usernameSearchService, searchService) {
+                return usernameSearchService.search(searchService.searchString)
+            }]
+        }
+    }
+
+
     $stateProvider.state(createNewUserState);
     $stateProvider.state(signInState);
     $stateProvider.state(registerState);
     $stateProvider.state(authenticationState);
     $stateProvider.state(feedState);
     $stateProvider.state(contextState);
-    
+
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     $stateProvider.state(searchState);
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(usernameSearchState);
+    
 }]);
