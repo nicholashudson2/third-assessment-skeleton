@@ -1,10 +1,8 @@
+User element here
+
 <div class="card bg-light mb-3" style="max-width: 20rem">
     <div class="card-body">
-        <h4 class="card-title"> 
-            <!--TODO: Update ui-sref link-->
-            <a ng-click="$ctrl.searchService.setSearchString($ctrl.user.userName)" ui-sref="main.allTweets">
-                {{$ctrl.user.credentials.userLogin}}
-            </a>
-        </h4>
+        <h4 class="card-title"> <a ui-sref="publicProfile({ username: this.searchString })">{{$ctrl.user.credentials.userLogin}}</a></h4>
+
     </div>
 </div>
