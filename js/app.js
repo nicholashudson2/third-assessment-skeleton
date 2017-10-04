@@ -112,6 +112,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
+
     $stateProvider.state(myTweetsState);
     $stateProvider.state(allTweetsState);
     
@@ -138,4 +139,5 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(searchState);
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(usernameSearchState);
+    
 }]);
