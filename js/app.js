@@ -53,12 +53,15 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
     var contextState = {
-        name: 'main.context',
-        url: '/context',
+        name: 'context',
+        // url: 'context/',
+        url: 'context/{id}',
         component: 'contextComponent',
         resolve: {
-            resolvedContext: ['contextService', function (contextService) {
-                return contextService.getContext()
+            resolvedContext: ['contextService', function (contextService, $transition$) {
+                // return contextService.getContext($transition$.params().id)
+                let result = contextService.getContext($transition$.params().id)
+                return result
             }]
         }
     }
@@ -144,11 +147,13 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     var publicProfileState = {
         name: 'publicProfile',
+        // url: '/publicProfile/{username}',
         url: '/publicProfile',
         component: 'publicProfileComponent',
         resolve: {
             resolvedUser: ['usernameSearchService', 'searchService', function (usernameSearchService, searchService) {
                 return usernameSearchService.search(searchService.searchString)
+                // return usernameSearchService.search($transition$.params().username)
             }]
         }
     }
