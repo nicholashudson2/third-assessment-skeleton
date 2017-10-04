@@ -208,19 +208,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
-    // Added by Chris. Needs to be converted to a nested state
-    var mentionsState = {
-        name: 'mentions',
-        url: '/mentions',
-        component: 'mentionsComponent',
-        resolve: {
-            resolvedTweetsList: [function (mentionsService) {
-                let result = mentionsService.getMentions()
-                return result
-            }]
-        }
-    }
-
 
 
     $stateProvider.state(createNewUserState);
@@ -233,7 +220,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(publicProfileState);
-    $stateProvider.state(mentionsState);
+    // $stateProvider.state(mentionsState);
 
 
 }]);
