@@ -64,7 +64,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
-    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    // Added by Chris. Needs to be converted to a nested state
     var searchState = {
         name: 'search',
         url: '/search',
@@ -72,11 +72,14 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         redirectTo: (transition) => {
             let svc = transition.injector().get('searchService');
             
-            return svc.getSearchType()
+            // return svc.getSearchType()
+            let temp = svc.getSearchType()
+            // console.log(temp)
+            return temp
         }
     }
     
-    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    // Added by Chris. Needs to be converted to a nested state
     var hashtagSearchState = {
         name: 'hashtagSearch',
         url: '/hashtagSearch',
