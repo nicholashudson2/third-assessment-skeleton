@@ -1,29 +1,10 @@
 <div class="following-list-container scroll-container">
-    <div class="list-title"><h5>Following Me:</h5></div>
+    <div class="list-title">
+        <h5>Following Me:</h5>
+    </div>
     <ul class="scroll-list" role="menu" title="Following Me">
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Something else here</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Something else here</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Something else here</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Something else here</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Action</a></li>
-        <li class="nav nav-item nav-link"><a href="#">Another action</a></li>
+        <li class="nav nav-item nav-link" ng-repeat="following in $ctrl.followings">
+            <user-component user="following"></user-component>
+        </li>
     </ul>
 </div>

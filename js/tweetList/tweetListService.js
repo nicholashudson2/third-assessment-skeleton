@@ -14,15 +14,6 @@ angular.module('twitterApp').service('tweetListService', ['$http', function ($ht
         this.getMyTweets = (username = sessionStorage.getItem('userLogin')) => {
             return $http.get('http://localhost:8090/users/@' + username + '/tweets');
         }
-
-        // this.postNewTweet = () => {
-        //     return http.post('http://localhost:8090/tweets', this.newTweet).then((done) => {       //TODO: add mewTweet properties in post template
-        //             return this.getAllTweets()
-        //         })
-        //         // .then((newListOfAllTweets) => {
-        //         //     return newListOfAllTweets;
-        //         // })
-        //     }
         
     
     }])

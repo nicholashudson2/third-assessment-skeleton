@@ -2,7 +2,7 @@
 <div class="tweet-list">
     
         TweetList here Dude
-       <div ng-repeat="tweet in $ctrl.tweetList">
+       <div ng-repeat="tweet in $ctrl.resolvedTweetsList.data">
             <tweet-component tweet='tweet'></tweet-component>
         </div>
     </div>

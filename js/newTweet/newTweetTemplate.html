@@ -1,6 +1,6 @@
 <div class="tweet-form">
     <form class="tweet-form">
-        <textarea class="form-control post" rows=2 placeholder="Create Post"></textarea>
-        <button class="btn btn-div" ui-sref-active="active" type="submit">Post</button>
+        <textarea class="form-control post" rows=2 placeholder="Create Post" ng-model="$ctrl.newTweetService.newTweet.content"></textarea>
+        <button class="btn btn-div" ui-sref-active="active" type="submit" ui-sref="postNewTweet">Post</button>
     </form>
 </div>

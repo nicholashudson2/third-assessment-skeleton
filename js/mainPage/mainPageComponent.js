@@ -1,6 +1,9 @@
 angular.module('twitterApp').component('mainPageComponent', {
     templateUrl: 'js/mainPage/mainPageTemplate.html',
-    controller: 'mainPageController'
+    controller: 'mainPageController',
 
-    //TODO: Binding
+    bindings: {
+        resolvedFollowing: '=',
+        resolvedFollowers: '='
+    }
 })
