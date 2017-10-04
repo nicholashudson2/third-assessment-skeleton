@@ -2,6 +2,9 @@ angular.module('twitterApp').service('searchService', ['tweetService', function(
     
     this.tweetService = tweetService
 
+    this.setSearchString = (searchString) => {
+        this.searchString = searchString
+    }
 
     this.getSearchType = () => {
         if (this.searchString.charAt(0) == '#'){
