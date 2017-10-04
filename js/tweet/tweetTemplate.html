@@ -11,11 +11,14 @@
 
                     <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.tweetService.NumberOfLikes($ctrl.tweet.id)}}--></button>
 
-                </div>
-                <div class="bttns">
-                    <button class="btn btn-primary" role="button">Reply</button>
-                    <button class="btn btn-primary" role="button">Repost</button>
-                </div>
+
+            </div>
+            <div class="bttns">
+                <button  class="btn btn-primary" role="button">Reply</button>
+                <button  class="btn btn-primary" role="button">Repost</button>
+                <a ui-sref="main.context({ tweetId: $ctrl.tweet.id })">
+                    <button  class="btn btn-primary" role="button" >Context</button>
+                </a>
             </div>
         </div>
     </div>

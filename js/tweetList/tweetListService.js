@@ -1,8 +1,9 @@
-angular.module('twitterApp').service('tweetListService', ['$http', function ($http) { //Artem
+angular.module('twitterApp').service('tweetListService', ['$http',  function ($http) { //Artem
     
           
         this.getAllTweets = () => {
             //return $http.get('http://localhost:8090/users/@' + sessionStorage.getItem('userLogin') + '/feed');
+           
             return $http.get('http://localhost:8090/tweets');
         }
 
