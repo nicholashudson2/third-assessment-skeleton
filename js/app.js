@@ -152,7 +152,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
     //Artem
     var postNewTweetState = {
-
         name: 'postNewTweet',
         url: '/postNewTweet',
         redirectTo: (transition) => {
