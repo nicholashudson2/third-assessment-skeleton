@@ -1,6 +1,6 @@
 <div class="register-container">
     <div class="register">
-        <div class="header">
+        <div class="register-header">
             <div class="logo">
                 <a class="navbar-brand" href="#">
                     <img src="img/squawkerLogo.png" width="60" height="60" alt="">
@@ -8,100 +8,73 @@
                 <div class="squawker">Squawker</div>
             </div>
         </div>
-        <form method="post" action="#">
-
+        <form method="post">
             <div class="form-group">
-                <label for="firstName" class="sr-only">First Name</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" ng-model="$ctrl.registerService.user.profile.firstName"/>
-
-                    
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name" ng-model="$ctrl.registerService.user.profile.firstName"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" ng-model="$ctrl.registerService.user.profile.lastName"
+                        />
 
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="lastName" class="sr-only">Last Name</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-
-                        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name" ng-model="$ctrl.registerService.user.profile.lastName"/>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="email" class="sr-only">Email</label>
-                <div class="cols-sm-10">
-                    <div class="input-group">
-
                         <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" ng-model="$ctrl.registerService.user.profile.email"/>
-
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email" ng-model="$ctrl.registerService.user.profile.email"
+                        />
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-
-                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-phone
-                                 fa-fw" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" ng-model="$ctrl.registerService.user.profile.phone"/>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="username" class="sr-only">Username</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-
+                        <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" ng-model="$ctrl.registerService.user.profile.phone"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="cols-sm-10">
+                    <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" ng-model="$ctrl.registerService.user.credentials.userLogin"/>
-
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" ng-model="$ctrl.registerService.user.credentials.userLogin"
+                        />
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="password" class="sr-only">Password</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-
                         <span class="input-group-addon"><i class="fa fa-lock fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="password" id="password" placeholder="Password" ng-model="$ctrl.registerService.user.credentials.password"/>
-
+                        <input type="text" class="form-control" name="password" id="password" placeholder="Password" ng-model="$ctrl.registerService.user.credentials.password"
+                        />
                     </div>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="confirm" class="sr-only">Confirm Password</label>
                 <div class="cols-sm-10">
                     <div class="input-group">
-
                         <span class="input-group-addon"><i class="fa fa-lock fa-fw" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" name="confirm" id="confirm" placeholder="Confirm Password" />
-
                     </div>
                 </div>
             </div>
-
             <div class="form-group ">
                 <a type="button" id="button" class="btn btn-primary btn-lg login-button btn-block" ui-sref="userCreation">Register</a>
             </div>
-
         </form>
     </div>
 </div>
