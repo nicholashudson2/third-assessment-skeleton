@@ -49,7 +49,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/userCreation',
         redirectTo: (transition) => {
             let svc = transition.injector().get('registerService');
-
             return svc.registerNewUser().then((result) => {
                 return 'allTweets';
             });
@@ -86,7 +85,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-
                 return tweetListService.getFeed(/*$transition$.params().username*/);
             }]
         }
@@ -160,10 +158,14 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         redirectTo: (transition) => {
             let svc = transition.injector().get('newTweetService');
             return svc.postNewTweet().then((result) => {
-                return 'main.allTweets';
+                console.log('out');
+                console.log(result);
+                console.log('out');
+                return '.allTweets';
             });
         }
     }
+       
 
     //Artem
     var myMentionsState = {
