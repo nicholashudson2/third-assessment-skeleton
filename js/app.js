@@ -18,14 +18,15 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/main',
         component: 'mainPageComponent',
         resolve: {
-            resolvedFollowers: ['usernameListService', function(usernameListService){
+            resolvedFollowers: ['usernameListService', function (usernameListService) {
                 return usernameListService.getFollowers();
             }],
 
-            resolvedFollowing: ['usernameListService', function(usernameListService){
+            resolvedFollowing: ['usernameListService', function (usernameListService) {
                 return usernameListService.getFollowing();
             }]
         }
+
     }
 //Artem
 
@@ -92,40 +93,41 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
     }
-
+    
+    // Modified by Chris
     var contextState = {
         name: 'main.context',
-        url: 'tweets/{id}/context',
+        // url: 'context/',
+        url: '/context/{tweetId}',
         component: 'contextComponent',
         resolve: {
-            resolvedContext: ['contextService', function (contextService) {
-                return contextService.getContext($transition$.params().id)
+            resolvedContext: ['contextService', '$transition$', function (contextService, $transition$) {
+                // return contextService.getContext($transition$.params().id)
+                let result = contextService.getContext($transition$.params().tweetId)
+
+                return result
             }]
-
-        }
-    }
-
-    // Added by Chris. Needs testing. Needs to be converted to a nested state
-    var searchState = {
-        name: 'main.search',
-        url: '/search',
-        component: 'searchComponent',
-        redirectTo: (transition) => {
-            let svc = transition.injector().get('searchService');
-            
-            return svc.getSearchType()
         }
     }
     
-    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    // Added by Chris. Needs to be converted to a nested state
     var hashtagSearchState = {
         name: 'main.hashtagSearch',
-        url: '/hashtagSearch',
+        url: '/hashtagSearch/{label}',
         component: 'tweetListComponent',
-        resolve:{
-            resolvedTweetsList: ['hashtagSearchService', 'searchService', function(hashtagSearchService, searchService){
-                return hashtagSearchService.search(searchService.searchString)
-            }]
+        resolve: {
+            resolvedTweetsList: ['hashtagSearchService', 'searchService', '$transition$', '$state', '$stateParams',
+                function (hashtagSearchService, searchService, $transition$, $state, $stateParams) {
+                    console.log("made it to hashtag search resolve")
+                    console.log("transtions = " + $transition$.params().label)
+                    console.log("stateparams = " + $stateParams.label)
+                    let label = $stateParams.label
+                    if (!label) {
+                        label = $transition$.params().label
+                    }
+                    return hashtagSearchService.search(label)
+                    // return hashtagSearchService.search(searchService.searchString)
+                }]
         }
     }
 
@@ -154,19 +156,19 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
 
+    //Artem
+    var postNewTweetState = {
+
         name: 'postNewTweet',
         url: '/postNewTweet',
         redirectTo: (transition) => {
             let svc = transition.injector().get('newTweetService');
             return svc.postNewTweet().then((result) => {
-                console.log('out');
-                console.log(result);
-                console.log('out');
-                return '.allTweets';
+                return 'main.allTweets';
             });
+
         }
     }
-       
 
     //Artem
     var myMentionsState = {
@@ -188,19 +190,40 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(postNewTweetState);
     $stateProvider.state(myTweetsState);
     $stateProvider.state(allTweetsState);
-    
-    // Added by Chris. Needs testing. Needs to be converted to a nested state
-    var usernameSearchState = {
-        name: 'main.usernameSearch',
-        url: '/usernameSearch',
-        component: 'tweetListComponent',
-        resolve:{
-            resolvedTweetsList: ['usernameSearchService', 'searchService', function(usernameSearchService, searchService){
-                return usernameSearchService.search(searchService.searchString)
+
+
+
+    // Added by Chris. Needs to be converted to a nested state
+    var publicProfileState = {
+        name: 'main.publicProfile',
+        url: '/publicProfile/{username}',
+        // url: '/publicProfile',
+        component: 'publicProfileComponent',
+        resolve: {
+            resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
+                console.log("about to call user name search ")
+                let result = usernameSearchService.search($transition$.params().username)
+                console.log('found user 2= ' + result)
+                return result
             }]
         }
     }
-    
+
+    // Added by Chris. Needs to be converted to a nested state
+    var mentionsState = {
+        name: 'mentions',
+        url: '/mentions',
+        component: 'mentionsComponent',
+        resolve: {
+            resolvedTweetsList: [function (mentionsService) {
+                let result = mentionsService.getMentions()
+                return result
+            }]
+        }
+    }
+
+
+
     $stateProvider.state(createNewUserState);
     $stateProvider.state(signInState);
     $stateProvider.state(registerState);
@@ -209,7 +232,9 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(contextState);
     
     // Added by Chris. Needs testing. Needs to be converted to a nested state
-    $stateProvider.state(searchState);
     $stateProvider.state(hashtagSearchState);
-    $stateProvider.state(usernameSearchState);
+    $stateProvider.state(publicProfileState);
+    $stateProvider.state(mentionsState);
+
+
 }]);

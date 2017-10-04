@@ -22,7 +22,8 @@
                 <!-- Modified by Chris. -->
                 <input type="text" class="form-control input-lg" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString">
                 <!-- Modified by Chris. -->
-                <button class="btn btn-outline-primary" ui-sref="search" ui-sref-active="active" type="submit">Search</button>
+                <button class="btn btn-outline-primary"  ng-click="$ctrl.searchService.activateSearch(document.getElementById('search-input').value)" ui-sref-active="active" type="submit">Search</button>
+                <!-- ui-sref="search" -->
             </form>
             <!-- </div>
                     </div> -->
