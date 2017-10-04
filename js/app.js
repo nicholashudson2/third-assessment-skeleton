@@ -58,7 +58,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             resolvedContext: ['contextService', function (contextService) {
                 return contextService.getContext($transition$.params().id)
             }]
-
         }
     }
 
@@ -96,7 +95,19 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
     }
+    //Artem
+    var postNewTweetState = {
+        name: 'tweetPosted',
+        url: '/tweetPoste',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', function(tweetListService){
+                return tweetListService.postNewTweet();
+            }]
+        }
+    }
 
+    $stateProvider.state(postNewTweetState);
     $stateProvider.state(myTweetsState);
     $stateProvider.state(allTweetsState);
     $stateProvider.state(createNewUserState);
