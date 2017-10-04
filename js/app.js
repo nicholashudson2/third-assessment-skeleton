@@ -55,10 +55,10 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     var contextState = {
         name: 'context',
         // url: 'context/',
-        url: 'context/{id}',
+        url: '/context/{id}',
         component: 'contextComponent',
         resolve: {
-            resolvedContext: ['contextService', function (contextService, $transition$) {
+            resolvedContext: ['contextService', '$transition$', function (contextService, $transition$) {
                 // return contextService.getContext($transition$.params().id)
                 let result = contextService.getContext($transition$.params().id)
                 return result
@@ -144,23 +144,19 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
-    // // Added by Chris. Needs testing. Needs to be converted to a nested state
-    // var publicProfileState = {
-    //     name: 'publicProfile',
-    //     url: '/public_profile/{username}',
-    //     // url: '/publicProfile',
-    //     component: 'publicProfileComponent',
-    //     resolve: {
-    //         resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
-    //             // return usernameSearchService.search(searchService.searchString)
-    //             console.log('username= ' + $transition$.params().username)
-    //             let result = usernameSearchService.search($transition$.params().username)
-    //             console.log('result = ')
-    //             console.log(result)
-    //             return result
-    //         }]
-    //     }
-    // }
+    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    var publicProfileState = {
+        name: 'publicProfile',
+        url: '/publicProfile/{username}',
+        // url: '/publicProfile',
+        component: 'publicProfileComponent',
+        resolve: {
+            resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
+                let result = usernameSearchService.search($transition$.params().username)
+                return result
+            }]
+        }
+    }
 
 
     $stateProvider.state(createNewUserState);
@@ -174,6 +170,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(searchState);
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(usernameSearchState);
-    // $stateProvider.state(publicProfileState);
+    $stateProvider.state(publicProfileState);
     
 }]);
