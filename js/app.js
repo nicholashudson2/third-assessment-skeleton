@@ -84,20 +84,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
     // Added by Chris. Needs to be converted to a nested state
-    var searchState = {
-        name: 'search',
-        url: '/search'//,
-        // redirectTo: (transition) => {
-        //     let svc = transition.injector().get('searchService');
-
-        //     // return svc.getSearchType()
-        //     let temp = svc.getSearchType()
-        //     // console.log(temp)
-        //     return temp
-        // }
-    }
-
-    // Added by Chris. Needs to be converted to a nested state
     var hashtagSearchState = {
         name: 'main.hashtagSearch',
         url: '/hashtagSearch/{label}',
@@ -161,24 +147,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(myTweetsState);
     $stateProvider.state(allTweetsState);
 
-    // Added by Chris. Old code
-    // var usernameSearchState = {
-    //     name: 'main.usernameSearch',
-    //     url: '/usernameSearch/{username}',
-    //     component: 'usernameSearchComponent',
-    //     resolve: {
-    //         resolvedUser: ['usernameSearchService', 'searchService', '$transition$', '$state', '$stateParams',
-    //             function (usernameSearchService, searchService, $transition$, $state, $stateParams) {
-    //                 let username = $stateParams.username
-    //                 if (!username) {
-    //                     username = $transition$.params().username
-    //                 }
-    //                 let res = usernameSearchService.search(username)
-    //                 return res
-    //             }]
-    //     }
-    // }
-    // $stateProvider.state(usernameSearchState);
+
 
     // Added by Chris. Needs to be converted to a nested state
     var publicProfileState = {
@@ -218,7 +187,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(contextState);
 
     // Added by Chris. Needs testing. Needs to be converted to a nested state
-    $stateProvider.state(searchState);
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(publicProfileState);
     $stateProvider.state(mentionsState);
