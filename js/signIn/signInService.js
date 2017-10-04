@@ -13,4 +13,8 @@ angular.module('twitterApp').service('signInService', ['$http', function($http){
         });
 
     }
+
+    this.clearSessionStorage = () => {
+        sessionStorage.clear();
+    }
 }])

@@ -1,7 +1,7 @@
 <div class="tweet-list">
 
     UsernameList here!!!
-    <div ng-repeat="user in $ctrl.usernameList">
+    <div ng-repeat="user in $ctrl.resolvedUsersList.data">
         <user-component user='user'></user-component>
     </div>
 </div>
