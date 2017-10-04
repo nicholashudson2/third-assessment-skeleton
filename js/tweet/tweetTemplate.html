@@ -1,20 +1,21 @@
+<div class="card bg-light mb-3 tweet">
+    <div class="card-block">
+        <div class="card-header">Posted on: {{$ctrl.tweet.posted}}</div>
+        <div class="card-body">
+            <h4 class="card-title">{{$ctrl.tweet.userName}}</h4>
+            <p class="card-text">{{$ctrl.tweet.content}}</p>
+        </div>
+        <div class="card-header">
+            <div class="tweet-footer">
+                <div class="like">
 
-<div class="card bg-light mb-3" style="width: 20rem">
-    <div class="card-header">Posted on: {{$ctrl.tweet.posted}}</div>
-    <div class="card-body">
-        <h4 class="card-title" >{{$ctrl.tweet.userName}}</h4>
-        <p class="card-text">{{$ctrl.tweet.content}}</p>
-    </div>
-    <div class="card-header">
-        <div class="tweet-footer">
-            <div class="like">
+                    <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.tweetService.NumberOfLikes($ctrl.tweet.id)}}--></button>
 
-                <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.tweetService.NumberOfLikes($ctrl.tweet.id)}}--></button>
-
-            </div>
-            <div class="bttns">
-                <button  class="btn btn-primary" role="button">Reply</button>
-                <button  class="btn btn-primary" role="button">Repost</button>
+                </div>
+                <div class="bttns">
+                    <button class="btn btn-primary" role="button">Reply</button>
+                    <button class="btn btn-primary" role="button">Repost</button>
+                </div>
             </div>
         </div>
     </div>

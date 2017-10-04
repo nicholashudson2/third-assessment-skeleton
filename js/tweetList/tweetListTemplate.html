@@ -1,8 +1,4 @@
 
-<div class="tweet-list">
-    
-        TweetList here Dude
-       <div ng-repeat="tweet in $ctrl.resolvedTweetsList.data">
-            <tweet-component tweet='tweet'></tweet-component>
-        </div>
+<div class="card-group tweet-list" >
+            <tweet-component ng-repeat="tweet in $ctrl.resolvedTweetsList.data" tweet='tweet' ng-style="{'width':'30rem', 'align-items':'center', 'justify-content':'center', 'height':'300px', 'margin':'0', 'padding-bottom':'5px' }"></tweet-component>
     </div>
