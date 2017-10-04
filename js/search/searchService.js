@@ -8,7 +8,7 @@ angular.module('twitterApp').service('searchService', ['tweetService', function(
 
     this.getSearchType = () => {
         if (this.searchString.charAt(0) == '#'){
-            return 'hashtagSearch'
+            return 'main.hashtagSearch'                 //10/3 Artem updated
         }
         if (this.searchString.charAt(0) == '@'){
             return 'usernameSearch'

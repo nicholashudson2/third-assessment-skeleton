@@ -7,10 +7,10 @@
             <!-- <nav class="navbar navbar-toggleable-lg navbar-light navbar-brand navbar-fixed-top"> -->
             <ul class="navbar navbar-light flex-column" role="tablist">
                 <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">All Users</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">My Tweets</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">My Feed</a></li>
+                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".myTweets">My Tweets</a></li>
+                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".feed">My Feed</a></li>
                 <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">My Mentions</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">All Tweets</a></li>
+                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".allTweets">All Tweets</a></li>
                 <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref="">All Hashtags</a></li>
             </ul>
             <!-- </nav> -->
@@ -30,8 +30,8 @@
             <!-- <ui-view></ui-view> -->
         </div>
         <div class="right-column-container">
-            <followers-list-component></followers-list-component>
-            <following-list-component></following-list-component>
+            <followers-list-component followers = "$ctrl.resolvedFollowers.data"></followers-list-component>
+            <following-list-component followings = "$ctrl.resolvedFollowing.data"></following-list-component>
         </div>
     </div>
 </div>
