@@ -15,5 +15,8 @@ angular.module('twitterApp').service('tweetListService', ['$http', function ($ht
             return $http.get('http://localhost:8090/users/@' + username + '/tweets');
         }
         
+        this.getMyMentions = (username = sessionStorage.getItem('userLogin')) => {
+            return $http.get('http://localhost:8090/users/@' + username + '/mentions');
+        }
     
     }])

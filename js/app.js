@@ -2,12 +2,17 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     $urlRouterProvider.otherwise('/signIn');
 
+    //Artem
     var signInState = {
         name: 'signIn',
         url: '/signIn',
-        component: 'signInComponent'
+        component: 'signInComponent',
+        onEnter: ['signInService', function(signInService){
+            signInService.clearSessionStorage();
+        }]
     }
 
+//Artem
     var mainPageState = {
         name: 'main',
         url: '/main',
@@ -22,8 +27,8 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
 
-
     }
+//Artem
 
     var authenticationState = {
         name: 'authentication',
@@ -35,38 +40,60 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             });
         }
     }
-
+//Artem
     var registerState = {
         name: 'register',
         url: '/register',
         component: 'registerComponent'
     }
-
+//Artem
     var createNewUserState = {
         name: 'userCreation',
         url: '/userCreation',
         redirectTo: (transition) => {
             let svc = transition.injector().get('registerService');
-
             return svc.registerNewUser().then((result) => {
                 return 'allTweets';
             });
         }
     }
 
+    //Artem
+    var allTagsState = {
+        name: 'main.hashtags',
+        url: '/hashtags',
+        component: 'hashtagListComponent',
+        resolve: {
+            resolvedTags: ['hashtagListService', function(hashtagListService){
+                return hashtagListService.getTags();
+            }]
+        }
+    }
+//Artem
+    var allUsersState = {
+        name: 'main.allUsers',
+        url: '/allUsers',
+        component: 'usernameListComponent',
+        resolve: {
+            resolvedUsersList: ['usernameListService', function(usernameListService){
+                return usernameListService.getAllUsers();
+            }]
+        }
+    }
 
     //Created and Modified By Artem
+
     var feedState = {
         name: 'main.feed',
         url: '/feed',//'users/@{username}/feed',
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-
                 return tweetListService.getFeed(/*$transition$.params().username*/);
             }]
         }
     }
+    
     // Modified by Chris
     var contextState = {
         name: 'main.context',
@@ -82,7 +109,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
     }
-
+    
     // Added by Chris. Needs to be converted to a nested state
     var hashtagSearchState = {
         name: 'main.hashtagSearch',
@@ -111,7 +138,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.getAllTweets();
+                return tweetListService.getAllTweets()
             }]
         }
     }
@@ -122,11 +149,13 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/myTweets',
         component: 'tweetListComponent',
         resolve: {
-            resolvedTweetsList: ['tweetListService', function (tweetListService) {
+            resolvedTweetsList: ['tweetListService', function(tweetListService){
                 return tweetListService.getMyTweets();
             }]
         }
     }
+
+
     //Artem
     var postNewTweetState = {
 
@@ -141,7 +170,22 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
+    //Artem
+    var myMentionsState = {
+        name: 'main.myMentions',
+        url: '/myMentions',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', function (tweetListService) {
+                return tweetListService.getMyMentions();
+            }]
+        }
+    }
 
+
+    $stateProvider.state(myMentionsState);
+    $stateProvider.state(allUsersState);
+    $stateProvider.state(allTagsState);
     $stateProvider.state(mainPageState);
     $stateProvider.state(postNewTweetState);
     $stateProvider.state(myTweetsState);
@@ -179,16 +223,18 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
 
+
     $stateProvider.state(createNewUserState);
     $stateProvider.state(signInState);
     $stateProvider.state(registerState);
     $stateProvider.state(authenticationState);
     $stateProvider.state(feedState);
     $stateProvider.state(contextState);
-
+    
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(publicProfileState);
     $stateProvider.state(mentionsState);
+
 
 }]);
