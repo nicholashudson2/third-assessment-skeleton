@@ -2,11 +2,8 @@ angular.module('twitterApp').controller('contextController', ['$http', 'tweetSer
     
     this.tweetService = tweetService
     
-    this.context = resolvedContext.data
+    this.context = this.resolvedContext.data
 
-    this.tweet = this.context.target
-    this.tweets_before = this.context.before
-    this.tweets_after = this.context.after
 
 
 

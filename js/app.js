@@ -69,14 +69,15 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
     var contextState = {
-        name: 'context',
+        name: 'main.context',
         // url: 'context/',
-        url: '/context/{id}',
+        url: '/context/{tweetId}',
         component: 'contextComponent',
         resolve: {
             resolvedContext: ['contextService', '$transition$', function (contextService, $transition$) {
                 // return contextService.getContext($transition$.params().id)
-                let result = contextService.getContext($transition$.params().id)
+                let result = contextService.getContext($transition$.params().tweetId)
+                
                 return result
             }]
         }
