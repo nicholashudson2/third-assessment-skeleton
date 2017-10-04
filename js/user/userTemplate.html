@@ -1,5 +1,5 @@
 <div class="card bg-light mb-3" style="width: 20rem">
     <div class="card-body">
-        <h4 class="card-title">{{$ctrl.user.userName}}</h4>
+        <h4 class="card-title"> <a ng-click="$ctrl.searchService.setSearchString(ctrl.user.userName)" ui-sref="publicProfile">{{$ctrl.user.userName}}</a></h4>
     </div>
 </div>
