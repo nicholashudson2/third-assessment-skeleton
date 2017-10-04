@@ -39,7 +39,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
-
     var feedState = {
         name: 'feed',
         url: '/feed',//'users/@{username}/feed',
@@ -67,22 +66,51 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
+    // Added by Chris. Needs testing. Needs to be converted to a nested state
     var searchState = {
         name: 'search',
-        url: 'tweets/{searchString}/search',
+        url: '/search',
         component: 'searchComponent',
-        resolve: {
-            resolvedSearch: ['searchService', function (searchService) {
-                return searchService.search($transition$.params().searchString)
+        redirectTo: (transition) => {
+            let svc = transition.injector().get('searchService');
+            
+            return svc.getSearchType()
+        }
+    }
+    
+    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    var hashtagSearchState = {
+        name: 'hashtagSearch',
+        url: '/hashtagSearch',
+        component: 'tweetListComponent',
+        resolve:{
+            resolvedTweetsList: ['hashtagSearchService', 'searchService', function(hashtagSearchService, searchService){
+                return hashtagSearchService.search(searchService.searchString)
             }]
         }
     }
-
+    
+    // Added by Chris. Needs testing. Needs to be converted to a nested state
+    var usernameSearchState = {
+        name: 'usernameSearch',
+        url: '/usernameSearch',
+        component: 'tweetListComponent',
+        resolve:{
+            resolvedTweetsList: ['usernameSearchService', 'searchService', function(usernameSearchService, searchService){
+                return usernameSearchService.search(searchService.searchString)
+            }]
+        }
+    }
+    
     $stateProvider.state(createNewUserState);
     $stateProvider.state(signInState);
     $stateProvider.state(registerState);
     $stateProvider.state(authenticationState);
     $stateProvider.state(feedState);
     $stateProvider.state(contextState);
+    
+    // Added by Chris. Needs testing. Needs to be converted to a nested state
     $stateProvider.state(searchState);
+    $stateProvider.state(hashtagSearchState);
+    $stateProvider.state(usernameSearchState);
 }]);
