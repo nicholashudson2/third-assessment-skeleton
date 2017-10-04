@@ -1,5 +1,5 @@
 angular.module('twitterApp').component('hashtagSearchComponent', {
-    templateUrl: 'js/hashtag/hashtagSearchTemplate.html',
+    templateUrl: 'js/hashtagSearch/hashtagSearchTemplate.html',
     controller: 'hashtagSearchController'
 
     //TODO: Binding

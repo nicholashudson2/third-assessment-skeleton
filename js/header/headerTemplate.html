@@ -16,7 +16,9 @@
         </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" ui-sref-active="active" type="submit">Search</button>
+        <!-- Modified by Chris. -->
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" ng-model="$ctrl.searchService.searchString">
+        <!-- Modified by Chris. -->
+        <button class="btn btn-primary" ui-sref="search" ui-sref-active="active" type="submit">Search</button>
     </form>
 </nav>
