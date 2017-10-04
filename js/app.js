@@ -8,8 +8,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent'
     }
 
-
-
     var authenticationState = {
         name: 'authentication',
         url: '/authentication',
@@ -34,25 +32,25 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             let svc = transition.injector().get('registerService');
 
             return svc.registerNewUser().then((result) => {
-                return 'feed';
+                return 'allTweets';
             });
         }
     }
 
+
+    //Created and Modified By Artem
+
     var feedState = {
         name: 'feed',
         url: '/feed',//'users/@{username}/feed',
-        component: 'feedComponent',
+        component: 'tweetListComponent',
         resolve: {
-            resolvedTweetFeed: ['feedService', function (feedService) {
-
-                return feedService.getFeed(/*$transition$.params().username*/)/*.then((res)=> {
-                         return res;
-                   });*/
+            resolvedTweetsList: ['tweetListService', function (tweetListService) {
+                
+                return tweetListService.getFeed(/*$transition$.params().username*/);
             }]
         }
     }
-
 
     var contextState = {
         name: 'context',
@@ -89,6 +87,33 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
     }
+
+    //Artem
+    var allTweetsState = {
+        name: 'allTweets',
+        url: '/allTweets',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', function(tweetListService){
+                return tweetListService.getAllTweets();
+            }]
+        }
+    }
+
+    //Artem
+    var myTweetsState = {
+        name: 'myTweets',
+        url: '/myTweets',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', function(tweetListService){
+                return tweetListService.getMyTweets();
+            }]
+        }
+    }
+
+    $stateProvider.state(myTweetsState);
+    $stateProvider.state(allTweetsState);
     
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     var usernameSearchState = {
