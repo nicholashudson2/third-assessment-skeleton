@@ -1,5 +1,3 @@
-angular.module('twitterApp').controller('tweetListController', ['tweetService', function(tweetService){
+angular.module('twitterApp').controller('tweetListController', function(){
     
-    this.tweetList = this.resolvedTweetsList.data;
-    //this.tweetService = tweetService
-}])
+})

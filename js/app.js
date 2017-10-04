@@ -8,6 +8,23 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent'
     }
 
+    var mainPageState = {
+        name: 'main',
+        url: '/main',
+        component: 'mainPageComponent',
+        resolve: {
+            resolvedFollowers: ['usernameListService', function(usernameListService){
+                return usernameListService.getFollowers();
+            }],
+
+            resolvedFollowing: ['usernameListService', function(usernameListService){
+                return usernameListService.getFollowing();
+            }]
+        }
+        
+
+    }
+
     var authenticationState = {
         name: 'authentication',
         url: '/authentication',
@@ -39,9 +56,8 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
 
     //Created and Modified By Artem
-
     var feedState = {
-        name: 'feed',
+        name: 'main.feed',
         url: '/feed',//'users/@{username}/feed',
         component: 'tweetListComponent',
         resolve: {
@@ -70,7 +86,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     var searchState = {
         name: 'search',
         url: '/search',
-        component: 'searchComponent',
         redirectTo: (transition) => {
             let svc = transition.injector().get('searchService');
 
@@ -83,7 +98,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     // Added by Chris. Needs to be converted to a nested state
     var hashtagSearchState = {
-        name: 'hashtagSearch',
+        name: 'main.hashtagSearch',
         url: '/hashtagSearch',
         component: 'tweetListComponent',
         resolve: {
@@ -95,7 +110,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     //Artem
     var allTweetsState = {
-        name: 'allTweets',
+        name: 'main.allTweets',
         url: '/allTweets',
         component: 'tweetListComponent',
         resolve: {
@@ -107,7 +122,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
 
     //Artem
     var myTweetsState = {
-        name: 'myTweets',
+        name: 'main.myTweets',
         url: '/myTweets',
         component: 'tweetListComponent',
         resolve: {
@@ -118,16 +133,20 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
     //Artem
     var postNewTweetState = {
-        name: 'tweetPosted',
-        url: '/tweetPoste',
-        component: 'tweetListComponent',
-        resolve: {
-            resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.postNewTweet();
-            }]
+
+        name: 'postNewTweet',
+        url: '/postNewTweet',
+        redirectTo:  (transition) => {
+                let svc = transition.injector().get('newTweetService');
+                return svc.postNewTweet().then((result) => {
+                    return 'main.allTweets';
+                });
+
         }
     }
 
+
+    $stateProvider.state(mainPageState);
     $stateProvider.state(postNewTweetState);
     $stateProvider.state(myTweetsState);
     $stateProvider.state(allTweetsState);
