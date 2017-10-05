@@ -18,7 +18,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{$ctrl.user.profile.firstName}}" />
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{$ctrl.user.profile.firstName?($ctrl.user.profile.firstName):'First Name'}}" />
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.user.profile.lastName}}"
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="{{$ctrl.user.profile.lastName?($ctrl.user.profile.lastName):'Last Name'}}"
                         />
                     </div>
                 </div>
@@ -38,8 +38,7 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
 
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email: "
-                            "{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown "}}" />
+                        <input type="text" class="form-control" name="email" id="email" placeholder="{{$ctrl.user.profile.email}}" />
                     </div>
                 </div>
             </div>
@@ -48,8 +47,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: "
-                            "{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown "}}" />
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):'Phone Number'}}" />
                     </div>
                 </div>
             </div>
@@ -58,7 +56,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Username: {{$ctrl.user.userName}}" />
+                        <input type="text" class="form-control" name="username" id="username" placeholder="{{$ctrl.user.userName}}" />
                     </div>
                 </div>
             </div>
