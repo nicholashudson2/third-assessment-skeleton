@@ -1,6 +1,9 @@
-angular.module('twitterApp').service( 'profileService', ['$http', function($http){
+angular.module('twitterApp').service( 'profileService', ['$http', '$state', function($http, $state){
     this.updateProfile = () => {
         this.user.credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('paswword')};
-        $http.patch('http://localhost:8090/users/@'+sessionStorage.getItem('userLogin'), this.user);
+        $http.post('http://localhost:8090/users/@'+sessionStorage.getItem('userLogin')+'/patch', this.user).then((result) => {
+            $state.reload();
+        });
+        
     }
 }])

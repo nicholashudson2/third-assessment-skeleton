@@ -1,4 +1,4 @@
-angular.module('twitterApp').controller('tweetController', ['tweetService', '$http', function (tweetService, $http) {
+angular.module('twitterApp').controller('tweetController', ['tweetService', '$http', '$state', function (tweetService, $http, $state) {
 //Artem
   
     this.tweetService = tweetService;
@@ -11,32 +11,27 @@ angular.module('twitterApp').controller('tweetController', ['tweetService', '$ht
         tweetService.repost(id);
     }
 
-    // this.likes=[];
-// 
-    // this.getLikes = (id) => {
-    //     likes[id] = http.get('http://localhost:8090/tweets/'+id+'/likes').then((result) => {
-    //         console.log(result.data.length)
-    //         return result.data.length;
-    //     })
-    // }
-
     this.deleteTweet = (id) => {
         tweetService.deleteTweet(id);
     }
 
-    //tweetService.NumberOfLikes(this.tweet.id)   // Get number of likes on this tweet load, digest loop freeze on function call from template
-
-    // this.NumberOfLikes = (id) => {
-    //     return $http.get('http://localhost:8090/tweets/'+id+'/likes').then((result) => {
-    //         console.log(result.data.length)
-    //         return result.data.length;
-    //     })
-    // }
-
-
     this.ownTweet = (tweetAuthor) => {
-        console.log(tweetAuthor)
         return tweetAuthor === sessionStorage.getItem('userLogin')
     }
+
+    this.createReply = (id) => {
+        let tweetData = {
+            "content": this.replyText,
+            "credentials": {
+                "password": sessionStorage.getItem('password'),
+                "userLogin": sessionStorage.getItem('userLogin')
+            }
+        }
+        $http.post('http://localhost:8090/tweets/' + id + '/reply', tweetData).then((result) => {
+            $state.reload();
+        })
+    }
+
+
 
 }])
