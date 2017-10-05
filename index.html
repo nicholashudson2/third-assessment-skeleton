@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Twitter</title>
+    <title>Squawker</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
@@ -31,10 +31,6 @@
     <script src="./js/header/headerController.js"></script>
     <script src="./js/header/headerComponent.js"></script>
 
-    <script src="./js/feed/feedService.js"></script>
-    <script src="./js/feed/feedController.js"></script>
-    <script src="./js/feed/feedComponent.js"></script>
-
     <script src="./js/register/registerService.js"></script>
     <script src="./js/register/registerController.js"></script>
     <script src="./js/register/registerComponent.js"></script>
@@ -43,9 +39,9 @@
     <script src="./js/signIn/signInController.js"></script>
     <script src="./js/signIn/signInComponent.js"></script>
 
-    <script src="./js/centerSection/centerSectionService.js"></script>
-    <script src="./js/centerSection/centerSectionController.js"></script>
-    <script src="./js/centerSection/centerSectionComponent.js"></script>
+    <script src="./js/mainPage/mainPageService.js"></script>
+    <script src="./js/mainPage/mainPageController.js"></script>
+    <script src="./js/mainPage/mainPageComponent.js"></script>
 
     <script src="./js/profile/profileService.js"></script>
     <script src="./js/profile/profileController.js"></script>
@@ -59,25 +55,128 @@
     <script src="./js/followingList/followingListController.js"></script>
     <script src="./js/followingList/followingListComponent.js"></script>
 
-    <script src="./js/followers/followersService.js"></script>
-    <script src="./js/followers/followersController.js"></script>
-    <script src="./js/followers/followersComponent.js"></script>
 
-    <script src="./js/following/followingService.js"></script>
-    <script src="./js/following/followingController.js"></script>
-    <script src="./js/following/followingComponent.js"></script>
+    <!--Artem Deleted feed, followers, following-->
+    <!--Artem-->
+    <script src="./js/hashtag/hashtagController.js"></script>
+    <script src="./js/hashtag/hashtagComponent.js"></script>
+    <!--Artem-->
+    <script src="./js/hashtagList/hashtagListComponent.js"></script>
+    <script src="./js/hashtagList/hashtagListService.js"></script>
+    <script src="./js/hashtagList/hashtagListController.js"></script>
 
     <script src="./js/tweet/tweetService.js"></script>
     <script src="./js/tweet/tweetComponent.js"></script>
     <script src="./js/tweet/tweetController.js"></script>
+
+
+    <script src="./js/tweetList/tweetListController.js"></script>
+    <script src="./js/tweetList/tweetListService.js"></script>
+    <script src="./js/tweetList/tweetListComponent.js"></script>
+
+
+    <!-- Added by Chris -->
+    <script src="./js/search/searchComponent.js"></script>
+    <script src="./js/search/searchController.js"></script>
+    <script src="./js/search/searchService.js"></script>
+
+    <!-- Added by Chris -->
+    <script src="./js/hashtagSearch/hashtagSearchComponent.js"></script>
+    <script src="./js/hashtagSearch/hashtagSearchController.js"></script>
+    <script src="./js/hashtagSearch/hashtagSearchService.js"></script>
+
+    <!-- Added by Chris -->
+    <script src="./js/usernameSearch/usernameSearchComponent.js"></script>
+    <script src="./js/usernameSearch/usernameSearchController.js"></script>
+    <script src="./js/usernameSearch/usernameSearchService.js"></script>
+
+    <!-- Added by Chris -->
+    <script src="./js/usernameList/usernameListComponent.js"></script>
+    <script src="./js/usernameList/usernameListController.js"></script>
+    <script src="./js/usernameList/usernameListService.js"></script>
+
+
+    <!-- Added by Chris -->
+    <script src="./js/user/userComponent.js"></script>
+    <script src="./js/user/userController.js"></script>
+    <script src="./js/user/userService.js"></script>
+
+
+
+    <!-- Added by Nick -->
+    <script src="./js/newTweet/newTweetService.js"></script>
+    <script src="./js/newTweet/newTweetComponent.js"></script>
+    <script src="./js/newTweet/newTweetController.js"></script>
+
+
+    <!-- Added by Chris -->
+    <script src="./js/publicProfile/publicProfileComponent.js"></script>
+    <script src="./js/publicProfile/publicProfileController.js"></script>
+    <script src="./js/publicProfile/publicProfileService.js"></script>
+
+    <!-- Added by Chris -->
+    <script src="./js/context/contextComponent.js"></script>
+    <script src="./js/context/contextController.js"></script>
+    <script src="./js/context/contextService.js"></script>
+
+    <!-- Added by Chris -->
+    <script src="./js/generalServices/isFollowingService.js"></script>
+    <script src="./js/generalServices/deleteUserService.js"></script>
+
+    <!-- Added by Nick : For testing only, please remove before presentation -->
+    <script src="./js/testDivComponent/testDivComponent.js"></script>
+
+    <!-- Added by Nick - Animation for header. -->
+    <style>
+        /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+
+        .header {
+            width: 100%;
+            height: 125px;
+            min-width: 500px;
+            min-height: 125px;
+            margin: 0;
+            padding: 0;
+            box-shadow: 2px 0px 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #007ced;
+            background: linear-gradient(to bottom, #007ced 1%, #cce7ff 100%);
+        }
+
+        #cloud-intro {
+            position: relative;
+            height: 100%;
+            background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
+            background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 200px,
+            url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 300px,
+            url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 250px;
+            animation: wind 20s linear infinite;
+        }
+
+        @keyframes wind {
+            0% {
+                background-position: 0 200px, 0 300px, 100px 250px;
+            }
+            100% {
+                background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 
 <body ng-app="twitterApp" class="container">
     <!-- TODO: HEADER -->
     <!-- <header-component class="navbar"></header-component> -->
+    <!-- <main-page-component></main-page-component> -->
     <!-- <center-section-component></center-section-component> -->
     <ui-view class="fullScreen"></ui-view>
+
     <!-- TODO: FOOTER -->
 </body>
 

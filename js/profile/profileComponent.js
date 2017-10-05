@@ -1,6 +1,9 @@
 angular.module('twitterApp').component('profileComponent', {
     templateUrl: './js/profile/profileTemplate.html',
-    controller: 'profileController'
+    controller: 'profileController',
+    bindings: {
+        resolvedUser: '='
+    }
 
     //TODO: Binding
 })

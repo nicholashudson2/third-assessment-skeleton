@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,7 +74,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("/{id}")
-	public TweetDto getTweetById(@RequestParam Integer id, HttpServletResponse response){
+	public TweetDto getTweetById(@PathVariable Integer id, HttpServletResponse response){
 		TweetDto tweetDto = tweetService.getTweetById(id);
 		if (tweetDto == null){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -82,8 +83,8 @@ public class TweetController {
 		return tweetDto;
 	}
 	
-	@DeleteMapping("/{id}")
-	public TweetDto deleteTweetById(@RequestParam Integer id, HttpServletResponse response){
+	@PostMapping("/{id}/delete")
+	public TweetDto deleteTweetById(@PathVariable Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
 		TweetDto tweetDto = tweetService.deleteTweetById(id);
 		if (tweetDto == null){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -94,7 +95,7 @@ public class TweetController {
 	
 	
 	@PostMapping("/{id}/like")
-	public void like(@RequestParam Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
+	public void like(@PathVariable Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
 		if (!clientController.validClient(credentials) || !tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return;
@@ -103,7 +104,7 @@ public class TweetController {
 	}
 	
 	@PostMapping("/{id}/reply")
-	public TweetDto replyTo(@RequestParam Integer id, @RequestBody SimpleTweetData tweetData, HttpServletResponse response){
+	public TweetDto replyTo(@PathVariable Integer id, @RequestBody SimpleTweetData tweetData, HttpServletResponse response){
 		if (!clientController.validClient(tweetData.getCredentials()) || !tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -116,7 +117,7 @@ public class TweetController {
 	}
 	
 	@PostMapping("/{id}/repost")
-	public TweetDto repost(@RequestParam Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
+	public TweetDto repost(@PathVariable Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
 		if (!clientController.validClient(credentials) || !tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -125,7 +126,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("{id}/tags")
-	public Set<HashtagDto> getTags(@RequestParam Integer id, HttpServletResponse response){
+	public Set<HashtagDto> getTags(@PathVariable Integer id, HttpServletResponse response){
 		if (!tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -135,7 +136,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("/{id}/likes")
-	public Set<ClientDto> getLikes(@RequestParam Integer id, HttpServletResponse response){
+	public Set<ClientDto> getLikes(@PathVariable Integer id, HttpServletResponse response){
 		if (!tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -154,7 +155,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("/{id}/replies")
-	public List<TweetDto> getReplies(@RequestParam Integer id, HttpServletResponse response){
+	public List<TweetDto> getReplies(@PathVariable Integer id, HttpServletResponse response){
 		if (!tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -164,7 +165,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("/{id}/reposts")
-	public List<TweetDto> getReposts(@RequestParam Integer id, HttpServletResponse response){
+	public List<TweetDto> getReposts(@PathVariable Integer id, HttpServletResponse response){
 		if (!tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -174,7 +175,7 @@ public class TweetController {
 	}
 	
 	@GetMapping("/{id}/mentions")
-	public List<ClientDto> getMentions(@RequestParam Integer id, HttpServletResponse response){
+	public List<ClientDto> getMentions(@PathVariable Integer id, HttpServletResponse response){
 		if (!tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;

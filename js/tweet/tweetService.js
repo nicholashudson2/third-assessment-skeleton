@@ -1,35 +1,37 @@
-angular.module('twitterApp').service('tweetService', ['$http', function (http) {
+angular.module('twitterApp').service('tweetService', ['$http', '$state', function ($http, $state) {
 
-    this.getAllTweets = () => {
-        return http.get('http://localhost:8090/tweets')
-    }
-
-    this.createNewTweet = (newTweet) => {
-        return http.post('http://localhost:8090/tweets', newTweet)
-    }
-
-    this.NumberOfLikes = (id) => {
-        let clientDtos = http.get('http://localhost:8090/tweets/{id}/likes')
-        return clientDtos.length
-    }
-
+    
+    
     this.like = (id) => {
         let credentials = {
             password: sessionStorage.getItem('password'),
             userLogin: sessionStorage.getItem('userLogin')
         }
-        http.post('http://localhost:8090/tweets/{id}/like', credentials)
+        $http.post('http://localhost:8090/tweets/'+id+'/like', credentials);
     }
-
-    this.followers = resolvedFollowers.data
     
-    this.getFollowers = (userName) => {
-        return $http.get('http://localhost:8090/users/@{' + userName + '}/followers')
+    this.repost = (id) => {
+        let credentials = {
+            password: sessionStorage.getItem('password'),
+            userLogin: sessionStorage.getItem('userLogin')
+        }
+        $http.post('http://localhost:8090/tweets/'+id+'/repost', credentials).then((result)=> {
+            if($state.is('main.allTweets')){
+                $state.reload();
+            }else{
+                $state.go('main.allTweets');
+            }
+        })
     }
 
-    this.following = resolvedFollowing.data
-    this.getFollowing = (userName) => {
-        return $http.get('http://localhost:8090/users/@{' + userName + '}/following')
+    this.deleteTweet = (id) => {
+        let credentials = {
+            password: sessionStorage.getItem('password'),
+            userLogin: sessionStorage.getItem('userLogin')
+        }
+        $http.post('http://localhost:8090/tweets/'+id+'/delete', credentials).then((result) => {
+            $state.reload();
+        })
     }
 
 }])

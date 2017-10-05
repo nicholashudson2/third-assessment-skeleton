@@ -5,11 +5,13 @@ import java.util.ArrayList;
 
 import com.cooksys.tweeter.entity.Client;
 import com.cooksys.tweeter.entity.Tweet;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class TweetDto {
 	
 	private Integer id;
 	
+	@JsonFormat(pattern="MM-dd-yy HH:mm")
 	private Timestamp posted;
 	
 	private String content;

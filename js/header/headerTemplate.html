@@ -1,28 +1,37 @@
-<nav class="navbar navbar-toggleable-lg navbar-light bg-faded fullscreen">
-    <div class="logo">
-        <a class="navbar-brand" href="#">
-            <img src="img/squawkerLogo.png" width="60" height="60" alt="">
-        </a>
-        <div class="squawker">
-            Squawker
-        </div>
-    </div>
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
-        </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="submit">Search</button>
-    </form>
-</nav>
-<div>
-    <form class="tweetForm">
-        <textarea class="form-control col-md-6 post" rows=3 placeholder="Create Post"></textarea>
-        <button class="btn btn-primary" type="submit">Post</button>
-    </form>
+<div id="cloud-intro">
+    <nav class="navbar navbar-toggleable-lg navbar-light navbar-static-top fullscreen header-column">
+        <ul class="navbar-nav navbar-brand mr-auto header-nav">
+            <div class="logo">
+                <a class="navbar-brand squawker" ui-sref="main.allTweets">
+                <img src="img/squawkerLogo.png" width="60" height="60" alt="">
+                <div class="squawker">
+                    Squawker
+                </div>
+            </a>
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="main.profile">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="signIn">Logout</a>
+            </li>
+            <li class="nav-item search-bar">
+                <!-- <div class="container-fluid"> -->
+                <!-- <div class="row">
+                        <div class="row-md-6"> -->
+                <form class="navbar-form navbar-left search-bar">
+                    <!-- Modified by Chris. -->
+                    <input type="text" class="form-control input-lg transparent-input" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString">
+                    <!-- Modified by Chris. -->
+                    <button class="btn btn-outline-primary" ng-click="$ctrl.searchService.activateSearch(document.getElementById('search-input').value)"
+                        ui-sref-active="active" type="submit">Search</button>
+                    <!-- ui-sref="search" -->
+                </form>
+                <!-- </div>
+                    </div> -->
+                <!-- </div> -->
+            </li>
+        </ul>
+
+    </nav>
 </div>
