@@ -2,7 +2,8 @@ angular.module('twitterApp').component('publicProfileComponent', {
     templateUrl: './js/publicProfile/publicProfileTemplate.html',
     controller: 'publicProfileController',
     bindings: {
-        resolvedUser: '='
+        resolvedUser: '=',
+        resolvedIsBeingFollowed: '='
     }
 
     //TODO: Binding
