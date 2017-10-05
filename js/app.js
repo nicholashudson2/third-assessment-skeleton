@@ -161,7 +161,35 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
+    //Artem
+    var repliesState = {
+        name: 'main.replies',
+        url: '/replies/{tweetId}',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
+                return tweetListService.getReplies($transition$.params().tweetId);
+            }] 
+        }
+    }
 
+    //Artem
+    var repostsState = {
+        name: 'main.reposts',
+        url: '/reposts/{tweetId}',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
+                console.log('here')
+                return tweetListService.getReposts($transition$.params().tweetId);
+            }] 
+        }
+    }
+
+
+
+    $stateProvider.state(repostsState);
+    $stateProvider.state(repliesState);
     $stateProvider.state(mentionsState);
     $stateProvider.state(allUsersState);
     $stateProvider.state(allTagsState);

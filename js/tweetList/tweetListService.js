@@ -25,5 +25,16 @@ angular.module('twitterApp').service('tweetListService', ['$http',  function ($h
             }
             return $http.get('http://localhost:8090/users/@' + username + '/mentions');
         }
+
+        this.getReplies = (tweetId) => {
+            return $http.get('http://localhost:8090/tweets/'+tweetId+'/replies');
+        }
+
+        this.getReposts = (tweetId) => {
+            return $http.get('http://localhost:8090/tweets/'+tweetId+'/reposts').then((rep)=> {
+            console.log(rep.data)
+            return rep
+            });
+        }
         
     }])
