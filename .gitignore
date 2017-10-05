@@ -67,4 +67,5 @@ pom.xml.next
 release.properties
 
 .recommenders/index/http___download_eclipse_org_recommenders_models_neon_/_2.frq
+.recommenders/index/http___download_eclipse_org_recommenders_models_neon_/write.lock
 *.recommenders
