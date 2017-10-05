@@ -221,6 +221,22 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
+    // Added by Nick. Needs tested.
+    var profileState = {
+        name: 'main.profile',
+        url: '/profile',
+        // url: '/publicProfile',
+        component: 'profileComponent',
+        resolve: {
+            resolvedUser: ['usernameSearchService', function (usernameSearchService) {
+                console.log("about to call user name search ")
+                let result = usernameSearchService.search(sessionStorage.getItem('userLogin'))
+                console.log('found user 2= ' + result)
+                return result
+            }]
+        }
+    }
+
 
 
     $stateProvider.state(createNewUserState);
@@ -235,5 +251,8 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(publicProfileState);
     $stateProvider.state(mentionsState);
 
+    // Added by Nick. Needs testing.
+    $stateProvider.state(profileState);
+    
 
 }]);
