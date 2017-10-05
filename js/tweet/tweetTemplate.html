@@ -19,13 +19,14 @@
         <div class="card-header">
             <div class="tweet-footer">
                 <div class="like">
-
-                    <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.likes[$ctrl.tweet.id]}}--></button>
+                    <span></span>
+                    <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"> {{ $ctrl.likes.length }}</span> &nbsp&nbsp<!--{{$ctrl.likes[$ctrl.tweet.id]}}--></button>
 
                 </div>
                 <div class="bttns">
                     <input type="text" ng-model="$ctrl.replyText">
                     <button class="btn btn-primary" role="button" ng-click="$ctrl.createReply($ctrl.tweet.id)">Reply</button>
+                    <!-- <button class="btn btn-primary" role="button" ng-click="$ctrl.currentUserFoundInLikes()">showlikes</button> -->
                     <button class="btn btn-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Repost</button>
                     <a ui-sref="main.context({ tweetId: $ctrl.tweet.id })">
                     <button  class="btn btn-primary" role="button" >Context</button>
