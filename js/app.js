@@ -26,7 +26,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
     }
-    
+
 //Artem
     var authenticationState = {
         name: 'authentication',
@@ -130,9 +130,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.getAllTweets().then((result)=> {
-                    return result;
-                })
+                return tweetListService.getAllTweets();
             }]
         }
     }
@@ -180,14 +178,24 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
-                console.log('here')
                 return tweetListService.getReposts($transition$.params().tweetId);
+            }] 
+        }
+    }
+//Artem
+    var bookmarksState = {
+        name: 'main.bookmarks',
+        url: '/bookmarks/@{username}',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
+                return tweetListService.getBookmarks($transition$.params().username);
             }] 
         }
     }
 
 
-
+    $stateProvider.state(bookmarksState);
     $stateProvider.state(repostsState);
     $stateProvider.state(repliesState);
     $stateProvider.state(mentionsState);
