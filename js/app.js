@@ -204,6 +204,12 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 let result = usernameSearchService.search($transition$.params().username)
                 console.log('found user 2= ' + result)
                 return result
+            }],
+            resolvedIsBeingFollowed: ['isFollowingService', '$transition$', function(isFollowingService, $transition$){
+                console.log('about to call the isFollowing')
+                let followingResult = isFollowingService.currentUserIsFollowing($transition$.params().username)
+                console.log('following result = ' + followingResult)
+                return followingResult
             }]
         }
     }
