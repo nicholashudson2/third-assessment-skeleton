@@ -85,11 +85,11 @@ public class TweetController {
 	
 	@PostMapping("/{id}/delete")
 	public TweetDto deleteTweetById(@PathVariable Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
-		TweetDto tweetDto = tweetService.deleteTweetById(id);
-		if (tweetDto == null){
+		if (!clientController.validClient(credentials) || !tweetService.tweetExists(id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
 		}
+		TweetDto tweetDto = tweetService.deleteTweetById(id);
 		return tweetDto;
 	}
 	
