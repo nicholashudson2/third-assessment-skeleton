@@ -1,12 +1,13 @@
-angular.module('twitterApp').service('usernameSearchService', ['$http', function($http){
+angular.module('twitterApp').service('usernameSearchService', ['$http', '$state', function($http, $state){
 
     this.search = (searchString) => {
-        if (searchString.charAt(0) == '@'){
+        if (searchString.charAt(0) === '@'){
             searchString = searchString.slice(1)
         }
-        console.log(searchString)
+        if(searchString===sessionStorage.getItem('userLogin')){
+            $state.go('main.profile');
+        }
         let result = $http.get('http://localhost:8090/users/@' + searchString)
-        console.log(result)
         return result
     }
     
