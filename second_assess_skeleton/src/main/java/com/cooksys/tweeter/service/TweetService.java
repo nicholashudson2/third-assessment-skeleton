@@ -302,6 +302,12 @@ public class TweetService {
 		}
 	}
 	
+	public boolean userOwnsTweet(String userName, Integer id){
+		Tweet tweet = tweetRepository.findById(id);
+		Client client = clientRepository.findByUserName(userName);
+		return tweet.getAuthor().getUserName().equals(client.getUserName());
+	}
+	
 	
 
 }
