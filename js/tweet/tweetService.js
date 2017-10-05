@@ -29,7 +29,7 @@ angular.module('twitterApp').service('tweetService', ['$http', '$state', functio
             password: sessionStorage.getItem('password'),
             userLogin: sessionStorage.getItem('userLogin')
         }
-        $http.delete('http://localhost:8090/tweets/'+id, credentials).then((result) => {
+        $http.post('http://localhost:8090/tweets/'+id+'/delete', credentials).then((result) => {
             $state.reload();
         })
     }
