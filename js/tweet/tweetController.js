@@ -1,11 +1,40 @@
-angular.module('twitterApp').controller('tweetController', ['tweetService', '$http', '$state', function (tweetService, $http, $state) {
+angular.module('twitterApp').controller('tweetController', ['tweetService', '$http', '$state', 'usernameSearchService', 
+    function (tweetService, $http, $state, usernameSearchService) {
 //Artem
   
     this.tweetService = tweetService;
+    
+    tweetService.getLikes(this.tweet.id).then( (result) => {
+        // console.dir(result)
+        this.likes = result.data
+    })
 
+    // modified by Chris
     this.like = (id) => {
         tweetService.like(id);
+        if (!currentUserFoundInLikes()){
+            $http.get('http://localhost:8090/users/@' + sessionStorage.getItem('userLogin')).then( (result) => {
+                this.likes.push(result.data)
+            })
+        }
     }
+    
+    // added by Chris
+    const currentUserFoundInLikes = () => {
+        for (like of this.likes){
+            if (like.credentials.userLogin == sessionStorage.getItem('userLogin')){
+                console.log(true)
+                return true;
+            }
+        }
+        console.log(false)
+        return false;
+    }
+
+    // this.currentUserFoundInLikes = () => {
+    //     // console.log(this.likes)
+    //     console.dir(this.likes)
+    // }
 
     this.repost = (id) => {
         tweetService.repost(id);

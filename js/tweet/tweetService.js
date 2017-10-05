@@ -1,6 +1,9 @@
 angular.module('twitterApp').service('tweetService', ['$http', '$state', function ($http, $state) {
 
 
+    this.getLikes = (id) => {
+        return $http.get('http://localhost:8090/tweets/' + id + '/likes')
+    }
 
     this.like = (id) => {
         let credentials = {
