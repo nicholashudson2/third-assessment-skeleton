@@ -1,10 +1,5 @@
-angular.module('twitterApp').controller('headerController', ['headerService','searchService', function(headerService, searchService){
-    this.headerService = headerService;
+angular.module('twitterApp').controller('headerController', ['searchService', function( searchService){
 
     this.searchService = searchService
 
-    this.logout = () => {
-        sessionStorage.clear();
-        return 'signin'
-    }
 }])

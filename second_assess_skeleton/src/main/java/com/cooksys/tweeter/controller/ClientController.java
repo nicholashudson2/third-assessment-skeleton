@@ -74,8 +74,9 @@ public class ClientController {
 		return clientService.findByUserName(userName);
 	}
 	
-	@PatchMapping("/@{userName}")
+	@PatchMapping
 	public ClientDto updateClientProfile(@RequestBody ClientData clientData, HttpServletResponse response){
+		System.out.println(clientData.toString());
 		if (!validClientData(clientData)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
