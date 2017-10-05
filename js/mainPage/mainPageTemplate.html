@@ -4,16 +4,16 @@
     </div>
     <div class="center-row-container">
         <div class="left-column-container">
-            <!-- <nav class="navbar navbar-toggleable-lg navbar-light navbar-brand navbar-fixed-top"> -->
-            <ul class="navbar navbar-light flex-column" role="tablist">
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".allUsers">All Users</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".tweets({username: ''})">My Tweets</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".feed({username: ''})">My Feed</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".mentions({username: ''})">My Mentions</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".allTweets">All Tweets</a></li>
-                <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".hashtags">All Hashtags</a></li>
-            </ul>
-            <!-- </nav> -->
+            <nav class="navbar navbar-toggleable-lg navbar-light navbar-brand navbar-fixed-top">
+                <ul class="navbar navbar-light flex-column" role="tablist">
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".feed({username: ''})">Feed</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".allUsers">Users</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".tweets({username: ''})">My Tweets</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".allTweets">All Tweets</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".mentions({username: ''})">Mentions</a></li>
+                    <li class="nav nav-item" ui-sref-active="active"><a class="nav-link" ui-sref=".hashtags">Hashtags</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="center-column-container">
             <!-- <div class="tweet-form">
@@ -32,8 +32,8 @@
             <ui-view></ui-view>
         </div>
         <div class="right-column-container">
-            <followers-list-component followers = "$ctrl.resolvedFollowers.data"></followers-list-component>
-            <following-list-component followings = "$ctrl.resolvedFollowing.data"></following-list-component>
+            <followers-list-component followers="$ctrl.resolvedFollowers.data"></followers-list-component>
+            <following-list-component followings="$ctrl.resolvedFollowing.data"></following-list-component>
         </div>
     </div>
 </div>

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Twitter</title>
+    <title>Squawker</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
@@ -121,10 +121,52 @@
 
     <!-- Added by Chris -->
     <script src="./js/generalServices/isFollowingService.js"></script>
+    <script src="./js/generalServices/deleteUserService.js"></script>
 
     <!-- Added by Nick : For testing only, please remove before presentation -->
     <script src="./js/testDivComponent/testDivComponent.js"></script>
 
+    <!-- Added by Nick - Animation for header. -->
+    <style>
+        /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+
+        .header {
+            width: 100%;
+            height: 125px;
+            min-width: 500px;
+            min-height: 125px;
+            margin: 0;
+            padding: 0;
+            box-shadow: 2px 0px 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #007ced;
+            background: linear-gradient(to bottom, #007ced 1%, #cce7ff 100%);
+        }
+
+        #cloud-intro {
+            position: relative;
+            height: 100%;
+            background: url(https://static.radulescu.me/examples/clouds/clouds1000.png);
+            background: url(https://static.radulescu.me/examples/clouds/clouds1000.png) 0 200px,
+            url(https://static.radulescu.me/examples/clouds/clouds1200_1.png) 0 300px,
+            url(https://static.radulescu.me/examples/clouds/clouds1000_blur3.png) 100px 250px;
+            animation: wind 20s linear infinite;
+        }
+
+        @keyframes wind {
+            0% {
+                background-position: 0 200px, 0 300px, 100px 250px;
+            }
+            100% {
+                background-position: 1000px 200px, 1200px 300px, 1100px 250px;
+            }
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 
