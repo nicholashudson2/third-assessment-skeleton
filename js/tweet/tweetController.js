@@ -11,13 +11,17 @@ angular.module('twitterApp').controller('tweetController', ['tweetService', '$ht
         tweetService.repost(id);
     }
 
-    this.likes=[];
+    // this.likes=[];
+// 
+    // this.getLikes = (id) => {
+    //     likes[id] = http.get('http://localhost:8090/tweets/'+id+'/likes').then((result) => {
+    //         console.log(result.data.length)
+    //         return result.data.length;
+    //     })
+    // }
 
-    this.getLikes = (id) => {
-        likes[id] = http.get('http://localhost:8090/tweets/'+id+'/likes').then((result) => {
-            console.log(result.data.length)
-            return result.data.length;
-        })
+    this.deleteTweet = (id) => {
+        tweetService.deleteTweet(id);
     }
 
     //tweetService.NumberOfLikes(this.tweet.id)   // Get number of likes on this tweet load, digest loop freeze on function call from template

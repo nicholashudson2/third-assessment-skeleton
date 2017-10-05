@@ -1,9 +1,17 @@
 <div class="card bg-light mb-3 tweet">
     <div class="card-block">
-        <div class="card-header">Posted on: {{$ctrl.tweet.posted}}
-            <a ui-serf=".showReposts">reposts</a>
-            <a ui-sref=".showReplies">replies</a>
+        <div class="card-header">
+            <div class="header-buttons">
+                <div class="bttns">
+                    <a ui-sref="main.reposts({tweetId: $ctrl.tweet.id})"><button  class="btn btn-primary" role="button" >Reposts</button></a>
+                    <a ui-sref="main.replies({tweetId: $ctrl.tweet.id})"><button  class="btn btn-primary" role="button" >Replies</button></a>
+                </div>
+                <button  class="btn btn-primary" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)">X</button>
+
+            </div>
+            <div> Posted on: {{$ctrl.tweet.posted}}</div>
         </div>
+
         <div class="card-body">
             <h4 class="card-title"> <a ui-sref="main.publicProfile({ username: $ctrl.tweet.userName })">{{$ctrl.tweet.userName}}</a></h4>
             <p class="card-text">{{$ctrl.tweet.content}}</p>
@@ -14,14 +22,14 @@
 
                     <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.likes[$ctrl.tweet.id]}}--></button>
 
-            </div>
-            <div class="bttns">
-                <button  class="btn btn-primary" role="button">Reply</button>
-                <button  class="btn btn-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Repost</button>
-                <a ui-sref="main.context({ tweetId: $ctrl.tweet.id })">
+                </div>
+                <div class="bttns">
+                    <button class="btn btn-primary" role="button">Reply</button>
+                    <button class="btn btn-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Repost</button>
+                    <a ui-sref="main.context({ tweetId: $ctrl.tweet.id })">
                     <button  class="btn btn-primary" role="button" >Context</button>
                 </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
