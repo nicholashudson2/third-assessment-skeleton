@@ -1,6 +1,5 @@
 package com.cooksys.tweeter.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -43,7 +42,7 @@ public class HashtagController {
 	@GetMapping("/{label}")
 	public List<TweetDto> findTweetsByHashtags(@PathVariable String label, HttpServletResponse response){
 		if (!validHashtag(label)){
-			response.setStatus(HttpServletResponse.SC_NOT_FOUND );
+			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
 		}
 		return tweetService.findByHashtags(label);
