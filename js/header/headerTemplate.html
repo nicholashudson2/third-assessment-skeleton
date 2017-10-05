@@ -16,20 +16,13 @@
                 <a class="nav-link" ui-sref-active="active" ui-sref="signIn">Logout {{$ctrl.getUsername()}}</a>
             </li>
             <li class="nav-item search-bar">
-                <!-- <div class="container-fluid"> -->
-                <!-- <div class="row">
-                        <div class="row-md-6"> -->
                 <form class="navbar-form navbar-left search-bar">
                     <!-- Modified by Chris. -->
-                    <input type="text" class="form-control input-lg transparent-input" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString">
+                    <input type="text" class="form-control input-lg transparent-input" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString" maxlength="30">
                     <!-- Modified by Chris. -->
                     <button class="btn btn-outline-primary" ng-click="$ctrl.searchService.activateSearch(document.getElementById('search-input').value)"
                         ui-sref-active="active" type="submit">Search</button>
-                    <!-- ui-sref="search" -->
                 </form>
-                <!-- </div>
-                    </div> -->
-                <!-- </div> -->
             </li>
         </ul>
 
