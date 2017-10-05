@@ -7,4 +7,8 @@ angular.module('twitterApp').controller('headerController', ['headerService','se
         sessionStorage.clear();
         return 'signin'
     }
+
+    this.getUsername = () => {
+        return sessionStorage.getItem('userLogin')
+    }
 }])
