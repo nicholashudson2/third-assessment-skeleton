@@ -28,7 +28,11 @@ angular.module('twitterApp').service('searchService', ['tweetService', '$state',
             }
             if (this.searchString.charAt(0) == '@') {  // Updated by chris
                 console.log('username search = ' + this.searchString)
-                $state.go('main.publicProfile', { username: this.searchString })
+                if (this.searchString.slice(1) === sessionStorage.getItem('userLogin')){
+                    $state.go('main.profile', { username: this.searchString } )
+                } else {
+                    $state.go('main.publicProfile', { username: this.searchString })
+                }
             }
         }
     }
