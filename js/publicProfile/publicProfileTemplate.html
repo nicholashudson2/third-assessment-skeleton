@@ -1,11 +1,42 @@
-<div class="profile">
-    <form class="profile-form" method="post" action="#">
+<div class="public-profile">
+
+    <div class="card bg-light mb-3 profile-card card">
+        <div class="card-block">
+            <div class="card-header">About {{$ctrl.user.userName}}</div>
+            <div class="card-body">
+                Name:
+                <h5 class="card-title">{{$ctrl.user.profile.firstName}} {{$ctrl.user.profile.lastName}}</h5>
+                Member Since:
+                <h5 class="card-title">{{$ctrl.user.joined?($ctrl.user.joined | date:'mediumDate'):"Unknown"}}</h5>
+                Phone:
+                <h5 class="card-title">{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown"}}</h5>
+                Email:
+                <h5 class="card-title">{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown"}}</h5>
+
+            </div>
+            <div class="card-header">
+                <div class="card-footer">
+                    <div class="bttns">
+                        <button class="btn btn-block btn-primary" ng-style="{{$ctrl}}" role="button">Follow {{$ctrl.user.userName}}!</button>
+                        <div class="profile-lower-buttons">
+                            <button class="btn btn-outline-primary" role="button">{{$ctrl.user.userName}}'s Tweets</button>
+                            <button class="btn btn-outline-primary" role="button">{{$ctrl.user.userName}}'s Feed</button>
+                            <button class="btn btn-outline-danger" role="button">Unfollow {{$ctrl.user.userName}}</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <form class="profile-form" method="post" action="#">
         <div class="form-group">
-            <label for="firstName" class="sr-only">First Name</label>
+            <label for="firstName" class="sr-only">About Me!</label>
             <div class="cols-sm-10">
                 <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span> First Name:
-                    {{$ctrl.user.profile.firstName}}
+                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                    {{$ctrl.user.profile.firstName}} {{$ctrl.user.profile.lastName}}
                 </div>
             </div>
         </div>
@@ -36,6 +67,7 @@
                 </div>
             </div>
         </div>
+        is Being Followed by current user: {{$ctrl.isBeingFollowed}}
         <div class="form-group">
             <label for="username" class="sr-only">Username</label>
             <div class="cols-sm-10">
@@ -45,5 +77,5 @@
                 </div>
             </div>
         </div>
-    </form>
-</div>
+    </form> -->
+    </div>

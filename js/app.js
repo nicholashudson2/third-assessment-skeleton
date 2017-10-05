@@ -149,7 +149,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         }
     }
 
-
     //Artem
     var mentionsState = {
         name: 'main.mentions',
@@ -183,6 +182,30 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 let result = usernameSearchService.search($transition$.params().username)
                 console.log('found user 2= ' + result)
                 return result
+            }],
+            resolvedIsBeingFollowed: ['isFollowingService', '$transition$', function(isFollowingService, $transition$){
+                console.log('about to call the isFollowing')
+                let followingResult = isFollowingService.currentUserIsFollowing($transition$.params().username)
+                console.log('following result = ' + followingResult)
+                return followingResult
+            }]
+        }
+    }
+
+    // Added by Nick. Needs tested.
+    var profileState = {
+        name: 'main.profile',
+        url: '/profile',
+        // url: '/publicProfile',
+        component: 'profileComponent',
+        resolve: {
+            resolvedUser: ['usernameSearchService', function (usernameSearchService) {
+                console.log("about to call user name search ")
+                return usernameSearchService.search(sessionStorage.getItem('userLogin'))
+                // .then((resolved) => {
+                //     console.log(resolved.data)
+                //     return resolved
+                // })
             }]
         }
     }
@@ -199,5 +222,8 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(publicProfileState);
 
+    // Added by Nick. Needs testing.
+    $stateProvider.state(profileState);
+    
 
 }]);

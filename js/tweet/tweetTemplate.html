@@ -5,7 +5,7 @@
             <a ui-sref=".showReplies">replies</a>
         </div>
         <div class="card-body">
-            <h4 class="card-title">{{$ctrl.tweet.userName}}</h4>
+            <h4 class="card-title"> <a ui-sref="main.publicProfile({ username: $ctrl.tweet.userName })">{{$ctrl.tweet.userName}}</a></h4>
             <p class="card-text">{{$ctrl.tweet.content}}</p>
         </div>
         <div class="card-header">

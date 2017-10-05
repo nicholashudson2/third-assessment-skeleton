@@ -160,7 +160,15 @@ public class ClientController {
 		}
 		return clientService.getFollowing(userName);
 	}
-
+	
+	@GetMapping("/{follower}/is_following/{beingFollowed}")
+	public boolean isFollowing(@PathVariable String follower, @PathVariable String beingFollowed, HttpServletResponse response){
+		if (!validClient(follower) || !validClient(beingFollowed)){
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			return false;
+		}
+		return clientService.isFollowing(follower, beingFollowed);
+	}
 	
 	private boolean validClient(ClientData clientData){
 		String userName = clientData.getUserName();

@@ -1,55 +1,69 @@
 <div class="profile">
-    <form class="profile-form" method="post" action="#">
-        <div class="form-group">
-            <label for="firstName" class="sr-only">First Name</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name: {{$ctrl.profile.firstName}}"
-                    />
-                </div>
+
+    <div class="card bg-light mb-3 profile-card card">
+        <div class="card-block">
+            <div class="card-body">
+                Name:
+                <h5 class="card-title">{{$ctrl.user.profile.firstName}} {{$ctrl.user.profile.lastName}}</h5>
+                Member Since:
+                <h5 class="card-title">{{$ctrl.user.joined?($ctrl.user.joined | date:'mediumDate'):"Unknown"}}</h5>
+                Phone:
+                <h5 class="card-title">{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown"}}</h5>
+                Email:
+                <h5 class="card-title">{{$ctrl.user.profile.email}}</h5>
             </div>
         </div>
-        <div class="form-group">
-            <label for="lastName" class="sr-only">Last Name</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.profile.lastName}}"
-                    />
+        <form class="profile-form" method="post" action="#">
+            <div class="form-group">
+                <label for="firstName" class="sr-only">First Name</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name: {{$ctrl.user.profile.firstName}}" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="email" class="sr-only">Email</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="Email: {{$ctrl.profile.email}}" />
+            <div class="form-group">
+                <label for="lastName" class="sr-only">Last Name</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.user.profile.lastName}}" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="phone" class="sr-only">Phone</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: {{$ctrl.profile.phone}}" />
+            <div class="form-group">
+                <label for="email" class="sr-only">Email</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email: {{$ctrl.user.profile.email}}" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="username" class="sr-only">Username</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
-                    <input type="text" class="form-control" name="username" id="username" placeholder="Username: {{$ctrl.profile.username}}"
-                    />
+            <div class="form-group">
+                <label for="phone" class="sr-only">Phone</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: {{$ctrl.user.profile.email}}" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group ">
-            <a href="" target="_blank" type="button" id="updateButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                <label for="username" class="sr-only">Username</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Username: {{$ctrl.user.userName}}" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <a href="" target="updateProfile" type="button" id="updateButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
+            </div>
+            <div class="form-group">
+                <a href="" target="updateProfile" type="button" id="updateButton" class="btn btn-danger btn-lg login-button btn-block">Delete User</a>
+            </div>
+        </form>
+    </div>

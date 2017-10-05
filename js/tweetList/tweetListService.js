@@ -25,5 +25,5 @@ angular.module('twitterApp').service('tweetListService', ['$http',  function ($h
             }
             return $http.get('http://localhost:8090/users/@' + username + '/mentions');
         }
-    
+        
     }])
