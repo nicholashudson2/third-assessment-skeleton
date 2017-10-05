@@ -17,8 +17,8 @@
             <div class="card-header">
                 <div class="card-footer">
                     <div class="bttns">
-                        <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'visibility':'hidden'} }}" role="button">Follow {{$ctrl.user.userName}}!</button>
-                        <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'visibility':'hidden'} }}" role="button">Unfollow {{$ctrl.user.userName}}</button>
+                        <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" role="button">Follow {{$ctrl.user.userName}}!</button>
+                        <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" role="button">Unfollow {{$ctrl.user.userName}}</button>
                         <div class="profile-lower-buttons">
                             <button class="btn btn-outline-primary" role="button" ui-sref="main.tweets({username: $ctrl.user.userName})">This User's Squawks</button>
                             <button class="btn btn-outline-primary" role="button" ui-sref="main.feed({username: $ctrl.user.userName})">This User's Feed</button>
