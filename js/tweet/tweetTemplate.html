@@ -10,7 +10,8 @@
                     <li><a ui-sref="main.reposts({tweetId: $ctrl.tweet.id})"><button  class="btn btn-block btn-outline-primary" role="button" >Reposts</button></a></li>
                     <li><a ui-sref="main.replies({tweetId: $ctrl.tweet.id})"><button  class="btn btn-block btn-outline-primary" role="button" >Replies</button></a></li>
                     <li><a ui-sref="main.context({ tweetId: $ctrl.tweet.id })"><button class="btn btn-block btn-outline-primary" role="button" >Context</button></a></li>
-                    <li><button class="btn btn-block btn-outline-danger" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)" ng-style="{'visibility': $ctrl.ownTweet($ctrl.tweet.userName) ? 'visible' : 'hidden'}">Delete</button></li>
+                    <li><button class="btn btn-block btn-outline-danger" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)"
+                            ng-style="{'visibility': $ctrl.ownTweet($ctrl.tweet.userName) ? 'visible' : 'hidden'}">Delete</button></li>
                 </ul>
             </div>
         </div>
@@ -20,12 +21,17 @@
         <p class="card-text">{{$ctrl.tweet.content}}</p>
     </div>
     <div class="card-header">
+        <form class="navbar-form navbar-left reply-bar">
+            <input type="text" class="form-control input-block transparent-input" id="reply-input" maxlength="52" placeholder="Squawk Reply">
+            <button class="btn btn-block btn-outline-primary">Reply</button>
+        </form>
+    </div>
+    <div class="card-header">
         <div class="tweet-footer">
             <div class="like">
                 <button class="btn btn-outline-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.likes[$ctrl.tweet.id]}}--></button>
             </div>
             <div class="bttns">
-                <button class="btn btn-outline-primary" role="button">Reply</button>
                 <button class="btn btn-outline-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Repost</button>
             </div>
         </div>
