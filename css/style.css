@@ -60,7 +60,7 @@ main-page-container {
     display: flex;
     width: 100%;
     padding: 10px;
-    height: 150px;
+    height: 125px;
     top: 0;
     margin: 0;
     /* overflow: hidden; */
@@ -145,10 +145,10 @@ main-page-container {
     flex-direction: row;
     flex-shrink: 0;
     width: 100%;
-    height: 60%;
+    height: 75%;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 125px;
 }
 
 .left-column-container {
@@ -159,7 +159,7 @@ main-page-container {
     width: 160px;
     position: fixed;
     left: 0;
-    top: 150px;
+    top: 125px;
     flex: 1 1 0;
 }
 
@@ -178,7 +178,7 @@ main-page-container {
     width: 300px;
     position: fixed;
     right: 0px;
-    top: 150px;
+    top: 125px;
     margin: 0;
     justify-content: center;
     align-items: center;
