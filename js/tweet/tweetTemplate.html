@@ -1,35 +1,33 @@
 <div class="card bg-light mb-3 tweet">
     <div class="card-block">
-        <div class="card-header">
-            <div class="header-buttons">
-                <div class="bttns">
-                    <a ui-sref="main.reposts({tweetId: $ctrl.tweet.id})"><button  class="btn btn-primary" role="button" >Reposts</button></a>
-                    <a ui-sref="main.replies({tweetId: $ctrl.tweet.id})"><button  class="btn btn-primary" role="button" >Replies</button></a>
-                </div>
-                <button  class="btn btn-primary" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)">X</button>
-
+        <div class="card-header tweet-header">
+            <h3 class="card-title"> <a ui-sref="main.publicProfile({ username: $ctrl.tweet.userName })">@{{$ctrl.tweet.userName}}</a></h3>
+            <div class="dropdown tweet-dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a ui-sref="main.reposts({tweetId: $ctrl.tweet.id})"><button  class="btn btn-block btn-outline-primary" role="button" >Reposts</button></a></li>
+                    <li><a ui-sref="main.replies({tweetId: $ctrl.tweet.id})"><button  class="btn btn-block btn-outline-primary" role="button" >Replies</button></a></li>
+                    <li><a ui-sref="main.context({ tweetId: $ctrl.tweet.id })"><button class="btn btn-block btn-outline-primary" role="button" >Context</button></a></li>
+                    <li><button class="btn btn-block btn-outline-danger" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)">Delete</button></li>
+                </ul>
             </div>
-            <div> Posted on: {{$ctrl.tweet.posted}}</div>
         </div>
-
-        <div class="card-body">
-            <h4 class="card-title"> <a ui-sref="main.publicProfile({ username: $ctrl.tweet.userName })">@{{$ctrl.tweet.userName}}</a></h4>
-            <p class="card-text">{{$ctrl.tweet.content}}</p>
-        </div>
-        <div class="card-header">
-            <div class="tweet-footer">
-                <div class="like">
-
-                    <button class="btn btn-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.likes[$ctrl.tweet.id]}}--></button>
-
-                </div>
-                <div class="bttns">
-                    <button class="btn btn-primary" role="button">Reply</button>
-                    <button class="btn btn-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Repost</button>
-                    <a ui-sref="main.context({ tweetId: $ctrl.tweet.id })">
-                    <button  class="btn btn-primary" role="button" >Context</button>
-                </a>
-                </div>
+        <div> Posted on: {{$ctrl.tweet.posted}}</div>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{$ctrl.tweet.content}}</p>
+    </div>
+    <div class="card-header">
+        <div class="tweet-footer">
+            <div class="like">
+                <button class="btn btn-outline-primary" role="button" ng-click="$ctrl.like($ctrl.tweet.id)"><span class="fa fa-heart"></span> &nbsp&nbsp<!--{{$ctrl.likes[$ctrl.tweet.id]}}--></button>
+            </div>
+            <div class="bttns">
+                <button class="btn btn-outline-primary" role="button">Reply</button>
+                <button class="btn btn-outline-primary" role="button" ng-click="$ctrl.repost($ctrl.tweet.id)">Repost</button>
             </div>
         </div>
     </div>
+</div>
