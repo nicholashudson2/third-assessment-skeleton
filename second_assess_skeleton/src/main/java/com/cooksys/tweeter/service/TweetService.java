@@ -85,7 +85,7 @@ public class TweetService {
 		tweet.setAuthor(author);
 		tweet.setUserName(author.getUserName());
 //		author.getTweets().add(tweet);
-		return tweetMapper.toDto(tweetRepository.save(tweet));
+		return tweetMapper.toDto(tweetRepository.saveAndFlush(tweet));
 	}
 
 	public List<TweetDto> findByHashtags(String hashtagName) {

@@ -60,7 +60,7 @@ main-page-container {
     display: flex;
     width: 100%;
     padding: 10px;
-    height: 150px;
+    height: 125px;
     top: 0;
     margin: 0;
     /* overflow: hidden; */
@@ -145,10 +145,10 @@ main-page-container {
     flex-direction: row;
     flex-shrink: 0;
     width: 100%;
-    height: 60%;
+    height: 75%;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 125px;
 }
 
 .left-column-container {
@@ -159,7 +159,7 @@ main-page-container {
     width: 160px;
     position: fixed;
     left: 0;
-    top: 150px;
+    top: 125px;
     flex: 1 1 0;
 }
 
@@ -178,7 +178,7 @@ main-page-container {
     width: 300px;
     position: fixed;
     right: 0px;
-    top: 150px;
+    top: 125px;
     margin: 0;
     justify-content: center;
     align-items: center;
@@ -325,6 +325,23 @@ a:link {
     line-height: 1.8em;
 }
 
+.profile-card {
+    height: 100%;
+    width: 100%;
+}
+
+.profile-lower-buttons {
+    width: 100%;
+    display: flex;
+    overflow-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-lower-buttons > .btn {
+    flex: 1 1 auto;
+}
+
 @media only screen and (max-width: 1050px) {
     .right-column-container {
         display: none;
@@ -357,20 +374,11 @@ a:link {
 
     .header {
         height: 0vh;
-    }
-
-    .header-nav > .nav-item {
-        position: relative;
-        top: 80px;
-    }
-
-    .center-row-container {
-        padding-top: 16vh;
+        position: inherit;
     }
 
     .logo {
-        padding-bottom: 30px;
-        position: fixed;
+        padding-bottom: 10px;
         top: 0px;
     }
 
@@ -378,5 +386,8 @@ a:link {
         display: none;
     }
 
+    .center-row-container {
+        height: 80%;
+    }
     
 }
