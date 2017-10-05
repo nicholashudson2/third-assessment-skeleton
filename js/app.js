@@ -21,12 +21,10 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             resolvedFollowers: ['usernameListService', function (usernameListService) {
                 return usernameListService.getFollowers();
             }],
-
             resolvedFollowing: ['usernameListService', function (usernameListService) {
                 return usernameListService.getFollowing();
             }]
         }
-
     }
 //Artem
 
@@ -82,14 +80,14 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
     //Created and Modified By Artem
-
     var feedState = {
         name: 'main.feed',
-        url: '/feed',//'users/@{username}/feed',
+        url: '/feed/@{username}',
         component: 'tweetListComponent',
         resolve: {
-            resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.getFeed(/*$transition$.params().username*/);
+            resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
+                console.log($transition$.params().username)
+                return tweetListService.getFeed($transition$.params().username);
             }]
         }
     }
@@ -97,12 +95,10 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     // Modified by Chris
     var contextState = {
         name: 'main.context',
-        // url: 'context/',
         url: '/context/{tweetId}',
         component: 'contextComponent',
         resolve: {
             resolvedContext: ['contextService', '$transition$', function (contextService, $transition$) {
-                // return contextService.getContext($transition$.params().id)
                 let result = contextService.getContext($transition$.params().tweetId)
 
                 return result
@@ -118,76 +114,59 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         resolve: {
             resolvedTweetsList: ['hashtagSearchService', 'searchService', '$transition$', '$state', '$stateParams',
                 function (hashtagSearchService, searchService, $transition$, $state, $stateParams) {
-                    console.log("made it to hashtag search resolve")
-                    console.log("transtions = " + $transition$.params().label)
-                    console.log("stateparams = " + $stateParams.label)
                     let label = $stateParams.label
                     if (!label) {
                         label = $transition$.params().label
                     }
                     return hashtagSearchService.search(label)
-                    // return hashtagSearchService.search(searchService.searchString)
                 }]
         }
     }
 
     //Artem
-    var allTweetsState = {
+    var allTweetsState = { 
         name: 'main.allTweets',
         url: '/allTweets',
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.getAllTweets()
+                return tweetListService.getAllTweets().then((result)=> {
+                    return result;
+                })
             }]
         }
     }
 
     //Artem
-    var myTweetsState = {
-        name: 'main.myTweets',
-        url: '/myTweets',
+    var userTweetsState = {
+        name: 'main.tweets',
+        url: '/tweets/@{username}',
         component: 'tweetListComponent',
         resolve: {
-            resolvedTweetsList: ['tweetListService', function(tweetListService){
-                return tweetListService.getMyTweets();
+            resolvedTweetsList: ['tweetListService', '$transition$', function(tweetListService, $transition$){
+                return tweetListService.getMyTweets($transition$.params().username);
             }]
         }
     }
 
     //Artem
-
-    var postNewTweetState = {
-        name: 'postNewTweet',
-        url: '/postNewTweet',
-        redirectTo: (transition) => {
-            let svc = transition.injector().get('newTweetService');
-            return svc.postNewTweet().then((result) => {
-                return 'main.allTweets';
-            });
-
-        }
-    }
-
-    //Artem
-    var myMentionsState = {
-        name: 'main.myMentions',
-        url: '/myMentions',
+    var mentionsState = {
+        name: 'main.mentions',
+        url: '/mentions/@{username}',
         component: 'tweetListComponent',
         resolve: {
-            resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.getMyMentions();
+            resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
+                return tweetListService.getMyMentions($transition$.params().username);
             }]
         }
     }
 
 
-    $stateProvider.state(myMentionsState);
+    $stateProvider.state(mentionsState);
     $stateProvider.state(allUsersState);
     $stateProvider.state(allTagsState);
     $stateProvider.state(mainPageState);
-    $stateProvider.state(postNewTweetState);
-    $stateProvider.state(myTweetsState);
+    $stateProvider.state(userTweetsState);
     $stateProvider.state(allTweetsState);
 
 
@@ -196,7 +175,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     var publicProfileState = {
         name: 'main.publicProfile',
         url: '/publicProfile/{username}',
-        // url: '/publicProfile',
         component: 'publicProfileComponent',
         resolve: {
             resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
@@ -204,6 +182,12 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
                 let result = usernameSearchService.search($transition$.params().username)
                 console.log('found user 2= ' + result)
                 return result
+            }],
+            resolvedIsBeingFollowed: ['isFollowingService', '$transition$', function(isFollowingService, $transition$){
+                console.log('about to call the isFollowing')
+                let followingResult = isFollowingService.currentUserIsFollowing($transition$.params().username)
+                console.log('following result = ' + followingResult)
+                return followingResult
             }]
         }
     }
@@ -217,13 +201,14 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         resolve: {
             resolvedUser: ['usernameSearchService', function (usernameSearchService) {
                 console.log("about to call user name search ")
-                let result = usernameSearchService.search(sessionStorage.getItem('userLogin'))
-                console.log('found user 2= ' + result)
-                return result
+                return usernameSearchService.search(sessionStorage.getItem('userLogin'))
+                // .then((resolved) => {
+                //     console.log(resolved.data)
+                //     return resolved
+                // })
             }]
         }
     }
-
 
 
     $stateProvider.state(createNewUserState);
@@ -236,7 +221,6 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     // Added by Chris. Needs testing. Needs to be converted to a nested state
     $stateProvider.state(hashtagSearchState);
     $stateProvider.state(publicProfileState);
-    // $stateProvider.state(mentionsState);
 
     // Added by Nick. Needs testing.
     $stateProvider.state(profileState);

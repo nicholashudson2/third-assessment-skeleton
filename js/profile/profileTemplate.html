@@ -10,7 +10,7 @@
                 Phone:
                 <h5 class="card-title">{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown"}}</h5>
                 Email:
-                <h5 class="card-title">{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown"}}</h5>
+                <h5 class="card-title">{{$ctrl.user.profile.email}}</h5>
             </div>
         </div>
         <form class="profile-form" method="post" action="#">
@@ -37,6 +37,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+
                         <input type="text" class="form-control" name="email" id="email" placeholder="Email: ""{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown"}}" />
                     </div>
                 </div>
