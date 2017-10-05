@@ -23,12 +23,16 @@ angular.module('twitterApp').service('searchService', ['tweetService', '$state',
             console.log("Bad/empty string input")
         } else {
             if (this.searchString.charAt(0) == '#') {
-                console.log('at = ' + this.searchString)
+                // console.log('hashtag search = ' + this.searchString)
                 $state.go('main.hashtagSearch', { label: this.searchString })              //10/3 Artem updated
             }
             if (this.searchString.charAt(0) == '@') {  // Updated by chris
-                console.log('at = ' + this.searchString)
-                $state.go('main.publicProfile', { username: this.searchString })
+                // console.log('username search = ' + this.searchString)
+                if (this.searchString.slice(1) === sessionStorage.getItem('userLogin')){
+                    $state.go('main.profile', { username: this.searchString } )
+                } else {
+                    $state.go('main.publicProfile', { username: this.searchString })
+                }
             }
         }
     }
