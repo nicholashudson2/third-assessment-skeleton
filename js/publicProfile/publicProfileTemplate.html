@@ -17,70 +17,15 @@
             <div class="card-header">
                 <div class="card-footer">
                     <div class="bttns">
-                        <button class="btn btn-block btn-primary" ng-style="{{$ctrl}}" role="button">Follow {{$ctrl.user.userName}}!</button>
+                        <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" role="button">Follow {{$ctrl.user.userName}}!</button>
+                        <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" role="button">Unfollow {{$ctrl.user.userName}}</button>
                         <div class="profile-lower-buttons">
-
-                            <button class="btn btn-outline-primary" role="button" ui-sref="main.tweets({username: $ctrl.user.userName})">This User's Tweets</button>
-                            <button class="btn btn-outline-primary" role="button" ui-sref="main.feed({username: $ctrl.user.userName})">This User's  Feed</button>
-                            <button class="btn btn-outline-primary" role="button" ui-sref="main.mentions({username: $ctrl.user.userName})">This User's  Mentions</button>
-                            <button class="btn btn-outline-danger" role="button">Unfollow This User</button>
-                            
-
-
+                            <button class="btn btn-outline-primary" role="button" ui-sref="main.tweets({username: $ctrl.user.userName})">This User's Squawks</button>
+                            <button class="btn btn-outline-primary" role="button" ui-sref="main.feed({username: $ctrl.user.userName})">This User's Feed</button>
+                            <button class="btn btn-outline-primary" role="button">This User's  Mentions</button>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <!-- <form class="profile-form" method="post" action="#">
-        <div class="form-group">
-            <label for="firstName" class="sr-only">About Me!</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                    {{$ctrl.user.profile.firstName}} {{$ctrl.user.profile.lastName}}
                 </div>
             </div>
         </div>
-        <div class="form-group">
-            <label for="lastName" class="sr-only">Last Name</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span> 
-                    Last Name: {{$ctrl.user.profile.lastName}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="email" class="sr-only">Email</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-                     Email: {{$ctrl.user.profile.email}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="phone" class="sr-only">Phone</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span> 
-                    Phone Number: {{$ctrl.user.profile.phone}}
-                </div>
-            </div>
-        </div>
-        is Being Followed by current user: {{$ctrl.isBeingFollowed}}
-        <div class="form-group">
-            <label for="username" class="sr-only">Username</label>
-            <div class="cols-sm-10">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
-                    Username: {{$ctrl.user.userName}}
-                </div>
-            </div>
-        </div>
-    </form> -->
     </div>
