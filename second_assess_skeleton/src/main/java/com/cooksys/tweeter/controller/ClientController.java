@@ -143,6 +143,15 @@ public class ClientController {
 		return clientService.getMentions(username);
 	}
 	
+	@GetMapping("@{username}/liked")
+	public Set<TweetDto> getLikedTweets(@PathVariable String username, HttpServletResponse response){
+		if (!clientService.userNameExists(username)){
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		return clientService.getLikedTweets(username);
+	}
+	
 	@GetMapping("/@{userName}/followers")
 	public Set<ClientDto> getFollowers(@PathVariable String userName, HttpServletResponse response){
 		if (!clientService.userNameExists(userName)){

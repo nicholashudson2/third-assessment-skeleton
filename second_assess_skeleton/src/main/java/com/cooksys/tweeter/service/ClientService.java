@@ -197,5 +197,11 @@ public class ClientService {
 	    	clientRepository.findByUserNameAndFollowersCredentials(beingFollowedClient.getUserName(), followerCient.getCredentials())==null &&
 	    	followerCient!=beingFollowedClient;
 	}
+
+	public Set<TweetDto> getLikedTweets(String username) {
+		Client client = clientRepository.findByUserNameAndDeleted(username, false);
+		Set<Tweet> tweets = client.getLikes();
+ 		return tweetMapper.toDtos(tweets);
+	}
 	
 }

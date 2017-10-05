@@ -15,6 +15,8 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
 
 	Client findByUserName(String userName);
 	
+	Client findByUserNameAndDeleted(String userName, boolean deleted);
+	
 	Set<Client> findByFollowersAndDeleted(Client client, boolean deleted);
 
 	Set<Client> findByFollowingAndDeleted(Client client, boolean deleted);
