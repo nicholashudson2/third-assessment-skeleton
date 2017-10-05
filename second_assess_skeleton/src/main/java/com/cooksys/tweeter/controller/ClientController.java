@@ -89,7 +89,7 @@ public class ClientController {
 		return clientService.updateClient(clientData);
 	}
 	
-	@DeleteMapping("/@{userName}")
+	@PostMapping("/delete/@{userName}")
 	public ClientDto deleteClient(@RequestBody Credentials credentials, HttpServletResponse response){
 		if (!validClient(credentials)){
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);

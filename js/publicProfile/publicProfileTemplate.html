@@ -20,16 +20,14 @@
                         <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'visibility':'hidden'} }}" role="button">Follow {{$ctrl.user.userName}}!</button>
                         <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'visibility':'hidden'} }}" role="button">Unfollow {{$ctrl.user.userName}}</button>
                         <div class="profile-lower-buttons">
-                            <button class="btn btn-outline-primary" role="button">This User's Tweets</button>
-                            <button class="btn btn-outline-primary" role="button">This User's  Feed</button>
+
+                            <button class="btn btn-outline-primary" role="button" ui-sref="main.tweets({username: $ctrl.user.userName})">This User's Tweets</button>
+                            <button class="btn btn-outline-primary" role="button" ui-sref="main.feed({username: $ctrl.user.userName})">This User's  Feed</button>
                             <button class="btn btn-outline-primary" role="button">This User's  Mentions</button>
-                            
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
 
         <!-- <form class="profile-form" method="post" action="#">

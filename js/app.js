@@ -26,8 +26,8 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }]
         }
     }
+    
 //Artem
-
     var authenticationState = {
         name: 'authentication',
         url: '/authentication',
@@ -206,15 +206,11 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'publicProfileComponent',
         resolve: {
             resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
-                console.log("about to call user name search ")
                 let result = usernameSearchService.search($transition$.params().username)
-                console.log('found user 2= ' + result)
                 return result
             }],
             resolvedIsBeingFollowed: ['isFollowingService', '$transition$', function(isFollowingService, $transition$){
-                console.log('about to call the isFollowing')
                 let followingResult = isFollowingService.currentUserIsFollowing($transition$.params().username)
-                console.log('following result = ' + followingResult)
                 return followingResult
             }]
         }
