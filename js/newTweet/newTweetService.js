@@ -1,15 +1,16 @@
-angular.module('twitterApp').service('newTweetService', ['$http',function($http){
+angular.module('twitterApp').service('newTweetService', ['$http', '$state', function($http, $state){
     
     this.postNewTweet = () => {
         this.newTweet.credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('password')};
-        
-        return $http.post('http://localhost:8090/tweets', this.newTweet).then((result)=> {
-            return $http.get('http://localhost:8090/tweets').then((res)=> {
-                console.log('inside')
-                console.log(res)
-                console.log('inside');
-                return res
-            });
-        });
-    }
+        $http.post('http://localhost:8090/tweets', this.newTweet).then((done)=> {
+            this.newTweet.content = '';
+            if($state.is('main.allTweets')){
+                $state.reload();
+            }else{
+                $state.go('main.allTweets');
+            }
+            
+       });
+     }
+    
 }])
