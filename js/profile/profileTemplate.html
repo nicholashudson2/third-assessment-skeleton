@@ -1,7 +1,6 @@
-<div class="profile">
-
-    <div class="card bg-light mb-3 profile-card card">
-        <div class="card-block">
+<div class="profile" ng-style="justify-content: center; align-items: center; padding: 0px; margin: 0px">
+    <div class="card bg-light mb-3 profile-card card profile" ng-style="width: 100%; padding: 0px; margin: 0px">
+        <div class="card-block" >
             <div class="card-body">
                 Name:
                 <h5 class="card-title">{{$ctrl.user.profile.firstName}} {{$ctrl.user.profile.lastName}}</h5>
@@ -19,7 +18,7 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name: {{$ctrl.user.profile.firstName}}" />
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{$ctrl.user.profile.firstName}}" />
                     </div>
                 </div>
             </div>
@@ -28,7 +27,8 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.user.profile.lastName}}" />
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name: {{$ctrl.user.profile.lastName}}"
+                        />
                     </div>
                 </div>
             </div>
@@ -38,7 +38,8 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
 
-                        <input type="text" class="form-control" name="email" id="email" placeholder="Email: ""{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown"}}" />
+                        <input type="text" class="form-control" name="email" id="email" placeholder="Email: "
+                            "{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown "}}" />
                     </div>
                 </div>
             </div>
@@ -47,7 +48,8 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: ""{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown"}}" />
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number: "
+                            "{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown "}}" />
                     </div>
                 </div>
             </div>
@@ -61,10 +63,11 @@
                 </div>
             </div>
             <div class="form-group">
-                <a href="" target="updateProfile" type="button" id="updateButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
+                <a href="" target="updateProfile" type="button" id="updateProfileButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
             </div>
             <div class="form-group">
-                <a href="" target="updateProfile" type="button" id="updateButton" class="btn btn-danger btn-lg login-button btn-block">Delete User</a>
+                <a href="" target="updateProfile" type="button" id="deleteUserButton" class="btn btn-danger btn-lg login-button btn-block">Delete User</a>
             </div>
         </form>
     </div>
+</div>

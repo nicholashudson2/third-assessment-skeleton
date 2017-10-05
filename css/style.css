@@ -56,6 +56,11 @@ main-page-container {
     flex-flow: nowrap;
 }
 
+.transparent-input {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 0.5px solid gray;
+ }
+
 .header {
     display: flex;
     width: 100%;
@@ -67,7 +72,6 @@ main-page-container {
     z-index: 10;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
-    background-color: WHITE;
 }
 
 .header-column {
@@ -75,7 +79,9 @@ main-page-container {
     flex-direction: column;
     flex: 1 0 auto;
     width: 100%;
-    max-height: 150px;
+    margin: 0;
+    padding: 0;
+    max-height: 125px;
 }
 
 .header-row {
@@ -84,6 +90,8 @@ main-page-container {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .header-nav {
@@ -103,6 +111,13 @@ main-page-container {
     /* align-items: center;
     justify-content: center;
     text-align: center; */
+}
+
+.search-bar {
+    display: inline;
+    justify-content: space-around;
+    align-items: space-around;
+    padding: auto;
 }
 
 .sign-in-header, .register-header {
@@ -148,7 +163,7 @@ main-page-container {
     height: 75%;
     justify-content: center;
     align-items: center;
-    margin-top: 125px;
+    margin-top: 135px;
 }
 
 .left-column-container {
@@ -159,14 +174,14 @@ main-page-container {
     width: 160px;
     position: fixed;
     left: 0;
-    top: 125px;
+    top: 135px;
     flex: 1 1 0;
 }
 
 .center-column-container {
     flex: 1 1 auto;
     height: 100%;
-    margin: 0px 300px 0px 170px;
+    margin: 10px 300px 0px 170px;
     justify-content: center;
     align-items: center;
 }
@@ -178,7 +193,7 @@ main-page-container {
     width: 300px;
     position: fixed;
     right: 0px;
-    top: 125px;
+    top: 135px;
     margin: 0;
     justify-content: center;
     align-items: center;
@@ -227,6 +242,7 @@ main-page-container {
     padding-top: 25px;
     padding-bottom: 25px;
     width: 100%;
+    max-width: 100%;
     align-self: center;
 }
 
@@ -250,13 +266,13 @@ main-page-container {
 
 .squawker {
     font-family: 'Indie Flower', cursive;
-    font-size: 30px;
+    font-size: 35px;
     width: 100%;
 }
 
 .squawk-small {
     font-family: 'Indie Flower', cursive;
-    font-size: 20px;
+    font-size: 35px;
     margin: 0;
     padding: 0;
 }
@@ -273,9 +289,6 @@ main-page-container {
     align-items: space-around;
 }
 
-.btn {
-    margin-bottom: 5px;
-}
 
 .form-control {
     margin-bottom: 5px;
@@ -328,10 +341,13 @@ a:link {
 .profile-card {
     height: 100%;
     width: 100%;
+    max-width: 100%;
 }
 
 .profile-lower-buttons {
     width: 100%;
+    max-width: 100%;
+    flex: 1 1 auto;
     display: flex;
     overflow-wrap: wrap;
     flex-direction: row;
@@ -340,6 +356,8 @@ a:link {
 
 .profile-lower-buttons > .btn {
     flex: 1 1 auto;
+    padding: 5px;
+    margin: 5px;
 }
 
 @media only screen and (max-width: 1050px) {

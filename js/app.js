@@ -51,7 +51,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         redirectTo: (transition) => {
             let svc = transition.injector().get('registerService');
             return svc.registerNewUser().then((result) => {
-                return 'allTweets';
+                return 'main.allTweets';
             });
         }
     }
