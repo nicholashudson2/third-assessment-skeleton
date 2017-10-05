@@ -33,4 +33,10 @@ angular.module('twitterApp').controller('tweetController', ['tweetService', '$ht
     //     })
     // }
 
+
+    this.ownTweet = (tweetAuthor) => {
+        console.log(tweetAuthor)
+        return tweetAuthor === sessionStorage.getItem('userLogin')
+    }
+
 }])

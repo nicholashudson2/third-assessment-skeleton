@@ -206,5 +206,13 @@ public class ClientController {
 		return true;
 	}
 	
+	public boolean authenticatedClient(Credentials credentials){
+		ClientDto clientDto = clientService.findByUserName(credentials.getUserLogin());
+		if (clientDto.getCredentials().getPassword().equals(credentials.getPassword())){
+			return true;
+		}
+		return false;
+	}
+	
 	
 }
