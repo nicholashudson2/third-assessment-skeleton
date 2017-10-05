@@ -7,6 +7,7 @@ angular.module('twitterApp').service('signInService', ['$http', function($http){
                sessionStorage.setItem('userLogin', this.credentials.userLogin);
                sessionStorage.setItem('password', this.credentials.password);
            }
+           if(result.data) 
            return result.data?'main.allTweets':'signIn';
         });
 
@@ -15,4 +16,6 @@ angular.module('twitterApp').service('signInService', ['$http', function($http){
     this.clearSessionStorage = () => {
         sessionStorage.clear();
     }
+
+    
 }])

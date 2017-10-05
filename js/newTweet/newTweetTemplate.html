@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="tweet-input">
         <form class="form-group squawk-input">
-            <textarea class="form-control" id="tweet-input" rows="2" placeholder="Create Squawk" required ng-model="$ctrl.newTweetService.newTweet.content"></textarea>
+            <textarea class="form-control" id="tweet-input" rows="2" placeholder="Create Squawk" required ng-model="$ctrl.newTweetService.newTweet.content" maxlength="51"></textarea>
             <!-- <a ui-sref="$ctrl.postNewTweet"> -->
             <button class="btn btn-block btn-outline-primary" id="postButton" ui-sref-active="active" type="submit" ng-click="$ctrl.newTweetService.postNewTweet()">
                 <div class="squawk-small">Squawk!</div>

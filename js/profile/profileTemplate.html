@@ -18,7 +18,8 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{$ctrl.user.profile.firstName}}" ng-model="$ctrl.profileService.user.profile.firstName" />
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{$ctrl.user.profile.firstName}}" 
+                        ng-model="$ctrl.profileService.user.profile.firstName" maxlength="15"/>
                     </div>
                 </div>
             </div>
@@ -27,7 +28,8 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="{{$ctrl.user.profile.lastName?($ctrl.user.profile.lastName):'Last Name'}}" ng-model="$ctrl.profileService.user.profile.lastName" />
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="{{$ctrl.user.profile.lastName?($ctrl.user.profile.lastName):'Last Name'}}" 
+                        ng-model="$ctrl.profileService.user.profile.lastName" maxlength="15"/>
                     </div>
                 </div>
             </div>
@@ -36,7 +38,8 @@
                 <div class="cols-sm-10">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" name="email" id="email" placeholder="{{$ctrl.user.profile.email?($ctrl.user.profile.email):'Email'}}" ng-model="$ctrl.profileService.user.profile.email"/>
+                        <input type="text" class="form-control" name="email" id="email" required placeholder="{{$ctrl.user.profile.email?($ctrl.user.profile.email):'Email'}}" 
+                        ng-model="$ctrl.profileService.user.profile.email" maxlength="25"/>
                     </div>
                 </div>
             </div>
@@ -46,7 +49,8 @@
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
 
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):'Phone Number'}}" ng-model="$ctrl.profileService.user.profile.phone"/>
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):'Phone Number'}}" 
+                        ng-model="$ctrl.profileService.user.profile.phone" maxlength="20"/>
 
                     </div>
                 </div>
