@@ -189,5 +189,13 @@ public class ClientService {
 		
 		return clientRepository.findByCredentialsAndDeleted(credentials, false)!=null;
 	}
+
+	public boolean isFollowing(String follower, String beingFollowed) {
+		Client followerCient = clientRepository.findByUserName(follower);
+		Client beingFollowedClient = clientRepository.findByUserName(beingFollowed);
+	    return beingFollowedClient!=null && followerCient!=null && 
+	    	clientRepository.findByUserNameAndFollowersCredentials(beingFollowedClient.getUserName(), followerCient.getCredentials())==null &&
+	    	followerCient!=beingFollowedClient;
+	}
 	
 }
