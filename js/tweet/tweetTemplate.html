@@ -6,7 +6,7 @@
                     <a ui-sref="main.reposts({tweetId: $ctrl.tweet.id})"><button  class="btn btn-primary" role="button" >Reposts</button></a>
                     <a ui-sref="main.replies({tweetId: $ctrl.tweet.id})"><button  class="btn btn-primary" role="button" >Replies</button></a>
                 </div>
-                <button  class="btn btn-primary" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)">X</button>
+                <button  class="btn btn-primary" role="button" ng-click="$ctrl.deleteTweet($ctrl.tweet.id)" ng-style="{'visibility': $ctrl.ownTweet($ctrl.tweet.userName) ? 'visible' : 'hidden'}">X</button>
 
             </div>
             <div> Posted on: {{$ctrl.tweet.posted}}</div>
