@@ -175,7 +175,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/followers/@{username}',
         component: 'usernameListComponent',
         resolve: {
-            resolvedUsersList: ['usernameListService', function(usernameListService){
+            resolvedUsersList: ['usernameListService', '$transition$', function(usernameListService, $transition$){
                 return usernameListService.getFollowers($transition$.params().username);
             }]
         }
@@ -186,7 +186,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/following/@{username}',
         component: 'usernameListComponent',
         resolve: {
-            resolvedUsersList: ['usernameListService', function(usernameListService){
+            resolvedUsersList: ['usernameListService', '$transition$', function(usernameListService, $transition$){
                 return usernameListService.getFollowing($transition$.params().username);
             }]
         }
