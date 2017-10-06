@@ -6,5 +6,4 @@ angular.module('twitterApp').service('isFollowingService', ['$http', function($h
             }
             return $http.get('http://localhost:8090/users/' + sessionStorage.getItem('userLogin') + '/is_following/' + personBeingFollowed)
         }
-        
     }])
