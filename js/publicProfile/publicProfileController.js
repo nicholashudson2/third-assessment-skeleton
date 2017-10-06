@@ -3,5 +3,4 @@ angular.module('twitterApp').controller('publicProfileController', ['profileServ
     this.user = this.resolvedUser.data
     this.isBeingFollowed = this.resolvedIsBeingFollowed.data
     this.profileService = profileService
-    
 }])
