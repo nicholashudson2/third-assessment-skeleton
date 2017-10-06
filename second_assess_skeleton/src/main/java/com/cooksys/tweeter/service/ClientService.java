@@ -176,6 +176,12 @@ public class ClientService {
 	public List<TweetDto> getTweets(String userName) {
 		Client client = clientRepository.findByUserName(userName);
 		List<Tweet> tweets = tweetRepository.findByAuthorAndDeleted(client, NOT_DELETED);
+		Comparator<Tweet> compareFunc = new Comparator<Tweet>(){
+			public int compare(Tweet t1, Tweet t2){
+				return -t1.getPosted().compareTo(t2.getPosted());
+			}
+		};
+		Collections.sort(tweets, compareFunc);
 		return tweetMapper.toDtos(tweets);
 	}
 
