@@ -40,7 +40,7 @@ angular.module('twitterApp').service('tweetService', ['$http', '$state', functio
 
     this.createReply = (id) => {
         if(!this.replyTweet || !this.replyTweet.content){
-            alert('Nothing to say aaah?');
+            alert('Nothing to say haaa?');
         }else{
             this.replyTweet.credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('password')};
             $http.post('http://localhost:8090/tweets/' + id + '/reply', this.replyTweet).then((result) => {
