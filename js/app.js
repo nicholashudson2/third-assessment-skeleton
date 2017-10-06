@@ -9,6 +9,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent',
         onEnter: ['signInService', function(signInService){
             signInService.clearSessionStorage();
+            signInService.myStyle = {display: 'none'}
         }]
     }
 
@@ -33,9 +34,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/authentication',
         redirectTo: (transition) => {
             let svc = transition.injector().get('signInService');
-            return svc.authenticateUser().then((result) => {
-                return result;
-            });
+            return svc.authenticateUser()
         }
     }
 //Artem
