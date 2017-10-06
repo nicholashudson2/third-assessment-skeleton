@@ -30,3 +30,4 @@ angular.module('twitterApp').controller('publicProfileController', ['$http', '$s
     }
 
 }])
+

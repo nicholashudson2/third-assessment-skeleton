@@ -19,6 +19,7 @@
                     <div class="bttns">
                         <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" ng-click="$ctrl.follow($ctrl.user.userName)" role="button">Follow {{$ctrl.user.userName}}!</button>
                         <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" ng-click="$ctrl.unfollow($ctrl.user.userName)" role="button">Unfollow {{$ctrl.user.userName}}</button>
+
                         <div class="profile-lower-buttons">
                             <button class="btn btn-outline-primary" role="button" ui-sref="main.tweets({username: $ctrl.user.userName})">This User's Squawks</button>
                             <button class="btn btn-outline-primary" role="button" ui-sref="main.feed({username: $ctrl.user.userName})">This User's Feed</button>
