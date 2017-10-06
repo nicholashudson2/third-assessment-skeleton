@@ -8,6 +8,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent',
         onEnter: ['signInService', function(signInService){
             signInService.clearSessionStorage();
+            signInService.myStyle = {display: 'none'}
         }]
     }
 
@@ -17,22 +18,20 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'mainPageComponent',
         resolve: {
             resolvedFollowers: ['usernameListService', function (usernameListService) {
-                return usernameListService.getFollowers();
+                return usernameListService.getFollowers('');
             }],
             resolvedFollowing: ['usernameListService', function (usernameListService) {
-                return usernameListService.getFollowing();
+                return usernameListService.getFollowing('');
             }]
         }
     }
-    
+
     var authenticationState = {
         name: 'authentication',
         url: '/authentication',
         redirectTo: (transition) => {
             let svc = transition.injector().get('signInService');
-            return svc.authenticateUser().then((result) => {
-                return result;
-            });
+            return svc.authenticateUser()
         }
     }
 
@@ -122,9 +121,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', function (tweetListService) {
-                return tweetListService.getAllTweets().then((result)=> {
-                    return result;
-                })
+                return tweetListService.getAllTweets();
             }]
         }
     }
@@ -168,24 +165,68 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'tweetListComponent',
         resolve: {
             resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
-                console.log('here')
                 return tweetListService.getReposts($transition$.params().tweetId);
             }] 
         }
     }
-    
+
+    var followersState = {
+        name: 'main.followers',
+        url: '/followers/@{username}',
+        component: 'usernameListComponent',
+        resolve: {
+            resolvedUsersList: ['usernameListService', function(usernameListService){
+                return usernameListService.getFollowers($transition$.params().username);
+            }]
+        }
+    }
+
+    var followingState = {
+        name: 'main.following',
+        url: '/following/@{username}',
+        component: 'usernameListComponent',
+        resolve: {
+            resolvedUsersList: ['usernameListService', function(usernameListService){
+                return usernameListService.getFollowing($transition$.params().username);
+            }]
+        }
+    }
+
+    var bookmarksState = {
+        name: 'main.bookmarks',
+        url: '/bookmarks/@{username}',
+        component: 'tweetListComponent',
+        resolve: {
+            resolvedTweetsList: ['tweetListService', '$transition$', function (tweetListService, $transition$) {
+                return tweetListService.getBookmarks($transition$.params().username);
+            }] 
+        }
+    }
+
+    $stateProvider.state(followersState);
+    $stateProvider.state(followingState);
+    $stateProvider.state(bookmarksState);
+    $stateProvider.state(repostsState);
+    $stateProvider.state(repliesState);
+    $stateProvider.state(mentionsState);
+    $stateProvider.state(allUsersState);
+    $stateProvider.state(allTagsState);
+    $stateProvider.state(mainPageState);
+    $stateProvider.state(userTweetsState);
+    $stateProvider.state(allTweetsState);
+
     var publicProfileState = {
         name: 'main.publicProfile',
         url: '/publicProfile/{username}',
         component: 'publicProfileComponent',
         resolve: {
-            resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
-                let result = usernameSearchService.search($transition$.params().username)
-                return result
-            }],
             resolvedIsBeingFollowed: ['isFollowingService', '$transition$', function(isFollowingService, $transition$){
                 let followingResult = isFollowingService.currentUserIsFollowing($transition$.params().username)
                 return followingResult
+            }],
+            resolvedUser: ['usernameSearchService', 'searchService', '$transition$', function (usernameSearchService, searchService, $transition$) {
+                let result = usernameSearchService.search($transition$.params().username)
+                return result
             }]
         }
     }

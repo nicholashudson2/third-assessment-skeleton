@@ -74,8 +74,9 @@ public class ClientController {
 		return clientService.findByUserName(userName);
 	}
 	
-	@PatchMapping("/@{userName}")
+	@PatchMapping
 	public ClientDto updateClientProfile(@RequestBody ClientData clientData, HttpServletResponse response){
+		System.out.println(clientData.toString());
 		if (!validClientData(clientData)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
@@ -99,7 +100,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/@{userName}/follow")
-	public void followClient(@RequestParam String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
+	public void followClient(@PathVariable String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
 		if (!validClient(followerCred) || !validClient(userName)){
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 			return;
@@ -141,6 +142,15 @@ public class ClientController {
 			return null;
 		}
 		return clientService.getMentions(username);
+	}
+	
+	@GetMapping("@{username}/liked")
+	public Set<TweetDto> getLikedTweets(@PathVariable String username, HttpServletResponse response){
+		if (!clientService.userNameExists(username)){
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			return null;
+		}
+		return clientService.getLikedTweets(username);
 	}
 	
 	@GetMapping("/@{userName}/followers")
@@ -204,6 +214,14 @@ public class ClientController {
 		if (credentials.getPassword() == null || credentials.getPassword().equals(""))
 			return false;
 		return true;
+	}
+	
+	public boolean authenticatedClient(Credentials credentials){
+		ClientDto clientDto = clientService.findByUserName(credentials.getUserLogin());
+		if (clientDto.getCredentials().getPassword().equals(credentials.getPassword())){
+			return true;
+		}
+		return false;
 	}
 	
 	

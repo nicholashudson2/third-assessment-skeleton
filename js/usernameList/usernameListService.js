@@ -4,12 +4,18 @@ angular.module('twitterApp').service('usernameListService', ['$http', function($
         return $http.get('http://localhost:8090/users')
     }
 
-    this.getFollowers = () => {
-        return $http.get('http://localhost:8090/users/@'+sessionStorage.getItem('userLogin')+'/followers');
+    this.getFollowers = (username) => {
+        if(username===''){
+            username=sessionStorage.getItem('userLogin')
+        }
+        return $http.get('http://localhost:8090/users/@'+username+'/followers');
     }
 
-    this.getFollowing = () => {
-        return $http.get('http://localhost:8090/users/@'+sessionStorage.getItem('userLogin')+'/following')
+    this.getFollowing = (username) => {
+        if(username===''){
+            username=sessionStorage.getItem('userLogin')
+        }
+        return $http.get('http://localhost:8090/users/@'+username+'/following')
       
     }
     
