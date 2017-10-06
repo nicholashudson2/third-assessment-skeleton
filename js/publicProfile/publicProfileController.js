@@ -4,4 +4,11 @@ angular.module('twitterApp').controller('publicProfileController', ['profileServ
     this.isBeingFollowed = this.resolvedIsBeingFollowed.data
     this.profileService = profileService
     
+    this.toggleFollowing = () => {
+        if(this.isBeingFollowed) {
+            this.isBeingFollowed = false
+         } else { 
+             this.isBeingFollowed = true
+    }
+}
 }])
