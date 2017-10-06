@@ -7,6 +7,8 @@ angular.module('twitterApp').service( 'profileService', ['$http', '$state', func
     }
 
     this.followUser = (username) => {
+        console.log('User ' + sessionStorage.getItem('userLogin'))
+        console.log('is attempting to follow ' + username)
         let credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('password')};
         $http.post('http://localhost:8090/users/@' + username + '/follow', credentials).then((result) => {
             $state.reload();
@@ -14,6 +16,8 @@ angular.module('twitterApp').service( 'profileService', ['$http', '$state', func
     }
 
     this.unfollowUser = (username) => {
+        console.log('User ' + sessionStorage.getItem('userLogin'))
+        console.log('is attempting to unfollow ' + username)
         let credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('password')};
         $http.post('http://localhost:8090/users/@' + username + '/unfollow', credentials).then((result) => {
             $state.reload();
