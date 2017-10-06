@@ -100,7 +100,7 @@ public class ClientController {
 	}
 	
 	@PostMapping("/@{userName}/follow")
-	public void followClient(@RequestParam String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
+	public void followClient(@PathVariable String userName, @RequestBody Credentials followerCred, HttpServletResponse response){
 		if (!validClient(followerCred) || !validClient(userName)){
 			response.setStatus(HttpServletResponse.SC_NO_CONTENT);
 			return;
