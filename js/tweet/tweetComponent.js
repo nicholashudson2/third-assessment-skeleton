@@ -3,7 +3,8 @@ angular.module('twitterApp').component('tweetComponent', {
 
     controller: 'tweetController',
     bindings: {
-        tweet: '='
+        tweet: '='//,
+        // numberOfLikes: '='
     }
 
 })

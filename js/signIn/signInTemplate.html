@@ -18,7 +18,7 @@
                 <div class="input-group">
                     <label for="inputEmail" class="sr-only">Username</label>
                     <span class="input-group-addon"><i class="fa fa-users fa-fw" aria-hidden="true"></i></span>
-                    <input type="text" id="input-username" class="form-control" placeholder="Username" required autofocus ng-model="$ctrl.signInService.credentials.userLogin">
+                    <input type="text" id="input-username" class="form-control" placeholder="Username" required autofocus maxlength="15" ng-model="$ctrl.signInService.credentials.userLogin">
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <div class="input-group">
                     <label for="inputPassword" class="sr-only">Password</label>
                     <span class="input-group-addon"><i class="fa fa-lock fa-fw" aria-hidden="true"></i></span>
-                    <input type="password" id="input-password" class="form-control" placeholder="Password" required ng-model="$ctrl.signInService.credentials.password">
+                    <input type="password" id="input-password" class="form-control" placeholder="Password" required maxlength="15" ng-model="$ctrl.signInService.credentials.password">
                 </div>
             </div>
         </div>
@@ -44,5 +44,9 @@
             </a>
         </div>
     </form>
+
+    <div>
+        <img src="img/download.jpg" ng-style = "$ctrl.signInService.myStyle">
+    </div>
 </div>
 

@@ -31,10 +31,14 @@ angular.module('twitterApp').service('tweetListService', ['$http',  function ($h
         }
 
         this.getReposts = (tweetId) => {
-            return $http.get('http://localhost:8090/tweets/'+tweetId+'/reposts').then((rep)=> {
-            console.log(rep.data)
-            return rep
-            });
+            return $http.get('http://localhost:8090/tweets/'+tweetId+'/reposts')
+        }
+
+        this.getBookmarks = (username) => {
+            if(username===''){
+                username=sessionStorage.getItem('userLogin')
+            }
+            return $http.get('http://localhost:8090/users/@' + username + '/liked');
         }
         
     }])

@@ -85,11 +85,12 @@ public class TweetController {
 	
 	@PostMapping("/{id}/delete")
 	public TweetDto deleteTweetById(@PathVariable Integer id, @RequestBody Credentials credentials, HttpServletResponse response){
-		TweetDto tweetDto = tweetService.deleteTweetById(id);
-		if (tweetDto == null){
+		if (!clientController.validClient(credentials) || !tweetService.tweetExists(id) || 
+				!tweetService.userOwnsTweet(credentials.getUserLogin(), id)){
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 			return null;
 		}
+		TweetDto tweetDto = tweetService.deleteTweetById(id);
 		return tweetDto;
 	}
 	
@@ -182,6 +183,11 @@ public class TweetController {
 		}
 //		System.out.println("\n\n\n\n\n\n\n output" + tweetService.) + "\n\n\n\n\n");
 		return tweetService.getMentionsByTweet(id);
+	}
+	
+	@GetMapping("/{userName}/owns/{id}")
+	public boolean userOwnsTweet(@PathVariable String userName, @PathVariable Integer id,  HttpServletResponse response){
+		return tweetService.userOwnsTweet(userName, id);
 	}
 	
 

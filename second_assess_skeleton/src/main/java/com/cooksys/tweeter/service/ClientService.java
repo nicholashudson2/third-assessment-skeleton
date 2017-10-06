@@ -176,6 +176,12 @@ public class ClientService {
 	public List<TweetDto> getTweets(String userName) {
 		Client client = clientRepository.findByUserName(userName);
 		List<Tweet> tweets = tweetRepository.findByAuthorAndDeleted(client, NOT_DELETED);
+		Comparator<Tweet> compareFunc = new Comparator<Tweet>(){
+			public int compare(Tweet t1, Tweet t2){
+				return -t1.getPosted().compareTo(t2.getPosted());
+			}
+		};
+		Collections.sort(tweets, compareFunc);
 		return tweetMapper.toDtos(tweets);
 	}
 
@@ -191,11 +197,25 @@ public class ClientService {
 	}
 
 	public boolean isFollowing(String follower, String beingFollowed) {
-		Client followerCient = clientRepository.findByUserName(follower);
+		Client followerClient = clientRepository.findByUserName(follower);
 		Client beingFollowedClient = clientRepository.findByUserName(beingFollowed);
-	    return beingFollowedClient!=null && followerCient!=null && 
-	    	clientRepository.findByUserNameAndFollowersCredentials(beingFollowedClient.getUserName(), followerCient.getCredentials())==null &&
-	    	followerCient!=beingFollowedClient;
+//	    return beingFollowedClient!=null && followerClient!=null && 
+//	    	clientRepository.findByUserNameAndFollowersCredentials(beingFollowedClient.getUserName(), followerClient.getCredentials())==null &&
+//	    	followerClient!=beingFollowedClient;
+		
+		Set<Client> followers = clientRepository.findByFollowersAndDeleted(beingFollowedClient, NOT_DELETED);
+		for (Client f : followers) {
+			if (f.getUserName().equals(followerClient.getUserName())){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Set<TweetDto> getLikedTweets(String username) {
+		Client client = clientRepository.findByUserNameAndDeleted(username, false);
+		Set<Tweet> tweets = client.getLikes();
+ 		return tweetMapper.toDtos(tweets);
 	}
 	
 }

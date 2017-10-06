@@ -1,5 +1,4 @@
 <div class="public-profile">
-
     <div class="card bg-light mb-3 profile-card card">
         <div class="card-block">
             <div class="card-header">About {{$ctrl.user.userName}}</div>
@@ -12,18 +11,22 @@
                 <h5 class="card-title">{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown"}}</h5>
                 Email:
                 <h5 class="card-title">{{$ctrl.user.profile.email?($ctrl.user.profile.email):"Unknown"}}</h5>
-
             </div>
             <div class="card-header">
                 <div class="card-footer">
                     <div class="bttns">
-                        <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" role="button">Follow {{$ctrl.user.userName}}!</button>
-                        <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" role="button">Unfollow {{$ctrl.user.userName}}</button>
+                        <button class="btn btn-block btn-primary" ng-style="{{!$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" ng-click="$ctrl.follow($ctrl.user.userName)" role="button">Follow {{$ctrl.user.userName}}!</button>
+                        <button class="btn btn-block btn-danger" ng-style="{{$ctrl.isBeingFollowed?{'visibility':'visible'}:{'display':'none'} }}" ng-click="$ctrl.unfollow($ctrl.user.userName)" role="button">Unfollow {{$ctrl.user.userName}}</button>
                         <div class="profile-lower-buttons">
                             <button class="btn btn-outline-primary" role="button" ui-sref="main.tweets({username: $ctrl.user.userName})">This User's Squawks</button>
                             <button class="btn btn-outline-primary" role="button" ui-sref="main.feed({username: $ctrl.user.userName})">This User's Feed</button>
-                            <button class="btn btn-outline-primary" role="button">This User's  Mentions</button>
+                            <button class="btn btn-outline-primary" role="button" ui-sref="main.mentions({username: $ctrl.user.userName})">This User's  Mentions</button>
                         </div>
+                        <div class="profile-lower-buttons">
+                                <button class="btn btn-outline-primary" role="button" ui-sref="main.following({username: $ctrl.user.userName})">Following {{$ctrl.user.userName}}</button>
+                                <button class="btn btn-outline-primary" role="button" ui-sref="main.followers({username: $ctrl.user.userName})">Followed By {{$ctrl.user.userName}}</button>
+                                <button class="btn btn-outline-primary" role="button" ui-sref="main.bookmarks({username: $ctrl.user.userName})">{{$ctrl.user.userName}}'s Likes</button>
+                            </div>
                     </div>
                 </div>
             </div>

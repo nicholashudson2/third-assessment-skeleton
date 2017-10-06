@@ -1,36 +1,56 @@
-angular.module('twitterApp').controller('tweetController', ['tweetService', '$http', function (tweetService, $http) {
+angular.module('twitterApp').controller('tweetController', ['tweetService', '$http', '$state', 'usernameSearchService', 
+    function (tweetService, $http, $state, usernameSearchService) {
 //Artem
   
     this.tweetService = tweetService;
+    
+    tweetService.getLikes(this.tweet.id).then( (result) => {
+        this.likes = result.data
+    })
 
+    // modified by Chris
     this.like = (id) => {
         tweetService.like(id);
+        if (!currentUserFoundInLikes()){
+            $http.get('http://localhost:8090/users/@' + sessionStorage.getItem('userLogin')).then( (result) => {
+                this.likes.push(result.data)
+            })
+        }
     }
+    
+    // added by Chris
+    const currentUserFoundInLikes = () => {
+        for (like of this.likes){
+            if (like.credentials.userLogin == sessionStorage.getItem('userLogin')){
+                console.log(true)
+                return true;
+            }
+        }
+        console.log(false)
+        return false;
+    }
+
+    // this.currentUserFoundInLikes = () => {
+    //     // console.log(this.likes)
+    //     console.dir(this.likes)
+    // }
 
     this.repost = (id) => {
         tweetService.repost(id);
     }
 
-    // this.likes=[];
-// 
-    // this.getLikes = (id) => {
-    //     likes[id] = http.get('http://localhost:8090/tweets/'+id+'/likes').then((result) => {
-    //         console.log(result.data.length)
-    //         return result.data.length;
-    //     })
-    // }
-
     this.deleteTweet = (id) => {
         tweetService.deleteTweet(id);
     }
 
-    //tweetService.NumberOfLikes(this.tweet.id)   // Get number of likes on this tweet load, digest loop freeze on function call from template
+    this.ownTweet = (tweetAuthor) => {
+        return tweetAuthor === sessionStorage.getItem('userLogin')
+    }
 
-    // this.NumberOfLikes = (id) => {
-    //     return $http.get('http://localhost:8090/tweets/'+id+'/likes').then((result) => {
-    //         console.log(result.data.length)
-    //         return result.data.length;
-    //     })
-    // }
+    this.createReply = (id) => {
+        tweetService.createReply(id);
+    }
+
+
 
 }])
