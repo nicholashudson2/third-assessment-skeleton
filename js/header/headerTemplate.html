@@ -10,10 +10,10 @@
             </a>
             </div>
             <li class="nav-item">
-                <a class="nav-link" ui-sref-active="active" ui-sref="main.profile">Profile</a>
+                <a class="nav-link" ui-sref-active="active" ui-sref="main.profile"><strong>Profile</strong></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" ui-sref-active="active" ui-sref="signIn">Logout: @{{$ctrl.getUsername()}}</a>
+                <a class="nav-link" ui-sref-active="active" ui-sref="signIn"><strong>Logout: @{{$ctrl.getUsername()}}</strong></a>
             </li>
             <li class="nav-item search-bar">
                 <form class="navbar-form navbar-left search-bar">
@@ -21,7 +21,7 @@
                     <input type="text" class="form-control input-lg transparent-input" id="search-input" placeholder="Search" ng-model="$ctrl.searchService.searchString" maxlength="20">
                     <!-- Modified by Chris. -->
                     <button class="btn btn-outline-primary" ng-click="$ctrl.searchService.activateSearch(document.getElementById('search-input').value)"
-                        ui-sref-active="active" type="submit">Search</button>
+                        ui-sref-active="active" type="submit"><strong>Search</strong></button>
                 </form>
             </li>
         </ul>
