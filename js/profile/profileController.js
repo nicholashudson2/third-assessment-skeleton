@@ -3,5 +3,6 @@ angular.module('twitterApp').controller('profileController', ['deleteUserService
     this.deleteUserService = deleteUserService
     this.user = this.resolvedUser.data
     this.profileService = profileService;
+    
 
 }])

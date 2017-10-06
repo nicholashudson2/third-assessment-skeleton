@@ -216,7 +216,7 @@ main-page-container {
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     margin: 0;
     padding: 0;

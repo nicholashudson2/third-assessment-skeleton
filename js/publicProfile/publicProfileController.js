@@ -1,7 +1,6 @@
-angular.module('twitterApp').controller('publicProfileController', function(){
+angular.module('twitterApp').controller('publicProfileController', ['profileService', function(profileService){
 
     this.user = this.resolvedUser.data
     this.isBeingFollowed = this.resolvedIsBeingFollowed.data
-    console.log("loading public profile")
-    console.log("isBeingFollowed value = " + this.isBeingFollowed)
-})
+    this.profileService = profileService
+}])
