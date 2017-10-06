@@ -1,6 +1,9 @@
 angular.module('twitterApp').service('tweetService', ['$http', '$state', function ($http, $state) {
 
 
+    this.replyTweet={};
+    this.replyTweet.content='';     //To avoid undefined error
+
     this.getLikes = (id) => {
         return $http.get('http://localhost:8090/tweets/' + id + '/likes')
     }
@@ -38,13 +41,18 @@ angular.module('twitterApp').service('tweetService', ['$http', '$state', functio
     }
 
     this.createReply = (id) => {
-        this.replyTweet.credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('password')};
-        $http.post('http://localhost:8090/tweets/' + id + '/reply', this.replyTweet).then((result) => {
-
-            this.replyTweet.content = '';
+        if(this.replyTweet.content===''){
             $state.reload();
-            
-        })
+        }else{
+            this.replyTweet.credentials = {userLogin: sessionStorage.getItem('userLogin'), password: sessionStorage.getItem('password')};
+            $http.post('http://localhost:8090/tweets/' + id + '/reply', this.replyTweet).then((result) => {
+    
+                this.replyTweet.content = '';
+                $state.reload();
+                
+            })
+        }
+        
     }
 
 
