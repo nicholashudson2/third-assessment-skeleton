@@ -9,6 +9,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'signInComponent',
         onEnter: ['signInService', function(signInService){
             signInService.clearSessionStorage();
+            signInService.myStyle = {display: 'none'}
         }]
     }
 
@@ -19,10 +20,10 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         component: 'mainPageComponent',
         resolve: {
             resolvedFollowers: ['usernameListService', function (usernameListService) {
-                return usernameListService.getFollowers();
+                return usernameListService.getFollowers('');
             }],
             resolvedFollowing: ['usernameListService', function (usernameListService) {
-                return usernameListService.getFollowing();
+                return usernameListService.getFollowing('');
             }]
         }
     }
@@ -33,9 +34,7 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
         url: '/authentication',
         redirectTo: (transition) => {
             let svc = transition.injector().get('signInService');
-            return svc.authenticateUser().then((result) => {
-                return result;
-            });
+            return svc.authenticateUser()
         }
     }
 //Artem
@@ -182,6 +181,29 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
             }] 
         }
     }
+
+    var followersState = {
+        name: 'main.followers',
+        url: '/followers/@{username}',
+        component: 'usernameListComponent',
+        resolve: {
+            resolvedUsersList: ['usernameListService', function(usernameListService){
+                return usernameListService.getFollowers($transition$.params().username);
+            }]
+        }
+    }
+
+    var followingState = {
+        name: 'main.following',
+        url: '/following/@{username}',
+        component: 'usernameListComponent',
+        resolve: {
+            resolvedUsersList: ['usernameListService', function(usernameListService){
+                return usernameListService.getFollowing($transition$.params().username);
+            }]
+        }
+    }
+
 //Artem
     var bookmarksState = {
         name: 'main.bookmarks',
@@ -195,6 +217,8 @@ var myApp = angular.module('twitterApp', ['ui.router']).config(['$stateProvider'
     }
 
 
+    $stateProvider.state(followersState);
+    $stateProvider.state(followingState);
     $stateProvider.state(bookmarksState);
     $stateProvider.state(repostsState);
     $stateProvider.state(repliesState);
