@@ -1,0 +1,26 @@
+<div>
+    <h4>Context</h4>
+    <div>
+        <h6>Target Tweet:</h6>
+        <tweet-component tweet="$ctrl.context.target"></tweet-component>
+    </div>
+
+    <div>
+        <h6>Tweets Before:</h6>
+        <div class="tweet-list">
+            <div ng-repeat="tweet in $ctrl.context.before">
+                <tweet-component tweet='tweet'></tweet-component>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h6>Tweets After:</h6>
+        <div class="tweet-list">
+            <div ng-repeat="tweet in $ctrl.context.after">
+                <tweet-component tweet='tweet'></tweet-component>
+            </div>
+        </div>
+    </div>
+
+</div>

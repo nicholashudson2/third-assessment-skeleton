@@ -1,0 +1,10 @@
+<div class="followers-list-container scroll-container">
+    <div class="list-title">
+        <h5>My Followers</h5>
+    </div>
+    <ul class="scroll-list" role="menu">
+        <li class="nav nav-item nav-link" ng-repeat="follower in $ctrl.followers">
+            <user-component user="follower"></user-component>
+        </li>
+    </ul>
+</div>

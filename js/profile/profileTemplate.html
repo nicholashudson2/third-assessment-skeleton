@@ -1,0 +1,67 @@
+<div class="profile" ng-style="{'justify-content':'center', 'align-items':'center', 'padding':'0px', 'margin':'0px'}">
+    <div class="card bg-light mb-3 profile-card card profile" ng-style="{'width':'100%', 'padding':'0px', 'margin':'0px'}">
+        <div class="card-block" >
+            <div class="card-body">
+                Name:
+                <h5 class="card-title">{{$ctrl.user.profile.firstName}} {{$ctrl.user.profile.lastName}}</h5>
+                Member Since:
+                <h5 class="card-title">{{$ctrl.user.joined?($ctrl.user.joined | date:'mediumDate'):"Unknown"}}</h5>
+                Phone:
+                <h5 class="card-title">{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):"Unknown"}}</h5>
+                Email:
+                <h5 class="card-title">{{$ctrl.user.profile.email}}</h5>
+            </div>
+        </div>
+        <form class="profile-form" method="post" action="#">
+            <div class="form-group">
+                <label for="firstName" class="sr-only">First Name</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="firstName" id="firstName" placeholder="{{$ctrl.user.profile.firstName}}" 
+                        ng-model="$ctrl.profileService.user.profile.firstName" maxlength="15"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="sr-only">Last Name</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="lastName" id="lastName" placeholder="{{$ctrl.user.profile.lastName?($ctrl.user.profile.lastName):'Last Name'}}" 
+                        ng-model="$ctrl.profileService.user.profile.lastName" maxlength="15"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="sr-only">Email</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" name="email" id="email" required placeholder="{{$ctrl.user.profile.email?($ctrl.user.profile.email):'Email'}}" 
+                        ng-model="$ctrl.profileService.user.profile.email" maxlength="25"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="sr-only">Phone</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+
+
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="{{$ctrl.user.profile.phone?($ctrl.user.profile.phone):'Phone Number'}}" 
+                        ng-model="$ctrl.profileService.user.profile.phone" maxlength="20"/>
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <a ng-click="$ctrl.profileService.updateProfile()" target="updateProfile" type="button" id="updateProfileButton" class="btn btn-primary btn-lg login-button btn-block">Update Profile</a>
+            </div>
+            <div class="form-group">
+                <a ng-click="$ctrl.deleteUserService.delete()" type="button" id="deleteUserButton" class="btn btn-danger btn-lg login-button btn-block">Delete User</a>
+            </div>
+        </form>
+    </div>
+</div>
