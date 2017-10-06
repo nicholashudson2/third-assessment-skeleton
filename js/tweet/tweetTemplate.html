@@ -22,8 +22,8 @@
     </div>
     <div class="card-header">
         <form class="navbar-form navbar-left reply-bar">
-            <input type="text" class="form-control input-block transparent-input" id="reply-input" maxlength="52" placeholder="Squawk Reply">
-            <button class="btn btn-block btn-outline-primary">Reply</button>
+            <input type="text" class="form-control input-block transparent-input" id="reply-input" maxlength="52" placeholder="Squawk Reply" ng-model="$ctrl.tweetService.replyTweet.content">
+            <button class="btn btn-block btn-outline-primary" ng-click="$ctrl.createReply($ctrl.tweet.id)">Reply</button>
         </form>
     </div>
     <div class="card-header">

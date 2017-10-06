@@ -5,7 +5,6 @@ angular.module('twitterApp').controller('tweetController', ['tweetService', '$ht
     this.tweetService = tweetService;
     
     tweetService.getLikes(this.tweet.id).then( (result) => {
-        // console.dir(result)
         this.likes = result.data
     })
 
@@ -49,16 +48,7 @@ angular.module('twitterApp').controller('tweetController', ['tweetService', '$ht
     }
 
     this.createReply = (id) => {
-        let tweetData = {
-            "content": this.replyText,
-            "credentials": {
-                "password": sessionStorage.getItem('password'),
-                "userLogin": sessionStorage.getItem('userLogin')
-            }
-        }
-        $http.post('http://localhost:8090/tweets/' + id + '/reply', tweetData).then((result) => {
-            $state.reload();
-        })
+        tweetService.createReply(id);
     }
 
 
