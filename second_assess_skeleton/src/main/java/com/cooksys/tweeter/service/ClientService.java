@@ -197,11 +197,19 @@ public class ClientService {
 	}
 
 	public boolean isFollowing(String follower, String beingFollowed) {
-		Client followerCient = clientRepository.findByUserName(follower);
+		Client followerClient = clientRepository.findByUserName(follower);
 		Client beingFollowedClient = clientRepository.findByUserName(beingFollowed);
-	    return beingFollowedClient!=null && followerCient!=null && 
-	    	clientRepository.findByUserNameAndFollowersCredentials(beingFollowedClient.getUserName(), followerCient.getCredentials())==null &&
-	    	followerCient!=beingFollowedClient;
+//	    return beingFollowedClient!=null && followerClient!=null && 
+//	    	clientRepository.findByUserNameAndFollowersCredentials(beingFollowedClient.getUserName(), followerClient.getCredentials())==null &&
+//	    	followerClient!=beingFollowedClient;
+		
+		Set<Client> followers = clientRepository.findByFollowersAndDeleted(beingFollowedClient, NOT_DELETED);
+		for (Client f : followers) {
+			if (f.getUserName().equals(followerClient.getUserName())){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Set<TweetDto> getLikedTweets(String username) {
