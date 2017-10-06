@@ -30,6 +30,7 @@ angular.module('twitterApp').service('searchService', ['tweetService', '$state',
                     $state.go('main.publicProfile', { username: this.searchString })
                 }
             }
+            this.searchString = ''
         }
     }
 
