@@ -1,6 +1,6 @@
 angular.module('twitterApp').service('tweetService', ['$http', '$state', function ($http, $state) {
 
-    this.myStyle = {display: 'none'}
+    
 
     this.getLikes = (id) => {
         return $http.get('http://localhost:8090/tweets/' + id + '/likes')
@@ -19,7 +19,6 @@ angular.module('twitterApp').service('tweetService', ['$http', '$state', functio
             password: sessionStorage.getItem('password'),
             userLogin: sessionStorage.getItem('userLogin')
         }
-        this.myStyle = {display: 'block'}
         $http.post('http://localhost:8090/tweets/' + id + '/repost', credentials).then((result) => {
             if ($state.is('main.allTweets')) {
                 $state.reload();
@@ -52,7 +51,6 @@ angular.module('twitterApp').service('tweetService', ['$http', '$state', functio
         }
         
     }
-
 
 
 }])
